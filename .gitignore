@@ -4,3 +4,4 @@ sb/media/
 project/main/__pycache__
 prject/sb/__pycache__
 sb/migrations
+*.pyc
