@@ -1,0 +1,11 @@
+#head {background: black; width:100%; border-bottom: solid 3px red;}
+#head #logo {width: 1000px; height:150px; margin: 0 auto;}
+
+#indexsection {width:100%;}
+#indexsection .indexcontent {width: 1000; margin: 0 auto; text-align:center; display:block; clear:both; margin-top:30px;}
+#indexsection ul {list-style:none;}
+
+#indexsection #intro {height:400px;}
+#indexsection #intro ul {text-align:center;}
+#indexsection #intro ul li {float:left; height:400px; width:400px;}
+
