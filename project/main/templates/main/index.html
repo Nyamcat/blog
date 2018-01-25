@@ -1,4 +1,43 @@
 {% load staticfiles %}
 {% include 'main/header.html' %}
-Hi
+    <section id="indexsection">
+        <div class="indexcontent" id="intro">
+            <h1>
+                Intro
+            </h1>
+            <!--<div style="background:black; height:60px; width:40px; margin: 0 auto;"></div>-->
+            <ul>
+                <li  id="profilepic">
+                    <img src="{% static 'img/tiger.jpg' %}" style="width:195px; height:300px;">
+                </li>
+                <li id="introduce">
+                     우제목 기린과의 포유류로 아프리카에 사는 목이 긴 초식동물이다. 총 1속 1종이 존재하는 단일종으로 알려졌으나, 2016년 9월 10일까지 연구를 통해 4종이 존재하는 것이 밝혀졌다.
+                </li>
+            </ul>
+        </div>
+
+        <div class="indexcontent" id="career">
+            <h1>
+                Career
+            </h1>
+        </div>
+
+        <div class="indexcontent" id="skills">
+            <h1>
+                Skills
+            </h1>
+        </div>
+
+        <div class="indexcontent" id="portfolio">
+            <h1>
+                Portfolio
+            </h1>
+        </div>
+
+        <div class="indexcontent" id="posts">
+            <h1>
+                Posts
+            </h1>
+        </div>
+    </section>
 {% include 'main/footer.html' %}
