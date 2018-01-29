@@ -1,9 +1,25 @@
 {% load staticfiles %}
 {% include 'main/header.html' %}
+
     <section id="indexsection">
+        <div id="topback">
+            <div id="topmenu">
+                <ul>
+                    <li class="top"><a href="/blog">Blog</a></li>
+                    <li class="top"><a href="#intro">About Me</a></li>
+                    <li class="top"><a href="#career">Career</a></li>
+                    <li class="top"><a href="#skills">Skills</a></li>
+                    <li class="top"><a href="#portfolio">Portfolio</a></li>
+
+                </ul>
+            </div>
+        </div>
+
+
+        <div id="content">
         <div class="indexcontent" id="intro">
             <h1>
-                Intro
+                About Me
             </h1>
             <!--<div style="background:black; height:60px; width:40px; margin: 0 auto;"></div>-->
             <ul>
@@ -34,10 +50,6 @@
             </h1>
         </div>
 
-        <div class="indexcontent" id="posts">
-            <h1>
-                Posts
-            </h1>
-        </div>
+    </div>
     </section>
 {% include 'main/footer.html' %}

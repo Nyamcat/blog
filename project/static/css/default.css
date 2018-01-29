@@ -1,8 +1,22 @@
-#head {background: black; width:100%; border-bottom: solid 3px red;}
-#head #logo {width: 1000px; height:150px; margin: 0 auto;}
+/* bg = f0e8c4 */
+/* pt = 3c3432*/
+
+#head {background: #fdf8e3; width:100%; }
+#head #logo {width: 1000px; height:200px; margin: 0 auto;}
+
+#topback {background: #fdf8e3;}
+#topmenu {width: 1000; margin: 0 auto;}
+#topmenu ul {list-style:none; height:50px;}
+#topmenu ul li {float:left; display: block; font-weight: bold; text-decoration: none;}
+#topmenu ul li a {color:#3c3432; text-decoration: none; padding: 0 60px; font-size:20px;}
+
+footer {background: #fdf8e3; width:100%; height:250px; font-size:50px; text-align:center;}
+footer p {font-size:14px;}
 
 #indexsection {width:100%;}
-#indexsection .indexcontent {width: 1000; margin: 0 auto; text-align:center; display:block; clear:both; margin-top:30px;}
+
+#indexsection #content {background:white; width: 1000; margin: 0 auto; display:block; clear:both; /*border: 1px solid #3c3432; border-style: dashed; border-radius: 10px;*/}
+#indexsection .indexcontent {width: 1000; text-align:center; display:block; clear:both;}
 #indexsection ul {list-style:none;}
 
 #indexsection #intro {height:400px;}
