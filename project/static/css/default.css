@@ -2,13 +2,13 @@
 
 #head {background: #1a222c; width:100%; }
 #head #logo {width: 1000px; height:300px; margin: 0 auto; text-align:center;}
-#head #logo h1,
-#head #logo h1:hover { line-height:300px; margin-top:0px; color:white; text-decoration:none; font-size:55px;}
+#head #logo a {text-decoration:none;}
+#head #logo h1 { line-height:300px; margin-top:0px; color:white; font-size:55px;}
 
 #topback {background: #1a222c;}
 #topmenu {width: 1000; margin: 0 auto 100px auto;}
 #topmenu ul {list-style:none; height:50px;}
-#topmenu ul li {float:left; display: block; font-weight: bold; text-decoration: none;}
+#topmenu ul li {float:left; display: block; font-weight: bold;}
 #topmenu ul li a {color:white; text-decoration: none; padding: 0 60px; font-size:20px;}
 
 footer {background: #1a222c; width:100%; height:250px; font-size:50px; text-align:center; color:white;}
@@ -17,7 +17,7 @@ footer p {font-size:14px;}
 #indexsection {width:100%;}
 
 #indexsection #content {background:white; width: 1000; margin: 0 auto; display:block; clear:both; /*border: 1px solid #3c3432; border-style: dashed; border-radius: 10px;*/}
-#indexsection .indexcontent {width: 1000; text-align:center; display:block; clear:both;}
+#indexsection .indexcontent {width: 1000; /*text-align:center;*/ display:block; clear:both;}
 #indexsection ul {list-style:none;}
 
 #indexsection #intro {height:400px;}
@@ -25,3 +25,12 @@ footer p {font-size:14px;}
 #indexsection #intro ul li {float:left; height:400px; width:400px;}
 
 #indexsection .indexcontent h1 {border-bottom: solid 2px #dadada; padding-bottom:10px; margin-bottom:30px;}
+
+.blog_main #write_button {float:right; margin:20px;}
+.blog_main #write_button button {  background:transparent; border:none; }
+
+
+.blog_post #post_box {margin: 30px; border: 1px solid black; border-radius:5px; padding: 15px; }
+.blog_post #post_box #title { text-align:left; padding:10px; font-size:24px; font-weight: 300; margin-bottom:0;}
+.blog_post #post_box #post_content {padding:10px;}
+.blog_post #post_box #post_content #post_head {margin-bottom:100px;}

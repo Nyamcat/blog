@@ -19,9 +19,10 @@ from django.conf.urls import url
 from django.conf.urls.static import static
 
 
-from .views import WriteView, BlogView
+from .views import *
 
 urlpatterns = [
     url(r'^blog/$', BlogView.as_view(), name='blog'),
+    url(r'^blog/post/(?P<post_id>\d+)/$', PostView.as_view(), name='post'),
     url(r'^blog/write/$', WriteView.as_view(), name='write'),
 ] + static(settings.MEDIA_URL, document_root=settings.MEDIA_ROOT)

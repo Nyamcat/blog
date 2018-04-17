@@ -1,6 +1,25 @@
 {% load staticfiles %}
 {% include 'main/header.html' %}
 
-글내용
+<section id="indexsection">
+    <div id="content" class="blog_post">
+        <!--<a id = "write_button" href="{% url 'write' %}"><button> <p><img src="{% static 'img/write.png' %}"></p> </button></a>-->
+
+        <div class="indexcontent" id="post_box">
+            <h1 id="title">{{ post.title }}</h1>
+            <div id="post_content">
+                <div id="post_head">
+                    <p><img src="{% static 'img/hits.png' %}"> 조회수 : {{ post.hits }} </p>
+                    <p><img src="{% static 'img/calendar.png' %}"> 작성일 : {{ post.published_date }} </p>
+                    {% if post.edited_date != null %}
+                        <p><img src="{% static 'img/calendar.png' %}"> 최종 수정일 : {{ post.edited_date }} </p>
+                    {% endif %}
+                </div>
+                {{ post.summer_field | safe }}
+            </div>
+        </div>
+
+    </div>
+</section>
 
 {% include 'main/footer.html' %}

@@ -2,19 +2,25 @@
 {% include 'main/header.html' %}
 
     <section id="indexsection">
-        <div id="content">
-        <div class="indexcontent" id="tags">
-            <h1>
-                Tags
-            </h1>
-        </div>
+        <div id="content" class="blog_main">
+            <a id = "write_button" href="{% url 'write' %}"><button> <p><img src="{% static 'img/write.png' %}"></p> </button></a>
+            <div class="indexcontent" id="posts">
+                <h1>
+                    Recent Posts
+                </h1>
 
-        <div class="indexcontent" id="posts">
-            <h1>
-                Recent Posts
-            </h1>
+                {% for post in recent_posts %}
+                    <a href="/blog/post/{{ post.id }}">{{ post.title }}</a>
+                {% endfor %}
+
+            </div>
+
+            <div class="indexcontent" id="tags">
+                <h1>
+                    Tags
+                </h1>
+            </div>
         </div>
-    </div>
     </section>
 
 {% include 'main/footer.html' %}

@@ -3,4 +3,10 @@
 
 글쓰기
 
+<form method="post" action="" >
+    {% csrf_token %}
+    {{ form|safe }}
+    <button type="submit">등록</button>
+</form>
+
 {% include 'main/footer.html' %}
