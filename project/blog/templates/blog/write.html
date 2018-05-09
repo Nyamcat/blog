@@ -3,10 +3,24 @@
 
 글쓰기
 
-<form method="post" action="" >
-    {% csrf_token %}
-    {{ form|safe }}
-    <button type="submit">등록</button>
-</form>
+<div class="sub-contents-box">
+    <div class="board-box">
+        <form method="POST" action="" class="post-form">
+            {% csrf_token %}
+            {{ form.media }}
+            <div class="input-box subject-box">
+                {{ form.title }}
+            </div>
+            <div class="input-box text-box">
+                {{ form.post|safe }}
+            </div>
+            <div class="input-box uploadfile-box">
+                {{ form.uploadfile }}
+            </div>
+            <button type="submit" class="btn btn-default">등록</button>
+        </form>
+    </div>
+</div>
+
 
 {% include 'main/footer.html' %}

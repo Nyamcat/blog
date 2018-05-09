@@ -1,0 +1,62 @@
+{% load staticfiles %}
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.2/css/bootstrap.min.css">
+    <link rel="stylesheet" href="https://cdn.rawgit.com/konpa/devicon/df6431e323547add1b4cf45992913f15286456d3/devicon.min.css">
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.1.1/jquery.min.js"></script>
+    <link rel="stylesheet" href="{% static 'css/default.css' %}">
+
+
+
+{% if user.is_active %}
+<script>history.back(-1);</script>
+{% else %}
+<div id="sub_contents">
+    <div class="login_box">
+        <div id="logo">
+            <a href="/"><span></span></a>
+        </div>
+        <div id="login_div">
+
+
+            {% if form.errors %}
+            <!-- 에러발생시 -->
+            <p>ID나 비밀번호가 일치하지 않습니다.</p>
+            {% else %}
+            <p style="color:white; -ms-user-select: none; -moz-user-select: -moz-none; -webkit-user-select: none; -khtml-user-select: none; user-select:none;">blank</p>
+            {% endif %}
+
+            <form method="post" action="">
+                    {% csrf_token %}
+                    <div>
+                        {{ form.username }}
+                    </div>
+                    <div>
+                        {{ form.password }}
+                    </div>
+                    <!--<input type="submit" value="로그인" />-->
+                    <button class="btn btn-default" type="submit" value="로그인"><span>로그인</span></button>
+
+            </form>
+        </div>
+
+
+        </div>
+    </div>
+
+<script>
+    $('body').addClass('login');
+
+    $('#id_username').addClass('form-control');
+    $('#id_username').attr("placeholder", "아이디");
+
+    $('#id_password').addClass('form-control');
+    $('#id_password').attr("placeholder", "비밀번호");
+
+    $('#signup').click(function(){
+        location.href = '/'
+    });
+
+</script>
+{% include 'main/footer.html' %}
+
+{% endif %}
+

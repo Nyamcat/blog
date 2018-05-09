@@ -26,6 +26,10 @@ footer p {font-size:14px;}
 
 #indexsection .indexcontent h1 {border-bottom: solid 2px #dadada; padding-bottom:10px; margin-bottom:30px;}
 
+
+
+
+/* 게시글 */
 .blog_main #write_button {float:right; margin:20px;}
 .blog_main #write_button button {  background:transparent; border:none; }
 
@@ -34,3 +38,40 @@ footer p {font-size:14px;}
 .blog_post #post_box #title { text-align:left; padding:10px; font-size:24px; font-weight: 300; margin-bottom:0;}
 .blog_post #post_box #post_content {padding:10px;}
 .blog_post #post_box #post_content #post_head {margin-bottom:100px;}
+
+
+/* 글쓰기 */
+
+.sub-contents-box .board-box { clear: both; max-width: 780px; margin: 50px auto; }
+.sub-contents-box .board-box form { clear: both; padding: 30px; border: 1px solid #e1e1e1; border-radius: 4px; overflow: hidden; }
+.sub-contents-box .board-box from .input-box { clear: both; width: 100%; margin-bottom: 10px; padding-bottom: 10px; border-bottom: 1px dotted #e1e1e1; }
+.sub-contents-box .board-box form .input-box input { width: 100%; outline: none; display: inline-block; height: 32px; line-height: 32px; padding: 0 1%; color: #777; background: #fbfbfb; border: 1px solid #cccdcf; box-shadow: inset 0 1px 2px rgba(0,0,0,.1); border-radius: 3px; }
+.sub-contents-box .board-box form .subject-box { position: relative; clear: both; width: 100%; margin-bottom: 10px; padding-bottom: 10px; border-bottom: 1px dotted #e1e1e1; }
+/*.sub-contents-box .board-box form .subject-box label { position: absolute; top: 0px; left: 0px; width: 100%; padding: 6px 10px 0 10px; }
+.sub-contents-box .board-box form .subject-box .edit-title { display: none; }
+.sub-contents-box .board-box form .subject-box label span { display: block; width: 100%; height: 19px; color: #777; cursor: text; }*/
+.sub-contents-box .board-box form .text-box { clear: both; width: 100%; margin-bottom: 10px; padding-bottom: 10px; border-bottom: 1px dotted #e1e1e1; }
+.sub-contents-box .board-box form .uploadfile-box { clear: both; width: 100%; margin-bottom: 10px; padding-bottom: 10px; border-bottom: 1px dotted #e1e1e1; }
+.sub-contents-box .board-box form .secret-box { width: 100%; height: 30px; clear: both; margin-bottom: 10px; padding-bottom: 10px; border-bottom: 1px dotted #e1e1e1; }
+.sub-contents-box .board-box form .secret-box label { float: left; display: block; width: 50px; height: 20px; margin: 0; padding: 0; }
+.sub-contents-box .board-box form .secret-box input { float: left; display: inline-block; width: 20px; height: 20px; margin: 0; padding: 0; }
+.sub-contents-box .board-box form button { display: inline-block; width: 100%; color: #fff; padding: 6px 12px; margin-bottom: 0; font-size: 14px; font-weight: 400; text-align: center; white-space: nowrap; vertical-align: middle; cursor: pointer; border: 1px solid transparent; border-radius: 4px; background: #1a222c; }
+.sub-contents-box .board-box form button:hover { background: #333; }
+
+
+/* 로그인 */
+body.login, body.signup {background: #f8f8f8;}
+.login_box p {text-align: center;}
+.login_box #logo {margin:200px auto 50px;}
+.login_box #logo img {margin:0px auto; text-align:center; width:50px;}
+.login_box #logo a {text-decoration:none; line-height:32px;}
+.login_box #logo span {font-size:24px; font-weight: 300; text-decoration:none; color:black;}
+.login_box #login_div {padding: 50px; margin: 50px auto 350px; height:300px; width:400px; text-align:center; border: 1px solid #b1b1b1; border-radius:5px; background:white;}
+.login_box #login_div p {font-style:bold; color:red;}
+.login_box #login_div label {display:none;}
+.login_box #login_div #logo {margin-bottom:100px;}
+.login_box #login_div #id_username {width:250px; height:35px; font-size:15px; margin: 15px auto;}
+.login_box #login_div #id_password {width:250px; height:35px; font-size:15px; margin: 15px auto;}
+.login_box #login_div input {width:120px; height:35px; margin-bottom:15px;}
+.login_box #login_div button {width:120px; height:35px; text-decoration: none; margin-left:5px;}
+.login_box #login_div button a {color:black;}
