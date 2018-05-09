@@ -17,10 +17,52 @@
             <div class="input-box uploadfile-box">
                 {{ form.uploadfile }}
             </div>
+            <div class="input-box subject-box">
+                <input id="hashtag_input" name="hashtag">
+            </div>
             <button type="submit" class="btn btn-default">등록</button>
         </form>
     </div>
 </div>
+<script>
 
+    var blank_pattern = /[\s]/g;
+    tags = []
+
+    $('input[name=hashtag]').on('input',function(e){
+        if( blank_pattern.test( $(this).val() ) == true){
+            tag = $(this).val().split(' ')[0];
+            $(this).val( $(this).val().replace($(this).val().split(' ')[0] + ' ', '' ));
+
+            if (tag == ''){
+                return;
+            }
+
+            for(var x in tags){
+                if (tags[x] == tag){
+                    return;
+                }
+            }
+
+            tags.push(tag);
+            $(this).parent().append($("<span class='hashtag'>" + tag + "<a id='delete_tag'>x</a></span>"));
+        }
+        else{
+        }
+    });
+</script>
+<script>
+    $('#delete_tag').click(function() {
+        console.log('z');
+        tag = $(this).parent().text().substr(0, $(this).parent().text().length -1);
+
+        for(var x in tags){
+            if (tags[x] == tag){
+                tags.splice(x, 1);
+                $(this).parent().remove();
+            }
+        }
+    });
+</script>
 
 {% include 'main/footer.html' %}

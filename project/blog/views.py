@@ -26,6 +26,7 @@ class WriteView(View):
 
             print(post.published_date)
 
+
             post.save()
         print(form)
         return redirect('blog')
