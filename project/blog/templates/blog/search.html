@@ -1,0 +1,53 @@
+{% load staticfiles %}
+{% include 'main/header.html' %}
+
+    <section id="indexsection">
+        <div id="content" class="blog_main">
+            <div class="indexcontent" id="search">
+                <div class="indexcontent" id="posts" style="margin: 100px auto;">
+                {% if post %}
+                <h3 style="color: #1a222c; margin-bottom:50px;">Post with <strong>{{keyword}}</strong></h3>
+                <table class="table">
+                    <colgroup>
+                        <col style="width: 15%; text-align: center;">
+                        <col style="">
+                        <col style="width: 15%;">
+                        <col style="width: 10%;">
+                    </colgroup>
+                    <thead>
+                        <tr>
+                            <th style="text-align: center;">번호</th>
+                            <th style="text-align: center;">글 제목</th>
+                            <th style="text-align: center;">작성일</th>
+                            <th style="text-align: center;">조회수</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        {% for p in post %}
+                        <tr id="{{ p.id }}" class="post_index">
+                            <td style="text-align: center;">{{ p.id }}</td>
+                            <td>{{ p.title }}</td>
+                            <td style="text-align: center;">{{ p.published_date }}</td>
+                            <td style="text-align: center;">{{ p.hits }}</td>
+                        </tr>
+                        {% endfor %}
+                    </tbody>
+                </table>
+                {% else %}
+                    <div style="height:600px; margin-top:100px;">
+                    <h2 style="color: #1a222c;">Come out, come out, wherever you are!</h2>
+                    <h4 style="color: #545658;">There isn't any post with {{ keyword }} in my database.</h4>
+                    </div>
+                {% endif %}
+            </div>
+            </div>
+        </div>
+
+        <script>
+            $('.post_index').click(function() {
+                location.href = "/blog/post/" + $(this).attr('id');
+            });
+        </script>
+    </section>
+
+{% include 'main/footer.html' %}
