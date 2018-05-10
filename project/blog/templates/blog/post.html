@@ -14,6 +14,13 @@
                     {% if post.edited_date != null %}
                         <p><img src="{% static 'img/calendar.png' %}"> 최종 수정일 : {{ post.edited_date }} </p>
                     {% endif %}
+                    <div style="margin-top:30px;">
+                        {% if tags %}
+                            {% for x in tags %}
+                                <span class='hashtag'>{{ x }}</span>
+                            {% endfor %}
+                        {% endif %}
+                    </div>
                 </div>
                 {{ post.summer_field | safe }}
             </div>

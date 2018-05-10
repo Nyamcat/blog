@@ -11,6 +11,7 @@ class SummerNote(summer_model.Attachment):
     hits = models.IntegerField(blank=True, null=True, default=0)
     published_date = models.DateTimeField(blank=True, null=True)
     edited_date = models.DateTimeField(blank=True, null=True)
+    hashtag = models.CharField(blank=True, null=True, max_length=500)
     tag1 = models.CharField(blank=True, null=True, max_length=50)
     tag2 = models.CharField(blank=True, null=True, max_length=50)
     tag3 = models.CharField(blank=True, null=True, max_length=50)

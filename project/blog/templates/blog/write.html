@@ -20,11 +20,25 @@
             <div class="input-box subject-box">
                 <input id="hashtag_input" name="hashtag">
             </div>
-            <button type="submit" class="btn btn-default">등록</button>
+
+            <input class="tags" name="tag1" type="hidden">
+            <input class="tags" name="tag2" type="hidden">
+            <input class="tags" name="tag3" type="hidden">
+            <input class="tags" name="tag4" type="hidden">
+            <input class="tags" name="tag5" type="hidden">
+            <input class="tags" name="tag_length" type="hidden">
+
+            <button id="post_save_fk" class="btn btn-default">등록</button>
+            <button type="submit" id="post_save" class="btn btn-default" style="display:none;">등록</button>
         </form>
     </div>
 </div>
 <script>
+
+    $('#post_save_fk').click(function() {
+        $('input[name=hashtag]').val(tags);
+        $('#post_save').click();
+    });
 
     var blank_pattern = /[\s]/g;
     tags = []
@@ -34,7 +48,7 @@
             tag = $(this).val().split(' ')[0];
             $(this).val( $(this).val().replace($(this).val().split(' ')[0] + ' ', '' ));
 
-            if (tag == ''){
+            if (tag == '' || tags.length == 5){
                 return;
             }
 
@@ -50,10 +64,8 @@
         else{
         }
     });
-</script>
-<script>
-    $('#delete_tag').click(function() {
-        console.log('z');
+
+    $(document).on('click', '#delete_tag', function(){
         tag = $(this).parent().text().substr(0, $(this).parent().text().length -1);
 
         for(var x in tags){
@@ -63,6 +75,17 @@
             }
         }
     });
+
+    /*$('#delete_tag').click(function() {
+        tag = $(this).parent().text().substr(0, $(this).parent().text().length -1);
+
+        for(var x in tags){
+            if (tags[x] == tag){
+                tags.splice(x, 1);
+                $(this).parent().remove();
+            }
+        }
+    });*/
 </script>
 
 {% include 'main/footer.html' %}

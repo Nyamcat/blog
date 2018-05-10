@@ -4,6 +4,33 @@
     <section id="indexsection">
         <div id="content" class="blog_main">
             <a id = "write_button" href="{% url 'write' %}"><button> <p><img src="{% static 'img/write.png' %}"></p> </button></a>
+            <div class="indexcontent" id="search">
+                <h1>
+                    Search
+                </h1>
+                <div>
+                    <h3>For Titles</h3>
+                    <form>
+                        <input name="search_title">
+                        <button type="submit"> GO </button>
+                    </form>
+                </div>
+                <div id="search_for_tags">
+                    <h3>For Tags</h3>
+                        {% if tags %}
+                            <ul>
+                            {% for x in tags %}
+                                <li>
+                                    <span class='hashtag'>{{ x.title }}</span>
+                                    <span> : tagged for {{ x.nou }}times.</span>
+                                </li>
+                            {% endfor %}
+                            </ul>
+                        {% else %}
+                            <span>Oops! There is any tag.</span>
+                        {% endif %}
+                </div>
+            </div>
             <div class="indexcontent" id="posts">
                 <h1>
                     Recent Posts
@@ -35,12 +62,6 @@
                     </tbody>
                 </table>
 
-            </div>
-
-            <div class="indexcontent" id="tags">
-                <h1>
-                    Tags
-                </h1>
             </div>
         </div>
         <script>
