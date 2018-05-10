@@ -10,25 +10,34 @@
                 </h1>
                 <div>
                     <h3>For Titles</h3>
-                    <form>
-                        <input name="search_title">
-                        <button type="submit"> GO </button>
-                    </form>
+                    <div id="search_for_title">
+                        <form method="POST" action="{% url 'search' %}">
+                            {% csrf_token %}
+                            <input name="search_title" placeholder="What is Love?">
+                            <button type="submit"> GO </button>
+                        </form>
+                    </div>
                 </div>
-                <div id="search_for_tags">
+                <div>
                     <h3>For Tags</h3>
+                    <div id="search_for_tags">
+                        <input name="search_tag" placeholder="We Can Fly">
+                        <button type="button"> GO </button>
+
+                        <h4>Tag Ranking</h4>
                         {% if tags %}
                             <ul>
                             {% for x in tags %}
                                 <li>
                                     <span class='hashtag'>{{ x.title }}</span>
-                                    <span> : tagged for {{ x.nou }}times.</span>
+                                    <span> tagged for <strong>{{ x.nou }}</strong> times.</span>
                                 </li>
                             {% endfor %}
                             </ul>
                         {% else %}
                             <span>Oops! There is any tag.</span>
                         {% endif %}
+                    </div>
                 </div>
             </div>
             <div class="indexcontent" id="posts">
@@ -68,6 +77,11 @@
 
             $('.post_index').click(function() {
                 location.href = "/blog/post/" + $(this).attr('id');
+            });
+
+            $('.hashtag').click(function() {
+                url = '/blog/tags/' + $(this).text();
+                location.href = url;
             });
 
         </script>

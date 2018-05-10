@@ -7,7 +7,7 @@ from .views import IndexView
 
 urlpatterns = [
     url(r'^$', IndexView.as_view(), name='index'),
-    url(r'^login/$', login, name='login'),
+    url(r'^accounts/login/$', login, name='login'),
     url(r'^logout/$', logout, {'next_page' : '/'}, name='logout'),
 ] + static(settings.MEDIA_URL, document_root=settings.MEDIA_ROOT)
 

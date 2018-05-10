@@ -1,8 +1,6 @@
 {% load staticfiles %}
 {% include 'main/header.html' %}
 
-글쓰기
-
 <div class="sub-contents-box">
     <div class="board-box">
         <form method="POST" action="" class="post-form">
@@ -59,7 +57,7 @@
             }
 
             tags.push(tag);
-            $(this).parent().append($("<span class='hashtag'>" + tag + "<a id='delete_tag'>x</a></span>"));
+            $(this).parent().append($("<span class='post_hashtag'>" + tag + "<a id='delete_tag'>x</a></span>"));
         }
         else{
         }

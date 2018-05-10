@@ -26,6 +26,13 @@
             </div>
         </div>
 
+        <script>
+            $('.hashtag').click(function() {
+                url = '/blog/tags/' + $(this).text();
+                location.href = url;
+            });
+        </script>
+
     </div>
 </section>
 
