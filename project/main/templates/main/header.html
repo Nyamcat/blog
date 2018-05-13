@@ -1,43 +1,16 @@
 {% load staticfiles %}
 <head>
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.2/css/bootstrap.min.css">
     <link rel="stylesheet" href="https://cdn.rawgit.com/konpa/devicon/df6431e323547add1b4cf45992913f15286456d3/devicon.min.css">
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.1.1/jquery.min.js"></script>
-
-    <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.0.13/css/all.css" integrity="sha384-DNOHZ68U8hZfKXOrtjWvjxusGo9WQnrNx2sqG0tfsghAvtVlRW3tvkXWZh58N9jp" crossorigin="anonymous">
-
-    <link rel="stylesheet" type="text/css" href="{% static 'semantic/semantic.min.css' %}" >
-    <script src="{% static 'semantic/semantic.min.js' %}"></script>
-
     <script type="text/javascript" charset="utf-8" src="{% static 'js/default.js' %}"></script>
     <link rel="stylesheet" href="{% static 'css/default.css' %}">
 </head>
 <body>
-
-<div class="ui right sidebar inverted vertical menu">
-    <a class="item">
-        1
-    </a>
-    <a class="item">
-        2
-    </a>
-    <a class="item">
-        3
-    </a>
-</div>
-<div class="pusher">
-
     <section id="head">
-        <button id="menu"><i class="fas fa-bars fa-2x"></i></button>
         <div id="logo">
             <a href="/">
                 <h1>Peek-A-Boo</h1>
             </a>
         </div>
-
-        <script>
-            $('#menu').click(function() {
-            $('.sidebar').sidebar('setting', 'transition', 'overlay').sidebar('toggle');
-            });
-        </script>
-
     </section>
