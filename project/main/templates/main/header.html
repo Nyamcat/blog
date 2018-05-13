@@ -2,15 +2,51 @@
 <head>
     <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.2/css/bootstrap.min.css">
     <link rel="stylesheet" href="https://cdn.rawgit.com/konpa/devicon/df6431e323547add1b4cf45992913f15286456d3/devicon.min.css">
+
+    <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.0.13/css/all.css" integrity="sha384-DNOHZ68U8hZfKXOrtjWvjxusGo9WQnrNx2sqG0tfsghAvtVlRW3tvkXWZh58N9jp" crossorigin="anonymous">
+
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.1.1/jquery.min.js"></script>
     <script type="text/javascript" charset="utf-8" src="{% static 'js/default.js' %}"></script>
+    <script type="text/javascript" charset="utf-8" src="{% static 'semantic/semantic.min.js' %}"></script>
     <link rel="stylesheet" href="{% static 'css/default.css' %}">
+    <link rel="stylesheet" href="{% static 'semantic/semantic.min.css' %}">
 </head>
 <body>
-    <section id="head">
-        <div id="logo">
-            <a href="/">
-                <h1>Peek-A-Boo</h1>
-            </a>
-        </div>
-    </section>
+<div class="ui sidebar right inverted vertical menu" style="width:350px; background: #1a222c;">
+    <div id="personal_data" style="width:300px; margin: 25px; height:400px; text-align: center;">
+        <img src="{% static 'img/profile.png' %}" style="margin:20px 50px; width:200px; height:200px; border-radius:100px;">
+        <p style="color:white; font-size:20px;">Pengium the Emperor</p>
+        <ul style="list-style: none; text-align: left;">
+            <li style="color: white; margin-top:15px;">
+                <i class="fab fa-facebook-square fa-2x"></i>
+                <span style="margin-left: 10px; font-size:15px;">Facebook</span>
+            </li>
+            <li style="color: white; margin-top:15px;">
+                <i class="fab fa-github fa-2x"></i>
+                <span style="margin-left: 10px; font-size:15px;">Github</span>
+            </li>
+            <li style="color: white; margin-top:15px;">
+                <i class="fas fa-envelope-square fa-2x"></i>
+                <span style="margin-left: 10px; font-size:15px;">E-mail</span>
+            </li>
+        </ul>
+    </div>
+    <a class="item">
+        1
+    </a>
+    <a class="item">
+        2
+    </a>
+    <a class="item">
+        3
+    </a>
+</div>
+<div class="pusher">
+<section id="head">
+    <button id="menu_button"><i class="fas fa-bars fa-2x"></i></button>
+    <div id="logo">
+        <a href="/">
+            <h1>Peek-A-Boo</h1>
+        </a>
+    </div>
+</section>
