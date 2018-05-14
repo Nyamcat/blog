@@ -23,3 +23,8 @@ class SummerNote(summer_model.Attachment):
 class HashTag(models.Model):
     title = models.CharField(blank=True, null=True, max_length=50)
     nou = models.IntegerField(blank=True, null=True, default=1)
+
+
+class Category(models.Model):
+    title = models.CharField(blank=True, null=True, max_length=50)
+    label = models.CharField(blank=True, null=True, max_length=50)

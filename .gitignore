@@ -1,5 +1,9 @@
 sbenv/
+blogenv/
+migrations/
+semantic/
 sb/media/
+media/
 .idea/
 project/main/__pycache__
 prject/sb/__pycache__

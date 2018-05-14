@@ -112,7 +112,7 @@ class SearchView(View):
 
 class TagView(ListView):
     template_name = 'blog/tags.html'
-    paginate_by = 10
+    paginate_by = 2
 
     def get_queryset(self):
         self.keyword = self.kwargs['keyword']
