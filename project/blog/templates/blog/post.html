@@ -6,7 +6,9 @@
         <!--<a id = "write_button" href="{% url 'write' %}"><button> <p><img src="{% static 'img/write.png' %}"></p> </button></a>-->
 
         <div class="indexcontent" id="post_box">
-            <h1 id="title">{{ post.title }}</h1>
+                <div id="title_box">
+                    <span id="title">{{ post.title }}</span> <a href="/category/{{ category.title }}" id="category">{{ category.title }}</a>
+                </div>
             <div id="post_content">
                 <div id="post_head">
                     <p><img src="{% static 'img/hits.png' %}"> 조회수 : {{ post.hits }} </p>
@@ -22,13 +24,15 @@
                         {% endif %}
                     </div>
                 </div>
+                <div id="post_body">
                 {{ post.summer_field | safe }}
+                </div>
             </div>
         </div>
 
         <script>
             $('.hashtag').click(function() {
-                url = '/blog/tags/' + $(this).text();
+                url = '/tags/' + $(this).text();
                 location.href = url;
             });
         </script>

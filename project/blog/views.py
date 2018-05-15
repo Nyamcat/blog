@@ -26,29 +26,39 @@ class WriteView(View):
 
         if form.is_valid():
 
-            tags = request.POST.get('hashtag')
-            tag_list = []
-
             post = form.save()
             post.summer_field = request.POST['post']
             post.published_date = timezone.now()
-            post.hashtag = tags
 
-            for x in tags.split(','):
-                tag_list.append(x)
-                try:
-                    tag_object = HashTag.objects.get(title=x)
-                except:
-                    HashTag.objects.create(title=x, nou=1)
-                else:
-                    HashTag.objects.filter(title=x).update(nou=tag_object.nou + 1)
+            tags = request.POST.get('hashtag')
+            if tags != '':
+                tag_list = []
 
-            index = 1
+                post.hashtag = tags
 
-            for x in tag_list:
-                name = 'tag' + str(index)
-                setattr(post, name, x)
-                index += 1
+                for x in tags.split(','):
+                    tag_list.append(x)
+                    try:
+                        tag_object = HashTag.objects.get(title=x)
+                    except:
+                        HashTag.objects.create(title=x, nou=1)
+                    else:
+                        HashTag.objects.filter(title=x).update(nou=tag_object.nou + 1)
+
+                index = 1
+
+                for x in tag_list:
+                    name = 'tag' + str(index)
+                    setattr(post, name, x)
+                    index += 1
+
+            try:
+                category_object = Category.objects.get(id=request.POST.get('category_id'))
+            except:
+                raise Http404
+
+            post.category = category_object
+            Category.objects.filter(id=request.POST.get('category_id')).update(nou=category_object.nou + 1)
 
             post.save()
         return redirect('blog')
@@ -59,6 +69,7 @@ class PostView(View):
         try:
             post = SummerNote.objects.get(attachment_ptr_id=post_id)
             SummerNote.objects.filter(attachment_ptr_id=post_id).update(hits=post.hits + 1)
+            category = Category.objects.get(id=post.category_id)
         except:
             raise Http404
 
@@ -72,10 +83,10 @@ class PostView(View):
                 tag_list.append(x)
 
         except AttributeError as e:
-            context = {'post': post}
+            context = {'post': post, 'category': category}
 
         else:
-            context = {'post': post, 'tags': tag_list}
+            context = {'post': post, 'tags': tag_list, 'category': category}
 
         return render(request, 'blog/post.html', context)
 
@@ -135,7 +146,33 @@ class TagView(ListView):
         context['keyword'] = self.keyword
         context['count'] = self.count
 
-        print(context)
+        return context
+
+
+class CategoryView(ListView):
+    template_name = 'blog/category.html'
+    paginate_by = 2
+
+    def get_queryset(self):
+        self.keyword = self.kwargs['keyword']
+        keyword = self.keyword
+
+        catgory = Category.objects.get(title=keyword)
+
+        post = SummerNote.objects.filter(category_id=catgory.id)
+        self.count = 0
+
+        if post:
+            self.count = len(post)
+            for x in post:
+                x.published_date = date_parse(x.published_date)
+
+        return post
+
+    def get_context_data(self, **kwargs):
+        context = super(CategoryView, self).get_context_data(**kwargs)
+        context['keyword'] = self.keyword
+        context['count'] = self.count
 
         return context
 

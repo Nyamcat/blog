@@ -23,11 +23,10 @@ from django.contrib.auth.decorators import login_required
 from .views import *
 
 urlpatterns = [
-    url(r'^blog/$', BlogView.as_view(), name='blog'),
-    # url(r'^accounts/login/$', login, name='login'),
-    # url(r'^logout/$', logout, {'next_page': '/'}, name='logout'),
-    url(r'^blog/post/(?P<post_id>\d+)/$', PostView.as_view(), name='post'),
-    url(r'^blog/write/$', login_required(WriteView.as_view()), name='write'),
-    url(r'^blog/search/$', SearchView.as_view(), name='search'),
-    url(r'^blog/tags/(?P<keyword>\w+)/$', TagView.as_view(), name='tag_search'),
+    url(r'^$', BlogView.as_view(), name='blog'),
+    url(r'^post/(?P<post_id>\d+)/$', PostView.as_view(), name='post'),
+    url(r'^write/$', login_required(WriteView.as_view()), name='write'),
+    url(r'^search/$', SearchView.as_view(), name='search'),
+    url(r'^tags/(?P<keyword>\w+)/$', TagView.as_view(), name='tag_search'),
+    url(r'^category/(?P<keyword>\w+)/$', CategoryView.as_view(), name='category_list'),
 ] + static(settings.MEDIA_URL, document_root=settings.MEDIA_ROOT)

@@ -5,8 +5,20 @@ from django_summernote import fields as summer_fields
 # Create your models here.
 
 
+class HashTag(models.Model):
+    title = models.CharField(blank=True, null=True, max_length=50)
+    nou = models.IntegerField(blank=True, null=True, default=1)
+
+
+class Category(models.Model):
+    title = models.CharField(blank=True, null=True, max_length=50)
+    label = models.CharField(blank=True, null=True, max_length=50)
+    nou = models.IntegerField(blank=True, null=True, default=1)
+
+
 class SummerNote(summer_model.Attachment):
     title = models.CharField(blank=True, null=True, max_length=50)
+    category = models.ForeignKey(Category, models.DO_NOTHING, blank=True, null=True)
     summer_field = summer_fields.SummernoteTextField(default='')
     hits = models.IntegerField(blank=True, null=True, default=0)
     published_date = models.DateTimeField(blank=True, null=True)
@@ -17,14 +29,3 @@ class SummerNote(summer_model.Attachment):
     tag3 = models.CharField(blank=True, null=True, max_length=50)
     tag4 = models.CharField(blank=True, null=True, max_length=50)
     tag5 = models.CharField(blank=True, null=True, max_length=50)
-
-
-
-class HashTag(models.Model):
-    title = models.CharField(blank=True, null=True, max_length=50)
-    nou = models.IntegerField(blank=True, null=True, default=1)
-
-
-class Category(models.Model):
-    title = models.CharField(blank=True, null=True, max_length=50)
-    label = models.CharField(blank=True, null=True, max_length=50)
