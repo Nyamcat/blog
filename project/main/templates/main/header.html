@@ -13,7 +13,7 @@
 </head>
 <body>
 <div class="ui sidebar right inverted vertical menu" style="width:350px; background: #1a222c;">
-    <div id="personal_data" style="width:300px; margin: 25px; height:400px; text-align: center;">
+    <div id="personal_data" style="width:300px; margin: 25px 25px 75px 25px; height:400px; text-align: center;">
         <img src="{% static 'img/profile.png' %}" style="margin:20px 50px; width:200px; height:200px; border-radius:100px;">
         <p style="color:white; font-size:20px;">Pengium the Emperor</p>
         <ul style="list-style: none; text-align: left;">
@@ -31,22 +31,36 @@
             </li>
         </ul>
     </div>
-    <a class="item">
-        1
-    </a>
-    <a class="item">
-        2
-    </a>
-    <a class="item">
-        3
-    </a>
+    <ul id="folder">
+        <li>
+            <span class="menutitle">-&nbsp&nbsp개발</span>
+            <ul class="submenutitle">
+                <li>
+                    <a href="/blog/write">
+                        <p>
+                            <span>
+                            python
+                            </span>
+                        </p>
+                    </a>
+                </li>
+                <li>
+                    <a href="/blog/write">
+                        <span>
+                            javascript
+                        </span>
+                    </a>
+                </li>
+            </ul>
+        </li>
+    </ul>
 </div>
 <div class="pusher">
-<section id="head">
-    <button id="menu_button"><i class="fas fa-bars fa-2x"></i></button>
-    <div id="logo">
-        <a href="/">
-            <h1>Peek-A-Boo</h1>
-        </a>
-    </div>
-</section>
+    <section id="head">
+        <button id="menu_button"><i class="fas fa-bars fa-2x"></i></button>
+        <div id="logo">
+            <a href="/">
+                <h1>Peek-A-Boo</h1>
+            </a>
+        </div>
+    </section>
