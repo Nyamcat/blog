@@ -5,7 +5,7 @@
         <div id="content" class="blog_main">
             <div class="indexcontent" id="search">
                 <div class="indexcontent" id="posts" style="margin: 100px auto;">
-                {% if post %}
+                {% if object_list %}
                 <h3 style="color: #1a222c; margin-bottom:50px;">Post with <strong>{{keyword}}</strong></h3>
                 <table class="table">
                     <colgroup>
@@ -23,7 +23,7 @@
                         </tr>
                     </thead>
                     <tbody>
-                        {% for p in post %}
+                        {% for p in object_list %}
                         <tr id="{{ p.id }}" class="post_index">
                             <td style="text-align: center;">{{ p.id }}</td>
                             <td>{{ p.title }}</td>

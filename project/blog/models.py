@@ -29,3 +29,12 @@ class SummerNote(summer_model.Attachment):
     tag3 = models.CharField(blank=True, null=True, max_length=50)
     tag4 = models.CharField(blank=True, null=True, max_length=50)
     tag5 = models.CharField(blank=True, null=True, max_length=50)
+
+
+class Comment(models.Model):
+    comment = models.CharField(max_length=300, null=False, default='')
+    author = models.CharField(max_length=300, null=False, default='')
+    password = models.CharField(max_length=300, null=False, default='')
+    parent = models.IntegerField(null=True)
+    published_date = models.DateTimeField(blank=True, null=True)
+    delete = models.BooleanField(default=0)

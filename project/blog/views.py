@@ -103,22 +103,33 @@ class BlogView(View):
         return render(request, 'blog/blog.html', context)
 
 
-class SearchView(View):
-    def get(self, request):
-        raise Http404
+class SearchView(ListView):
+    template_name = 'blog/search.html'
+    paginate_by = 10
 
-    def post(self, request):
-        keyword = request.POST.get('search_title')
+    def get_queryset(self):
+        self.keyword = self.kwargs['keyword']
+        keyword = self.keyword
+
+        print(keyword)
 
         result = SummerNote.objects.filter(title__contains=keyword)
+
+        print(result)
 
         if (result):
             for x in result:
                 x.published_date = date_parse(x.published_date)
 
-        context = {'keyword': keyword, 'post': result}
+        return result
 
-        return render(request, 'blog/search.html', context)
+    def get_context_data(self, **kwargs):
+        context = super(SearchView, self).get_context_data(**kwargs)
+        context['keyword'] = self.keyword
+
+        print(context)
+
+        return context
 
 
 class TagView(ListView):
@@ -151,7 +162,7 @@ class TagView(ListView):
 
 class CategoryView(ListView):
     template_name = 'blog/category.html'
-    paginate_by = 2
+    paginate_by = 10
 
     def get_queryset(self):
         self.keyword = self.kwargs['keyword']
