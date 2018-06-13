@@ -10,12 +10,13 @@
     <script type="text/javascript" charset="utf-8" src="{% static 'semantic/semantic.min.js' %}"></script>
     <link rel="stylesheet" href="{% static 'css/default.css' %}">
     <link rel="stylesheet" href="{% static 'semantic/semantic.min.css' %}">
+    <link rel="icon" href="{% static 'img/favicon.ico' %}">
 </head>
 <body>
 <div class="ui sidebar right inverted vertical menu" style="width:350px; background: #1a222c;">
     <div id="personal_data" style="width:300px; margin: 25px 25px 75px 25px; height:400px; text-align: center;">
         <img src="{% static 'img/profile.png' %}" style="margin:20px 50px; width:200px; height:200px; border-radius:100px;">
-        <p style="color:white; font-size:20px;">Pengium the Emperor</p>
+        <p style="color:white; font-size:20px;">Orca the Whale</p>
         <ul style="list-style: none; text-align: left;">
             <li style="color: white; margin-top:15px;">
                 <i class="fab fa-facebook-square fa-2x"></i>
@@ -33,10 +34,10 @@
     </div>
     <ul id="folder">
         <li>
-            <span class="menutitle">-&nbsp&nbsp개발</span>
+            <span class="menutitle">+&nbsp&nbsp개발</span>
             <ul class="submenutitle">
                 <li>
-                    <a href="/blog/write">
+                    <a href="/category/python">
                         <p>
                             <span>
                             python
@@ -45,9 +46,30 @@
                     </a>
                 </li>
                 <li>
-                    <a href="/blog/write">
+                    <a href="/category/javascript">
                         <span>
                             javascript
+                        </span>
+                    </a>
+                </li>
+            </ul>
+        </li>
+        <li>
+            <span class="menutitle">+&nbsp&nbsp일상</span>
+            <ul class="submenutitle">
+                <li>
+                    <a href="/category/python">
+                        <p>
+                            <span>
+                            감상
+                            </span>
+                        </p>
+                    </a>
+                </li>
+                <li>
+                    <a href="/category/javascript">
+                        <span>
+                            취미
                         </span>
                     </a>
                 </li>
@@ -60,7 +82,8 @@
         <button id="menu_button"><i class="fas fa-bars fa-2x"></i></button>
         <div id="logo">
             <a href="/">
-                <h1>Peek-A-Boo</h1>
+                <!--<h1>Peek-A-Boo</h1>-->
+                <img style="width:300px;" src="{% static 'img/Full-Logo.png' %}">
             </a>
         </div>
     </section>

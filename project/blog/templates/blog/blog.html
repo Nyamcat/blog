@@ -1,79 +1,76 @@
 {% load staticfiles %}
 {% include 'main/header.html' %}
 
-    <section id="indexsection">
-        <div id="content" class="blog_main">
-            <a id = "write_button" href="{% url 'write' %}"><button> <p><img src="{% static 'img/write.png' %}"></p> </button></a>
-            <div class="indexcontent" id="search">
-                <h1>
-                    Search
-                </h1>
-                <div>
-                    <h3>For Titles</h3>
-                    <div id="search_for_title">
-                        <form method="POST" action="{% url 'search' %}">
-                            {% csrf_token %}
-                            <input name="search_title" placeholder="What is Love?">
-                            <button type="submit"> GO </button>
-                        </form>
-                    </div>
-                </div>
-                <div>
-                    <h3>For Tags</h3>
-                    <div id="search_for_tags">
-                        <input name="search_tag" placeholder="We Can Fly">
-                        <button type="button"> GO </button>
-
-                        <h4>Tag Ranking</h4>
-                        {% if tags %}
-                            <ul>
-                            {% for x in tags %}
-                                <li>
-                                    <span class='hashtag'>{{ x.title }}</span>
-                                    <span> tagged for <strong>{{ x.nou }}</strong> times.</span>
-                                </li>
-                            {% endfor %}
-                            </ul>
-                        {% else %}
-                            <span>Oops! There is any tag.</span>
-                        {% endif %}
-                    </div>
+<section id="indexsection">
+    <div id="content" class="blog_main">
+        <a id = "write_button" href="{% url 'write' %}"><button> <p><img src="{% static 'img/write.png' %}"></p> </button></a>
+        <div class="indexcontent" id="search">
+            <h1>
+                Search
+            </h1>
+            <div>
+                <h3>For Titles</h3>
+                <div id="search_for_title">
+                    <input name="search_title" placeholder="What is Love?">
+                    <button type="button" id="search_title"> GO </button>
                 </div>
             </div>
-            <div class="indexcontent" id="posts">
-                <h1>
-                    Recent Posts
-                </h1>
-                <table class="table">
-                    <colgroup>
-                        <col style="width: 15%; text-align: center;">
-                        <col style="">
-                        <col style="width: 15%;">
-                        <col style="width: 10%;">
-                    </colgroup>
-                    <thead>
-                        <tr>
-                            <th style="text-align: center;">번호</th>
-                            <th style="text-align: center;">글 제목</th>
-                            <th style="text-align: center;">작성일</th>
-                            <th style="text-align: center;">조회수</th>
-                        </tr>
-                    </thead>
-                    <tbody>
-                        {% for post in recent_posts %}
-                        <tr id="{{ post.id }}" class="post_index">
-                            <td style="text-align: center;">{{ post.id }}</td>
-                            <td>{{ post.title }}</td>
-                            <td style="text-align: center;">{{ post.published_date }}</td>
-                            <td style="text-align: center;">{{ post.hits }}</td>
-                        </tr>
-                        {% endfor %}
-                    </tbody>
-                </table>
+            <div>
+                <h3>For Tags</h3>
+                <div id="search_for_tags">
+                    <input name="search_tag" placeholder="We Can Fly">
+                    <button type="button" id="search_tag"> GO </button>
 
+                    <h4>Tag Ranking</h4>
+                    {% if tags %}
+                    <ul>
+                        {% for x in tags %}
+                        <li>
+                            <span class='hashtag'>{{ x.title }}</span>
+                            <span> tagged for <strong>{{ x.nou }}</strong> times.</span>
+                        </li>
+                        {% endfor %}
+                    </ul>
+                    {% else %}
+                    <span>Oops! There is any tag.</span>
+                    {% endif %}
+                </div>
             </div>
         </div>
-        <script>
+        <div class="indexcontent" id="posts">
+            <h1>
+                Recent Posts
+            </h1>
+            <table class="table">
+                <colgroup>
+                    <col style="width: 15%; text-align: center;">
+                    <col style="">
+                    <col style="width: 15%;">
+                    <col style="width: 10%;">
+                </colgroup>
+                <thead>
+                <tr>
+                    <th style="text-align: center;">번호</th>
+                    <th style="text-align: center;">글 제목</th>
+                    <th style="text-align: center;">작성일</th>
+                    <th style="text-align: center;">조회수</th>
+                </tr>
+                </thead>
+                <tbody>
+                {% for post in recent_posts %}
+                <tr id="{{ post.id }}" class="post_index">
+                    <td style="text-align: center;">{{ post.id }}</td>
+                    <td>{{ post.title }}</td>
+                    <td style="text-align: center;">{{ post.published_date }}</td>
+                    <td style="text-align: center;">{{ post.hits }}</td>
+                </tr>
+                {% endfor %}
+                </tbody>
+            </table>
+
+        </div>
+    </div>
+    <script>
 
             $('.post_index').click(function() {
                 location.href = "/post/" + $(this).attr('id');
@@ -84,7 +81,17 @@
                 location.href = url;
             });
 
+            $('#search_title').click(function() {
+                url = '/search/' + $('input[name=search_title]').val();
+                location.href = url;
+            });
+
+            $('#search_tag').click(function() {
+                url = '/tags/' + $('input[name=search_tag]').val();
+                location.href = url;
+            });
+
         </script>
-    </section>
+</section>
 
 {% include 'main/footer.html' %}

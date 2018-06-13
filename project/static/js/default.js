@@ -2,6 +2,10 @@ jQuery(function($)
 {
     $(document).ready(function () {
 
+        var submenu = $(".menutitle").next("ul");
+        submenu.slideUp();
+
+
         $(function(){
             $('#menu_button').click(function(){
                 $('.ui.sidebar').sidebar('setting', 'transition', 'overlay').sidebar('toggle');
@@ -10,7 +14,6 @@ jQuery(function($)
 
         $(".menutitle").click(function(){
             var submenu = $(this).next("ul");
-            console.log('zzz');
 
             if( submenu.is(":visible") ){
                 tmp = $(this).text().replace(/\-/g,'+');
