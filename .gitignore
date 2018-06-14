@@ -1,7 +1,6 @@
 sbenv/
 blogenv/
 migrations/
-semantic/
 sb/media/
 media/
 .idea/
