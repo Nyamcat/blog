@@ -34,10 +34,8 @@
     </table>
 
     <script>
-    $('.deletecomment').click(function (e) {
-        var prt = $(this).parent().parent();
-        var id = prt.attr('id');
 
+    function del(id){
         if(confirm('삭제하시겠습니까?')){
             $.ajax({
                 type: "POST",
@@ -53,6 +51,36 @@
                 },
             });
         }
+    };
+
+    $('.deletecomment').click(function (e) {
+        var prt = $(this).parent().parent();
+        var id = prt.attr('id');
+
+        prpt = prompt('비밀번호를 입력해주세요.', '')
+        $.ajax({
+            type: "POST",
+            url: '/comment/',
+            data: { 'id' : id , 'csrfmiddlewaretoken': '{{ csrf_token }}', 'type': 'check', 'password': prpt},
+            dataType: "json",
+
+            success: function(response){
+                console.log(response.message)
+                if(response.message == 'success'){
+                    del(id);
+                }
+                else{
+                    alert('비밀번호가 틀립니다');
+                }
+
+            },
+            error: function(request, status, error){
+                alert("실패했습니다.")
+            },
+        });
+    });
+
+    $('.reply').click(function (){
     });
 </script>
 </div>

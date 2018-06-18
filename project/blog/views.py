@@ -195,10 +195,7 @@ class CategoryView(ListView):
 class CommentView(View):
     def post(self, request):
         type = self.request.POST.get('type')
-
         ip = get_ip(self.request)
-
-        print(ip)
 
         if type == 'publish':
             cmt = Comment(author=self.request.POST['name'], published_date=timezone.now(),
@@ -218,6 +215,20 @@ class CommentView(View):
             target.save()
 
             context = {'message': '삭제에 성공했습니다.'}
+
+            return HttpResponse(json.dumps(context), content_type="application/json")
+
+        elif type == 'check':
+            id = self.request.POST.get('id', None)
+
+            target = get_object_or_404(Comment, id=id)
+
+            if self.request.POST.get('password') == target.password:
+                context = {'message': 'success'}
+            else:
+                context = {'message': 'fail'}
+
+            print('fuck')
 
             return HttpResponse(json.dumps(context), content_type="application/json")
 
