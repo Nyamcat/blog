@@ -1,5 +1,7 @@
-from django.http import Http404
-from django.shortcuts import render, redirect
+import json
+
+from django.http import Http404, HttpResponse
+from django.shortcuts import render, redirect, get_object_or_404
 from django.utils import timezone
 from django.views import View
 from django.views.generic import ListView
@@ -70,6 +72,7 @@ class PostView(View):
             post = SummerNote.objects.get(attachment_ptr_id=post_id)
             SummerNote.objects.filter(attachment_ptr_id=post_id).update(hits=post.hits + 1)
             category = Category.objects.get(id=post.category_id)
+            comment = Comment.objects.filter(post=post_id)
         except:
             raise Http404
 
@@ -83,10 +86,10 @@ class PostView(View):
                 tag_list.append(x)
 
         except AttributeError as e:
-            context = {'post': post, 'category': category}
+            context = {'post': post, 'category': category, 'comment': comment}
 
         else:
-            context = {'post': post, 'tags': tag_list, 'category': category}
+            context = {'post': post, 'tags': tag_list, 'category': category, 'comment': comment}
 
         return render(request, 'blog/post.html', context)
 
@@ -186,4 +189,32 @@ class CategoryView(ListView):
         context['count'] = self.count
 
         return context
+
+
+class CommentView(View):
+    def post(self, request):
+        type = self.request.POST.get('type')
+
+        print(type)
+
+        if type == 'publish':
+            cmt = Comment(author=self.request.POST['name'], published_date=timezone.now(),
+                          comment=self.request.POST['comment'],
+                          post=get_object_or_404(SummerNote, id=self.request.POST['post_id']), delete='N',
+                          password = self.request.POST['passwd'])
+            cmt.save()
+
+            context = {'writer': self.request.POST['name'], 'comment': self.request.POST['comment'], 'id': cmt.id}
+            return HttpResponse(json.dumps(context), content_type="application/json")
+
+        elif type == 'delete':
+            id = self.request.POST.get('id', None)
+
+            target = get_object_or_404(Comment, id=id)
+            target.delete = 'Y'
+            target.save()
+
+            context = {'message': '삭제에 성공했습니다.'}
+
+            return HttpResponse(json.dumps(context), content_type="application/json")
 

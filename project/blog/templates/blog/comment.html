@@ -1,0 +1,99 @@
+<div id="commentarea">
+    <table id="commenttable">
+        <colgroup>
+            <col style="width: 15%;"/>
+            <col style="width: 65%;"/>
+            <col style="width: 15%;"/>
+            <!--<col style="width: 10%;"/>-->
+        </colgroup>
+        <tbody>
+        {% if comment %}
+        {% for cmt in comment %}
+        <tr class="comment" id="{{ cmt.id }}">
+            {% if cmt.delete == 'Y' %}
+            <td class="comment-author"><span>{{ cmt.author }}</span></td>
+            <td><span>삭제된 댓글입니다.</span></td>
+            <td class="comment-date"><span>{{ cmt.published_date }}</span></td>
+            {% else %}
+            <td class="comment-author"><span>{{ cmt.author }}</span></td>
+            <td class="content"><span>{{ cmt.comment }}</span></td>
+            <td class="comment-date">
+                <span>{{ cmt.published_date }}</span>
+                <a class="reply">답글</a>
+                <a class="deletecomment">삭제</a>
+            </td>
+            {% endif %}
+        </tr>
+        {% endfor %}
+        {% else %}
+        <span id="nocomment">1등으로 댓글 입력하기</span>
+        {% endif %}
+        </tbody>
+    </table>
+
+    <script>
+    $('.deletecomment').click(function (e) {
+        var $this = $(this);
+        var prt = $this.parent().parent();
+        var id = $this.attr('id');
+
+        if(confirm('삭제하시겠습니까?')){
+            $.ajax({
+                type: "POST",
+                url: '/comment/',
+                data: { 'id' : id , 'csrfmiddlewaretoken': '{{ csrf_token }}', 'type': 'delete'},
+                dataType: "json",
+
+                success: function(response){
+                    alert(response.message);
+                },
+                error: function(request, status, error){
+                    alert("실패했습니다.")
+                },
+            });
+        }
+    });
+</script>
+</div>
+
+<div id="writecommentarea">
+    <ul style="padding:0;">
+        <li style="float:left; margin-right:20px;">
+            <div class="w120">
+                <input type="text" class="cusput w120 md10" name="name" placeholder="이름">
+                <input type="password" class="cusput w120" name="passwd" placeholder="암호">
+            </div>
+        </li>
+        <li style="float:left; width:85%;">
+            <div>
+                <textarea class="form-control wp80" id = "commenttext" style="resize: none; float:left; margin-right:20px; height:120px;" cols="40" rows="5" placeholder="댓글 남기기"></textarea>
+                <input type="submit" class="save btn btn-default form-control" style="float:left; width:15%;  height:120px;" id="submit" value="댓글등록">
+            </div>
+        </li>
+    </ul>
+    <script>
+        $('#submit').click(function (e) {
+
+            if ($('#commenttext').val() == ''){
+                alert('내용을 입력해주세요');
+                return;
+            }
+
+            $.ajax({
+                type: "POST",
+                url: '/comment/',
+                data: { 'post_id': {{ post.id }}, 'name' : $('input[name=name]').val(),
+                        'passwd' : $('input[name=passwd]').val(), 'csrfmiddlewaretoken': '{{ csrf_token }}',
+                        'comment' : $('#commenttext').val(), 'type': 'publish'},
+                dataType: "json",
+
+                success: function(response){
+                        location.reload();
+                    },
+                    error: function(request, status, error){
+                        alert('실패했습니다.');
+                },
+            });
+        })
+    </script>
+</div>

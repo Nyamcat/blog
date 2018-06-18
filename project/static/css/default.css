@@ -57,11 +57,30 @@ footer p {font-size:14px;}
 #indexsection .indexcontent #search_for_tags h4 {margin-top: 25px;}
 
 
+/* custom set */
+.w80 {width:80px;}
+.w100 {width:100px;}
+.w120 {width:120px;}
+.md10 {margin-bottom: 10px;}
+.md20 {margin-bottom: 20px;}
+.md50 {margin-bottom: 50px;}
+.wp80 {width:80%;}
+.wp100 {width:100%;}
 
+/* input */
+.cusput { width: 100%; outline: none; display: inline-block; height: 32px; line-height: 32px; padding: 0 1%; color: #777; background: #fbfbfb; border: 1px solid #cccdcf; box-shadow: inset 0 1px 2px rgba(0,0,0,.1); border-radius: 3px; }
 
 /* 게시글 */
 .blog_main #write_button {float:right; margin:20px;}
 .blog_main #write_button button {  background:transparent; border:none; }
+#commenttable { width:100%;}
+.comment-author {text-align:center; font-weight:bold;}
+.comment-date {text-align:center;}
+.comment-date span {display:block;}
+.comment-date .deletecomment { color: red; }
+.comment-date .reply { color: blue;}
+.comment-date .deletecomment:hover,
+.comment-date .reply:hover { cursor: pointer;}
 
 /* .blog_post .post_box {margin: 30px; border: 1px solid black; border-radius:5px; padding: 15px; } */
 .blog_post .comment_box { border: 1px solid black; border-radius:5px; padding: 15px; }
