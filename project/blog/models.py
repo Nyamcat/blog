@@ -33,8 +33,8 @@ class SummerNote(summer_model.Attachment):
 
 class Comment(models.Model):
     post = models.ForeignKey(SummerNote, models.DO_NOTHING, blank=True, null=True)
-    comment = models.CharField(max_length=300, null=False, default='')
-    author = models.CharField(max_length=300, null=False, default='')
+    comment = models.CharField(max_length=150, null=False, default='')
+    author = models.CharField(max_length=9, null=False, default='')
     password = models.CharField(max_length=300, null=False, default='')
     parent = models.IntegerField(null=True)
     published_date = models.DateTimeField(blank=True, null=True)

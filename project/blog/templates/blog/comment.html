@@ -11,17 +11,19 @@
         {% for cmt in comment %}
         <tr class="comment" id="{{ cmt.id }}">
             {% if cmt.delete == 'Y' %}
-            <td class="comment-author"><span>{{ cmt.author }}</span></td>
-            <td><span>삭제된 댓글입니다.</span></td>
-            <td class="comment-date"><span>{{ cmt.published_date }}</span></td>
-            {% else %}
-            <td class="comment-author"><span>{{ cmt.author }}</span></td>
-            <td class="content"><span>{{ cmt.comment }}</span></td>
-            <td class="comment-date">
-                <span>{{ cmt.published_date }}</span>
-                <a class="reply">답글</a>
-                <a class="deletecomment">삭제</a>
-            </td>
+            <div>
+                <td class="comment-author"><span>{{ cmt.author }}</span></td>
+                <td><span>삭제된 댓글입니다.</span></td>
+                <td class="comment-date"><span>{{ cmt.published_date }}</span></td>
+                {% else %}
+                <td class="comment-author"><span>{{ cmt.author }}</span></td>
+                <td class="content"><span>{{ cmt.comment }}</span></td>
+                <td class="comment-date">
+                    <span>{{ cmt.published_date }}</span>
+                    <a class="reply">답글</a>
+                    <a class="deletecomment">삭제</a>
+                </td>
+            </div>
             {% endif %}
         </tr>
         {% endfor %}
@@ -33,9 +35,8 @@
 
     <script>
     $('.deletecomment').click(function (e) {
-        var $this = $(this);
-        var prt = $this.parent().parent();
-        var id = $this.attr('id');
+        var prt = $(this).parent().parent();
+        var id = prt.attr('id');
 
         if(confirm('삭제하시겠습니까?')){
             $.ajax({
@@ -45,7 +46,7 @@
                 dataType: "json",
 
                 success: function(response){
-                    alert(response.message);
+                    location.reload();
                 },
                 error: function(request, status, error){
                     alert("실패했습니다.")
@@ -57,21 +58,46 @@
 </div>
 
 <div id="writecommentarea">
-    <ul style="padding:0;">
-        <li style="float:left; margin-right:20px;">
-            <div class="w120">
+    <div class="w250">
+        <ul style="padding:0;">
+            <li class="w120" style="float:left; margin-right:10px;">
                 <input type="text" class="cusput w120 md10" name="name" placeholder="이름">
+            </li>
+            <li class="w120" style="float:left;">
                 <input type="password" class="cusput w120" name="passwd" placeholder="암호">
-            </div>
-        </li>
-        <li style="float:left; width:85%;">
-            <div>
-                <textarea class="form-control wp80" id = "commenttext" style="resize: none; float:left; margin-right:20px; height:120px;" cols="40" rows="5" placeholder="댓글 남기기"></textarea>
-                <input type="submit" class="save btn btn-default form-control" style="float:left; width:15%;  height:120px;" id="submit" value="댓글등록">
-            </div>
-        </li>
-    </ul>
+            </li>
+            <li>
+                <input type="text" class="cusput w250" name="email" placeholder="이메일">
+            </li>
+        </ul>
+    </div>
+    <div>
+        <textarea class="form-control wp80" name="comment" id = "commenttext" style="resize: none; float:left; margin-right:20px; height:100px;" cols="40" rows="5" placeholder="댓글 남기기"></textarea>
+        <input type="submit" class="save btn btn-default form-control" style="float:left; width:15%;  height:100px;" id="submit" value="댓글등록">
+    </div>
     <script>
+
+    $('#commenttable > tbody > tr:last').css('border-bottom', 'none');
+
+    $('input[name=name]').on('keyup', function() {
+        if($(this).val().length > 9) {
+            $(this).val($(this).val().substring(0, 9));
+        }
+    });
+
+    $('input[name=email]').on('keyup', function() {
+        if($(this).val().length > 100) {
+            $(this).val($(this).val().substring(0, 100));
+        }
+    });
+
+    $('#commenttext').on('keyup', function() {
+        if($(this).val().length > 150) {
+            $(this).val($(this).val().substring(0, 150));
+        }
+    });
+
+
         $('#submit').click(function (e) {
 
             if ($('#commenttext').val() == ''){
