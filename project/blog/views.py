@@ -6,6 +6,7 @@ from django.utils import timezone
 from django.views import View
 from django.views.generic import ListView
 from django.db.models import Q
+from ipware.ip import get_ip
 
 from .forms import PostForm
 from .models import *
@@ -195,7 +196,9 @@ class CommentView(View):
     def post(self, request):
         type = self.request.POST.get('type')
 
-        print(type)
+        ip = get_ip(self.request)
+
+        print(ip)
 
         if type == 'publish':
             cmt = Comment(author=self.request.POST['name'], published_date=timezone.now(),
