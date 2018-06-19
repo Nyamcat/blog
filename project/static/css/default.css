@@ -3,19 +3,28 @@
 #head {background: #1a222c; width:100%; }
 #head #logo {width: 1000px; height:300px; margin: 0 auto; text-align:center;}
 #head #logo a {text-decoration:none;}
+#head #logo #full-logo {width:300px;}
 #head #logo h1 { line-height:300px; margin-top:0px; color:white; font-size:55px;}
 
 #head #menu_button {float:right; margin:20px 20px; border:none; background: #1a222c;}
 #head #menu_button i { color: white;}
 
-.sidebar { background: #1a222c; width: 400px; }
+.sidebar { width:400px; background: #1a222c; }
+.sidebar #personal_data { width:300px; margin: 25px 25px 75px 25px; height:400px; text-align: center; }
+.sidebar #personal_data #profile_img { margin:20px 50px; width:200px; height:200px; border-radius:100px; }
+.sidebar #personal_data #profile_title { color:white; font-size:20px; }
+.sidebar #personal_data #sns_list { list-style: none; text-align: left; }
+.sidebar #personal_data #sns_list li{ color: white; margin-top:15px; }
+.sidebar #personal_data #sns_list li span { margin-left: 10px; font-size:15px; }
+
+
 #folder { color:white; list-style: none; padding:0;}
+#folder .submenutitle li a:hover { }
 .menutitle { display: block; width: 100%; height: 40px; line-height: 40px; padding: 0 0 0 35px; color: white; font-size: 15px; cursor: pointer;}
 .submenutitle { background:white; color: #1a222c; color:white; list-style: none; padding:0;}
 .submenutitle span { display: block; width: 100%; height: 40px; line-height: 40px; padding: 0 0 0 60px; color: white; font-size: 15px; cursor: pointer; color: #1a222c;}
 .submenutitle span:hover,
 .submenutitle p:hover { font-weight:bold; background:lightgray;}
-#folder .submenutitle li a:hover { }
 
 #topback {background: #1a222c;}
 #topmenu {width: 1000; margin: 0 auto 100px auto;}
@@ -25,6 +34,8 @@
 
 footer {background: #1a222c; width:100%; height:250px; font-size:50px; text-align:center; color:white; margin-top:200px;}
 footer p {font-size:14px;}
+footer #footer-top {padding-top:25px;}
+footer #footer-top img {width:100px;}
 
 #indexsection {width:100%;}
 
@@ -36,7 +47,9 @@ footer p {font-size:14px;}
 #indexsection #intro ul {text-align:center;}
 #indexsection #intro ul li {float:left; height:400px; width:400px;}
 
-#indexsection #posts {margin-top: 100px;}
+#indexsection #posts {margin-top: 100px auto;}
+#indexsection #posts h3 {color: #1a222c; margin:50px 0;}
+#indexsection #recent_posts {margin-top: 100px;}
 
 .hashtag { background: #1a222c; padding: 5px 10px 5px 10px; color:white; margin: 20px 10px 0 0;  border: solid 2px #1a222c; border-radius: 5px; transition: 0.2s; }
 .hashtag:hover { background: white; color:black; cursor: pointer}
@@ -68,6 +81,12 @@ footer p {font-size:14px;}
 .wp80 {width:80%;}
 .wp100 {width:100%;}
 
+/* ul no padding */
+ul {padding: 0;}
+
+/* text-align center */
+.text-center { text-align: center;}
+
 /* input */
 .cusput { width: 100%; outline: none; display: inline-block; height: 32px; line-height: 32px; padding: 0 10px; color: #777; background: #fbfbfb; border: 1px solid #cccdcf; box-shadow: inset 0 1px 2px rgba(0,0,0,.1); border-radius: 3px; }
 
@@ -84,6 +103,7 @@ footer p {font-size:14px;}
 .comment-date .reply { color: blue;}
 .comment-date .deletecomment:hover,
 .comment-date .reply:hover { cursor: pointer; }
+#tag-box {margin-top:30px;}
 
 /* .blog_post .post_box {margin: 30px; border: 1px solid black; border-radius:5px; padding: 15px; } */
 .blog_post .comment_box { border: 1px solid black; border-radius:5px; padding: 15px; }
@@ -101,9 +121,6 @@ footer p {font-size:14px;}
 .sub-contents-box .board-box from .input-box { clear: both; width: 100%; margin-bottom: 10px; padding-bottom: 10px; border-bottom: 1px dotted #e1e1e1; }
 .sub-contents-box .board-box form .input-box input { width: 100%; outline: none; display: inline-block; height: 32px; line-height: 32px; padding: 0 1%; color: #777; background: #fbfbfb; border: 1px solid #cccdcf; box-shadow: inset 0 1px 2px rgba(0,0,0,.1); border-radius: 3px; }
 .sub-contents-box .board-box form .subject-box { position: relative; clear: both; width: 100%; margin-bottom: 10px; padding-bottom: 10px; border-bottom: 1px dotted #e1e1e1; }
-/*.sub-contents-box .board-box form .subject-box label { position: absolute; top: 0px; left: 0px; width: 100%; padding: 6px 10px 0 10px; }
-.sub-contents-box .board-box form .subject-box .edit-title { display: none; }
-.sub-contents-box .board-box form .subject-box label span { display: block; width: 100%; height: 19px; color: #777; cursor: text; }*/
 .sub-contents-box .board-box form .text-box { clear: both; width: 100%; margin-bottom: 10px; padding-bottom: 10px; border-bottom: 1px dotted #e1e1e1; }
 .sub-contents-box .board-box form .uploadfile-box { clear: both; width: 100%; margin-bottom: 10px; padding-bottom: 10px; border-bottom: 1px dotted #e1e1e1; }
 .sub-contents-box .board-box form .secret-box { width: 100%; height: 30px; clear: both; margin-bottom: 10px; padding-bottom: 10px; border-bottom: 1px dotted #e1e1e1; }
@@ -143,3 +160,9 @@ body.login, body.signup {background: #f8f8f8;}
 .pagination>.active>span,
 .pagination>.active>span:focus,
 .pagination>.active>span:hover {background-color:#1a222c; border-color: #1a222c; !important}
+
+
+/* 검색결과 */
+.nothing {height:600px; margin-top:100px;}
+.nothing h2 {color: #1a222c;}
+.nothing h4 {color: #545658;}

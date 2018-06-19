@@ -14,21 +14,21 @@
 </head>
 <body>
 <div class="ui sidebar right inverted vertical menu" style="width:350px; background: #1a222c;">
-    <div id="personal_data" style="width:300px; margin: 25px 25px 75px 25px; height:400px; text-align: center;">
-        <img src="{% static 'img/profile.png' %}" style="margin:20px 50px; width:200px; height:200px; border-radius:100px;">
-        <p style="color:white; font-size:20px;">Orca the Whale</p>
-        <ul style="list-style: none; text-align: left;">
-            <li style="color: white; margin-top:15px;">
+    <div id="personal_data">
+        <img id="profile_img" src="{% static 'img/profile.png' %}">
+        <p id="profile_title">Orca the Whale</p>
+        <ul id="sns_list">
+            <li>
                 <i class="fab fa-facebook-square fa-2x"></i>
-                <span style="margin-left: 10px; font-size:15px;">Facebook</span>
+                <span>Facebook</span>
             </li>
-            <li style="color: white; margin-top:15px;">
+            <li>
                 <i class="fab fa-github fa-2x"></i>
-                <span style="margin-left: 10px; font-size:15px;">Github</span>
+                <span>Github</span>
             </li>
-            <li style="color: white; margin-top:15px;">
+            <li>
                 <i class="fas fa-envelope-square fa-2x"></i>
-                <span style="margin-left: 10px; font-size:15px;">E-mail</span>
+                <span>E-mail</span>
             </li>
         </ul>
     </div>
@@ -82,8 +82,7 @@
         <button id="menu_button"><i class="fas fa-bars fa-2x"></i></button>
         <div id="logo">
             <a href="/">
-                <!--<h1>Peek-A-Boo</h1>-->
-                <img style="width:300px;" src="{% static 'img/Full-Logo.png' %}">
+                <img id="full-logo" src="{% static 'img/Full-Logo.png' %}">
             </a>
         </div>
     </section>
