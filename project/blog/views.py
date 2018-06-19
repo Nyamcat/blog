@@ -228,7 +228,5 @@ class CommentView(View):
             else:
                 context = {'message': 'fail'}
 
-            print('fuck')
-
             return HttpResponse(json.dumps(context), content_type="application/json")
 
