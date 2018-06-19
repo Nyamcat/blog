@@ -12,11 +12,11 @@
             {% if cmt.delete == 'Y' %}
             <div>
                 <td class="comment-author"><span>{{ cmt.author }}</span></td>
-                <td><span>삭제된 댓글입니다.</span></td>
+                <td><span>삭제된 댓글입니다.</span>&nbsp;&nbsp;&nbsp;<span style="color:lightgray; font-size:11px;">127.0.0.1</span></td>
                 <td class="comment-date"><span>{{ cmt.published_date }}</span></td>
                 {% else %}
                 <td class="comment-author"><span>{{ cmt.author }}</span></td>
-                <td class="content"><span>{{ cmt.comment }}</span></td>
+                <td class="content"><span>{{ cmt.comment }}</span>&nbsp;&nbsp;&nbsp;<span style="color:lightgray; font-size:11px;">127.0.0.1</span></td>
                 <td class="comment-date">
                     <span>{{ cmt.published_date }}</span>
                     <a class="reply">답글</a>
@@ -80,6 +80,19 @@
     });
 
     $('.reply').click(function (){
+        $('#reply_tr').remove();
+
+        tr = $(this).parent().parent();
+
+        tr.after('<tr id="reply_tr" style="height:100px; background:#f1f1f1;"><form method="POST" action="/comment/">\
+        <td style="border-left:5px solid transparent; border-right:10px solid transparent;">\
+        <input type="hidden" name="parent" value="'+ tr.attr('id') +'">\
+        <input class="smallput wp50" type="text" name="reply_name" style="float:left;" placeholder="이름">\
+        <input class="smallput wp50" type="password" name="reply_passwd" placeholder="암호">\
+        <input class="smallput wp100" type="text" name="reply_email" style="margin-top:10px;" placeholder="이메일"></td>\
+        <td><textarea class="form-control wp100" name="reply_comment" id = "replytext" style="resize: none; float:left; margin-right:20px; " placeholder="댓글 남기기"></textarea></td>\
+        <td style="border-left:10px solid transparent;" ><input type="submit" class="save btn btn-default form-control" style="float:left; height:54px; width:95%;" id="reply_submit" value="댓글등록"></td></form>\
+        </tr>')
     });
 </script>
 </div>
@@ -125,28 +138,52 @@
     });
 
 
-        $('#submit').click(function (e) {
+    $('#submit').click(function (e) {
 
-            if ($('#commenttext').val() == ''){
-                alert('내용을 입력해주세요');
-                return;
-            }
+        if ($('#commenttext').val() == ''){
+            alert('내용을 입력해주세요');
+            return;
+        }
 
-            $.ajax({
-                type: "POST",
-                url: '/comment/',
-                data: { 'post_id': {{ post.id }}, 'name' : $('input[name=name]').val(),
-                        'passwd' : $('input[name=passwd]').val(), 'csrfmiddlewaretoken': '{{ csrf_token }}',
-                        'comment' : $('#commenttext').val(), 'type': 'publish'},
-                dataType: "json",
+        $.ajax({
+            type: "POST",
+            url: '/comment/',
+            data: { 'post_id': {{ post.id }}, 'name' : $('input[name=reply_name]').val(), 'parent' : $('input[name=parent]').val(),
+                    'passwd' : $('input[name=reply_passwd]').val(), 'csrfmiddlewaretoken': '{{ csrf_token }}',
+                    'comment' : $('#replytext').val(), 'type': 'publish'},
+            dataType: "json",
 
-                success: function(response){
-                        location.reload();
-                    },
-                    error: function(request, status, error){
-                        alert('실패했습니다.');
+            success: function(response){
+                    location.reload();
                 },
-            });
-        })
+                error: function(request, status, error){
+                    alert('실패했습니다.');
+            },
+        });
+    })
+
+    $('#reply_submit').click(function (e) {
+
+        if ($('#commenttext').val() == ''){
+            alert('내용을 입력해주세요');
+            return;
+        }
+
+        $.ajax({
+            type: "POST",
+            url: '/comment/',
+            data: { 'post_id': {{ post.id }}, 'name' : $('input[name=name]').val(),
+                    'passwd' : $('input[name=passwd]').val(), 'csrfmiddlewaretoken': '{{ csrf_token }}',
+                    'comment' : $('#commenttext').val(), 'type': 'publish'},
+            dataType: "json",
+
+            success: function(response){
+                    location.reload();
+                },
+                error: function(request, status, error){
+                    alert('실패했습니다.');
+            },
+        });
+    })
     </script>
 </div>
