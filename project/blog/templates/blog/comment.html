@@ -158,9 +158,9 @@
         $.ajax({
             type: "POST",
             url: '/comment/',
-            data: { 'post_id': {{ post.id }}, 'name' : $('input[name=reply_name]').val(), 'email' : $('input[name=email]').val(),
-                    'passwd' : $('input[name=reply_passwd]').val(), 'csrfmiddlewaretoken': '{{ csrf_token }}',
-                    'comment' : $('#replytext').val(), 'type': 'publish'},
+            data: { 'post_id': {{ post.id }}, 'name' : $('input[name=name]').val(), 'email' : $('input[name=email]').val(),
+                    'passwd' : $('input[name=passwd]').val(), 'csrfmiddlewaretoken': '{{ csrf_token }}',
+                    'comment' : $('#commenttext').val(), 'type': 'publish'},
             dataType: "json",
 
             success: function(response){
