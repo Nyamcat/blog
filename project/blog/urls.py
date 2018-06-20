@@ -24,8 +24,10 @@ from .views import *
 
 urlpatterns = [
     url(r'^$', BlogView.as_view(), name='blog'),
+    url(r'^all/$', AllView.as_view(), name='all_post'),
     url(r'^post/(?P<post_id>\d+)/$', PostView.as_view(), name='post'),
     url(r'^write/$', login_required(WriteView.as_view()), name='write'),
+    url(r'^guestbook/$', GuestBookView.as_view(), name='guestbook'),
     url(r'^comment/$', CommentView.as_view(), name='comment'),
     url(r'^search/(?P<keyword>\w+)/$', SearchView.as_view(), name='search'),
     url(r'^tags/(?P<keyword>\w+)/$', TagView.as_view(), name='tag_search'),

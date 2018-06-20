@@ -5,8 +5,8 @@
     <div id="content" class="blog_main">
         <div class="indexcontent" id="search">
             <div class="indexcontent" id="posts">
-                {% if summernote_list %}
-                <h3><strong>{{keyword}}</strong> Tagged Post </h3>
+                <h3>전체글보기</h3>
+                {% if object_list %}
                 <table class="table">
                     <colgroup>
                         <col style="width: 15%; text-align: center;">
@@ -23,7 +23,7 @@
                     </tr>
                     </thead>
                     <tbody>
-                    {% for p in summernote_list %}
+                    {% for p in object_list %}
                     <tr id="{{ p.id }}" class="post_index">
                         <td class="text-center">{{ p.index }}</td>
                         <td>{{ p.title }}&nbsp;&nbsp;<span class="noc">({{ p.noc}})</span></td>
@@ -41,29 +41,8 @@
                 {% endif %}
             </div>
         </div>
-        <div class="text-center">
-            <ul class="pagination">
-                {% if page_obj.has_previous %}
-                <li><a href="?page={{ page_obj.previous_page_number }}">&laquo;</a></li>
-                {% else %}
-                <li class="disabled"><span>&laquo;</span></li>
-                {% endif %}
-                {% for i in paginator.page_range %}
-                {% if page_obj.number == i %}
-                <li class="active"><span>{{ i }} <span class="sr-only">(current)</span></span></li>
-                {% else %}
-                <li><a href="?page={{ i }}">{{ i }}</a></li>
-                {% endif %}
-                {% endfor %}
-                {% if page_obj.has_next %}
-                <li><a href="?page={{ page_obj.next_page_number }}">&raquo;</a></li>
-                {% else %}
-                <li class="disabled"><span>&raquo;</span></li>
-                {% endif %}
-            </ul>
-        </div>
-
     </div>
+
     <script>
             $('.post_index').click(function() {
                 location.href = "/post/" + $(this).attr('id');

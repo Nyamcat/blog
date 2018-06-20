@@ -4,6 +4,41 @@
 <section id="indexsection">
     <div id="content" class="blog_main">
         <a id = "write_button" href="{% url 'write' %}"><button> <p><img src="{% static 'img/write.png' %}"></p> </button></a>
+        <div class="indexcontent" id="guestbook">
+            <h1>
+                Guest Book
+            </h1>
+            <div>
+                <div id="commentarea">
+                    <table id="commenttable">
+                        <colgroup>
+                            <col style="width: 15%;"/>
+                            <col style="width: 65%;"/>
+                            <col style="width: 15%;"/>
+                        </colgroup>
+                        <tbody>
+                        {% if comment %}
+                        {% for cmt in comment %}
+                        <tr class="comment {{cmt.parent}}" id="{{ cmt.id }}">
+                            <div>
+                                <td class="comment-author"><span style="float:left; margin-left:40px;">{{ cmt.author }}</span></td>
+
+                                <td class="content"><span>{{ cmt.comment }}</span>&nbsp;&nbsp;&nbsp;<span class="ipaddr">{{ cmt.ip_display }}</span></td>
+                                <td class="comment-date">
+                                    <span>{{ cmt.published_date }}</span>
+                                </td>
+                            </div>
+                        </tr>
+                        {% endfor %}
+                        <a href="{% url 'guestbook' %}"><p id="nocomment">&#62;&#62;&#62;&nbsp;Click here to leave your name&nbsp;&#60;&#60;&#60;</p></a>
+                        {% else %}
+                        <a href="{% url 'guestbook' %}"><p id="nocomment">&#62;&#62;&#62;&nbsp;Click here to leave your name for 1st&nbsp;&#60;&#60;&#60;</p></a>
+                        {% endif %}
+                        </tbody>
+                    </table>
+                </div>
+            </div>
+        </div>
         <div class="indexcontent" id="search">
             <h1>
                 Search
@@ -41,6 +76,7 @@
             <h1>
                 Recent Posts
             </h1>
+            <a id="showall" href="{% url 'all_post' %}"><span>All Posts &nbsp;&#62;</span></a>
             <table class="table">
                 <colgroup>
                     <col class="text-center" style="width: 15%;">
@@ -59,7 +95,7 @@
                 <tbody>
                 {% for post in recent_posts %}
                 <tr id="{{ post.id }}" class="post_index">
-                    <td class="text-center">{{ post.id }}</td>
+                    <td class="text-center">{{ post.index }}</td>
                     <td>{{ post.title }}&nbsp;&nbsp;<span class="noc">({{ post.noc}})</span></td>
                     <td class="text-center">{{ post.published_date }}</td>
                     <td class="text-center">{{ post.hits }}</td>

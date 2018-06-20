@@ -50,6 +50,7 @@ footer #footer-top img {width:100px;}
 #indexsection #posts {margin-top: 100px auto;}
 #indexsection #posts h3 {color: #1a222c; margin:50px 0;}
 #indexsection #recent_posts {margin-top: 100px;}
+#indexsection #recent_posts #showall {float:right; color:1a222c; margin-right:10px; margin-bottom:20px; font-size:16px;}
 
 .hashtag { background: #1a222c; padding: 5px 10px 5px 10px; color:white; margin: 20px 10px 0 0;  border: solid 2px #1a222c; border-radius: 5px; transition: 0.2s; }
 .hashtag:hover { background: white; color:black; cursor: pointer}

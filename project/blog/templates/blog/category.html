@@ -25,7 +25,7 @@
                     <tbody>
                     {% for p in summernote_list %}
                     <tr id="{{ p.id }}" class="post_index">
-                        <td class="text-center">{{ p.id }}</td>
+                        <td class="text-center">{{ p.index }}</td>
                         <td>{{ p.title }}&nbsp;&nbsp;<span class="noc">({{ p.noc}})</span></td>
                         <td class="text-center">{{ p.published_date }}</td>
                         <td class="text-center">{{ p.hits }}</td>

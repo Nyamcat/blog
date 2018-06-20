@@ -18,6 +18,38 @@ def date_parse(date):
     return date
 
 
+class AllView(ListView):
+    template_name = 'blog/all.html'
+    paginate_by = 10
+
+    def get_queryset(self):
+        result = SummerNote.objects.filter(index__gte=1).order_by('-published_date')
+
+        if (result):
+            for x in result:
+                x.published_date = date_parse(x.published_date)
+
+        return result
+
+    def get_context_data(self, **kwargs):
+        context = super(AllView, self).get_context_data(**kwargs)
+
+        return context
+
+
+class GuestBookView(View):
+    def get(self, request):
+        try:
+            post = SummerNote.objects.get(index=0)
+            comment = Comment.objects.filter(post=post.id, full_delete='N').order_by('parent', 'depth')
+        except:
+            raise Http404
+
+        context = {'post': post, 'comment': comment}
+
+        return render(request, 'blog/guestbook.html', context)
+
+
 class WriteView(View):
     def get(self, request):
         form = PostForm()
@@ -25,12 +57,14 @@ class WriteView(View):
 
     def post(self, request):
         form = PostForm(self.request.POST)
+        index = SummerNote.objects.all().aggregate(max=Max('index'))['max'] + 1
 
         if form.is_valid():
 
             post = form.save()
             post.summer_field = request.POST['post']
             post.published_date = timezone.now()
+            post.index = index
 
             tags = request.POST.get('hashtag')
             if tags != '':
@@ -96,13 +130,16 @@ class PostView(View):
 
 class BlogView(View):
     def get(self, request):
-        recent_posts = SummerNote.objects.order_by('-published_date')[:10]
+        recent_posts = SummerNote.objects.filter(index__gte=1).order_by('-published_date')[:5]
         tags = HashTag.objects.order_by('-nou')[:3]
+        categories = Category.objects.filter(use='Y')
+        comment = Comment.objects.filter(delete='N', full_delete='N', depth=1, post__index=0).order_by('-published_date')
+        classify = Classify.objects.all()
 
         for x in recent_posts:
             x.published_date = date_parse(x.published_date)
 
-        context = {'recent_posts': recent_posts, 'tags': tags}
+        context = {'recent_posts': recent_posts, 'tags': tags, 'categories': categories, 'classify': classify, 'comment': comment}
         return render(request, 'blog/blog.html', context)
 
 
@@ -114,11 +151,7 @@ class SearchView(ListView):
         self.keyword = self.kwargs['keyword']
         keyword = self.keyword
 
-        print(keyword)
-
-        result = SummerNote.objects.filter(title__contains=keyword).order_by('-published_date')
-
-        print(result)
+        result = SummerNote.objects.filter(title__contains=keyword, index__gte=1).order_by('-published_date')
 
         if (result):
             for x in result:
@@ -129,8 +162,6 @@ class SearchView(ListView):
     def get_context_data(self, **kwargs):
         context = super(SearchView, self).get_context_data(**kwargs)
         context['keyword'] = self.keyword
-
-        print(context)
 
         return context
 
@@ -145,7 +176,7 @@ class TagView(ListView):
 
         post = SummerNote.objects.filter(Q(tag1__icontains=keyword) | Q(tag2__icontains=keyword) |
                                          Q(tag3__icontains=keyword)| Q(tag4__icontains=keyword) |
-                                         Q(tag5__icontains=keyword)).distinct().order_by('-published_date')
+                                         Q(tag5__icontains=keyword), index__gte=1).distinct().order_by('-published_date')
         self.count = 0
 
         if post:
@@ -173,7 +204,7 @@ class CategoryView(ListView):
 
         catgory = Category.objects.get(title=keyword)
 
-        post = SummerNote.objects.filter(category_id=catgory.id).order_by('-published_date')
+        post = SummerNote.objects.filter(category_id=catgory.id, index__gte=1).order_by('-published_date')
         self.count = 0
 
         if post:
@@ -241,9 +272,6 @@ class CommentView(View):
 
             target = get_object_or_404(Comment, id=id)
             btw = ((timezone.now() - target.published_date).seconds // 60 ) % 60
-
-            print(btw)
-            print(id)
 
             if btw <= 10:
                 target.full_delete = 'Y'

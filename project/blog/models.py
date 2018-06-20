@@ -10,13 +10,20 @@ class HashTag(models.Model):
     nou = models.IntegerField(blank=True, null=True, default=1)
 
 
+class Classify(models.Model):
+    title = models.CharField(blank=True, null=True, max_length=50)
+
+
 class Category(models.Model):
+    classify = models.ForeignKey(Classify, models.DO_NOTHING, blank=True, null=True)
     title = models.CharField(blank=True, null=True, max_length=50)
     label = models.CharField(blank=True, null=True, max_length=50)
     nou = models.IntegerField(blank=True, null=True, default=1)
+    use = models.CharField(blank=True, null=True, max_length=2, default='Y')
 
 
 class SummerNote(summer_model.Attachment):
+    index = models.IntegerField(blank=True, null=True)
     title = models.CharField(blank=True, null=True, max_length=50)
     category = models.ForeignKey(Category, models.DO_NOTHING, blank=True, null=True)
     summer_field = summer_fields.SummernoteTextField(default='')

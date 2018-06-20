@@ -1,5 +1,6 @@
 {% load staticfiles %}
 <head>
+    <title>코딩웨일</title>
     <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.2/css/bootstrap.min.css">
     <link rel="stylesheet" href="https://cdn.rawgit.com/konpa/devicon/df6431e323547add1b4cf45992913f15286456d3/devicon.min.css">
 
@@ -34,47 +35,24 @@
     </div>
     <ul id="folder">
         <li>
-            <span class="menutitle">+&nbsp&nbsp개발</span>
+            {% for class in classify %}
+            <span class="menutitle">+&nbsp&nbsp{{ class.title }}</span>
             <ul class="submenutitle">
+                {% for category in categories %}
+                {% if category.classify == class %}
                 <li>
-                    <a href="/category/python">
+                    <a href="/category/{{category.title}}">
                         <p>
                             <span>
-                            python
+                            {{category.label}}&nbsp;({{category.nou}})
                             </span>
                         </p>
                     </a>
                 </li>
-                <li>
-                    <a href="/category/javascript">
-                        <span>
-                            javascript
-                        </span>
-                    </a>
-                </li>
+                {% endif %}
+                {% endfor %}
             </ul>
-        </li>
-        <li>
-            <span class="menutitle">+&nbsp&nbsp일상</span>
-            <ul class="submenutitle">
-                <li>
-                    <a href="/category/python">
-                        <p>
-                            <span>
-                            감상
-                            </span>
-                        </p>
-                    </a>
-                </li>
-                <li>
-                    <a href="/category/javascript">
-                        <span>
-                            취미
-                        </span>
-                    </a>
-                </li>
-            </ul>
-        </li>
+            {% endfor %}
     </ul>
 </div>
 <div class="pusher">

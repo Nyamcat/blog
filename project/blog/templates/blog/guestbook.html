@@ -1,0 +1,32 @@
+{% load staticfiles %}
+{% include 'main/header.html' %}
+
+<section id="indexsection">
+    <div id="content" class="blog_post">
+        <!--<a id = "write_button" href="{% url 'write' %}"><button> <p><img src="{% static 'img/write.png' %}"></p> </button></a>-->
+
+        <div class="indexcontent post_box">
+                <div id="title_box">
+                    <span id="title">{{ post.title }}</span>
+                </div>
+            <div class="post_content">
+                <div id="post_body">
+                {{ post.summer_field | safe }}
+                </div>
+                <div class="post_foot">
+                    {% include 'blog/comment.html' %}
+                </div>
+            </div>
+        </div>
+
+        <script>
+            $('.hashtag').click(function() {
+                url = '/tags/' + $(this).text();
+                location.href = url;
+            });
+        </script>
+
+    </div>
+</section>
+
+{% include 'main/footer.html' %}
