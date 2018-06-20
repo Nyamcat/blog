@@ -196,6 +196,8 @@ class CommentView(View):
     def post(self, request):
         type = self.request.POST.get('type')
         ip = get_ip(self.request)
+        ip_display = ip.replace(ip.split('.')[2], ' * ')
+        ip_display = ip_display.replace(ip_display.split('.')[3], ' *')
 
         if type == 'publish':
             post = SummerNote.objects.get(id=request.POST.get('post_id'))
@@ -203,7 +205,7 @@ class CommentView(View):
             cmt = Comment(author=self.request.POST['name'], published_date=timezone.now(),
                           comment=self.request.POST['comment'],
                           post=post, delete='N',
-                          password=self.request.POST['passwd'], depth=1, ip=ip)
+                          password=self.request.POST['passwd'], depth=1, ip=ip, ip_display=ip_display)
 
             cmt.save()
 
@@ -223,7 +225,7 @@ class CommentView(View):
             cmt = Comment(author=self.request.POST['name'], published_date=timezone.now(),
                           comment=self.request.POST['comment'],
                           post=post, delete='N',
-                          password=self.request.POST['passwd'], depth=depth, ip=ip)
+                          password=self.request.POST['passwd'], depth=depth, ip=ip, ip_display=ip_display)
 
             cmt.save()
 

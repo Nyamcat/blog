@@ -34,6 +34,7 @@ class SummerNote(summer_model.Attachment):
 
 class Comment(models.Model):
     post = models.ForeignKey(SummerNote, models.DO_NOTHING, blank=True, null=True)
+    ip_display = models.CharField(max_length=16, null=False, default='')
     ip = models.CharField(max_length=16, null=False, default='')
     comment = models.CharField(max_length=150, null=False, default='')
     author = models.CharField(max_length=9, null=False, default='')

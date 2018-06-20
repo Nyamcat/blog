@@ -19,10 +19,10 @@
                 {% endif %}
 
                 {% if cmt.delete == 'Y' %}
-                <td><span>삭제된 댓글입니다.</span>&nbsp;&nbsp;&nbsp;<span class="ipaddr">127.0.0.1</span></td>
+                <td><span>삭제된 댓글입니다.</span>&nbsp;&nbsp;&nbsp;<span class="ipaddr">{{ cmt.ip_display }}</span></td>
                 <td class="comment-date"><span>{{ cmt.published_date }}</span></td>
                 {% else %}
-                <td class="content"><span>{{ cmt.comment }}</span>&nbsp;&nbsp;&nbsp;<span class="ipaddr">127.0.0.1</span></td>
+                <td class="content"><span>{{ cmt.comment }}</span>&nbsp;&nbsp;&nbsp;<span class="ipaddr">{{ cmt.ip_display }}</span></td>
                 <td class="comment-date">
                     <span>{{ cmt.published_date }}</span>
 
