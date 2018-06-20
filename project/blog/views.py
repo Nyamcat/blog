@@ -247,6 +247,9 @@ class CommentView(View):
 
             context = {'message': '삭제에 성공했습니다.'}
 
+            post = SummerNote.objects.get(id=request.POST.get('post_id'))
+            SummerNote.objects.filter(id=request.POST.get('post_id')).update(noc=post.noc - 1)
+
             return HttpResponse(json.dumps(context), content_type="application/json")
 
         elif type == 'check':
