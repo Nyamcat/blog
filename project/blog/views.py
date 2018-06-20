@@ -5,7 +5,7 @@ from django.shortcuts import render, redirect, get_object_or_404
 from django.utils import timezone
 from django.views import View
 from django.views.generic import ListView
-from django.db.models import Q
+from django.db.models import Q, Max
 from ipware.ip import get_ip
 
 from .forms import PostForm
@@ -73,7 +73,7 @@ class PostView(View):
             post = SummerNote.objects.get(attachment_ptr_id=post_id)
             SummerNote.objects.filter(attachment_ptr_id=post_id).update(hits=post.hits + 1)
             category = Category.objects.get(id=post.category_id)
-            comment = Comment.objects.filter(post=post_id)
+            comment = Comment.objects.filter(post=post_id).order_by('parent', 'depth')
         except:
             raise Http404
 
@@ -138,7 +138,7 @@ class SearchView(ListView):
 
 class TagView(ListView):
     template_name = 'blog/tags.html'
-    paginate_by = 2
+    paginate_by = 10
 
     def get_queryset(self):
         self.keyword = self.kwargs['keyword']
@@ -198,11 +198,40 @@ class CommentView(View):
         ip = get_ip(self.request)
 
         if type == 'publish':
+            post = SummerNote.objects.get(id=request.POST.get('post_id'))
+
             cmt = Comment(author=self.request.POST['name'], published_date=timezone.now(),
                           comment=self.request.POST['comment'],
-                          post=get_object_or_404(SummerNote, id=self.request.POST['post_id']), delete='N',
-                          password = self.request.POST['passwd'])
+                          post=post, delete='N',
+                          password=self.request.POST['passwd'], depth=1, ip=ip)
+
             cmt.save()
+
+            cmt.parent = cmt.id
+            cmt.save()
+
+            SummerNote.objects.filter(id=request.POST.get('post_id')).update(noc=post.noc + 1)
+
+            context = {'writer': self.request.POST['name'], 'comment': self.request.POST['comment'], 'id': cmt.id}
+            return HttpResponse(json.dumps(context), content_type="application/json")
+
+        elif type == 'reply':
+            post = SummerNote.objects.get(id=request.POST.get('post_id'))
+            depth = Comment.objects.filter(parent=self.request.POST.get('parent', 0)).aggregate(max=Max('depth'))['max'] + 1
+
+
+            cmt = Comment(author=self.request.POST['name'], published_date=timezone.now(),
+                          comment=self.request.POST['comment'],
+                          post=post, delete='N',
+                          password=self.request.POST['passwd'], depth=depth, ip=ip)
+
+            cmt.save()
+
+            cmt.parent = self.request.POST.get('parent', cmt.id)
+            cmt.save()
+
+            SummerNote.objects.filter(id=request.POST.get('post_id')).update(noc=post.noc + 1)
+
 
             context = {'writer': self.request.POST['name'], 'comment': self.request.POST['comment'], 'id': cmt.id}
             return HttpResponse(json.dumps(context), content_type="application/json")

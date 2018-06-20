@@ -8,22 +8,32 @@
         <tbody>
         {% if comment %}
         {% for cmt in comment %}
-        <tr class="comment" id="{{ cmt.id }}">
-            {% if cmt.delete == 'Y' %}
+        {% if cmt.depth > 1 %}
+        <tr class="comment {{cmt.parent}} reply" id="{{ cmt.id }}">
             <div>
-                <td class="comment-author"><span>{{ cmt.author }}</span></td>
-                <td><span>삭제된 댓글입니다.</span>&nbsp;&nbsp;&nbsp;<span style="color:lightgray; font-size:11px;">127.0.0.1</span></td>
+                <td class="comment-author"><span><img src="/static/img/reply.png" style="float:left; margin-left:40px; margin-right:5px"></span><span style="float:left;">{{ cmt.author }}</span></td>
+                {% else %}
+        <tr class="comment {{cmt.parent}}" id="{{ cmt.id }}">
+            <div>
+                <td class="comment-author"><span style="float:left; margin-left:40px;">{{ cmt.author }}</span></td>
+                {% endif %}
+
+                {% if cmt.delete == 'Y' %}
+                <td><span>삭제된 댓글입니다.</span>&nbsp;&nbsp;&nbsp;<span class="ipaddr">127.0.0.1</span></td>
                 <td class="comment-date"><span>{{ cmt.published_date }}</span></td>
                 {% else %}
-                <td class="comment-author"><span>{{ cmt.author }}</span></td>
-                <td class="content"><span>{{ cmt.comment }}</span>&nbsp;&nbsp;&nbsp;<span style="color:lightgray; font-size:11px;">127.0.0.1</span></td>
+                <td class="content"><span>{{ cmt.comment }}</span>&nbsp;&nbsp;&nbsp;<span class="ipaddr">127.0.0.1</span></td>
                 <td class="comment-date">
                     <span>{{ cmt.published_date }}</span>
+
+                    {% if cmt.depth == 1 %}
                     <a class="reply">답글</a>
+                    {% endif %}
+
                     <a class="deletecomment">삭제</a>
                 </td>
+                {% endif %}
             </div>
-            {% endif %}
         </tr>
         {% endfor %}
         {% else %}
@@ -148,7 +158,7 @@
         $.ajax({
             type: "POST",
             url: '/comment/',
-            data: { 'post_id': {{ post.id }}, 'name' : $('input[name=reply_name]').val(), 'parent' : $('input[name=parent]').val(),
+            data: { 'post_id': {{ post.id }}, 'name' : $('input[name=reply_name]').val(), 'email' : $('input[name=email]').val(),
                     'passwd' : $('input[name=reply_passwd]').val(), 'csrfmiddlewaretoken': '{{ csrf_token }}',
                     'comment' : $('#replytext').val(), 'type': 'publish'},
             dataType: "json",
@@ -162,9 +172,9 @@
         });
     })
 
-    $('#reply_submit').click(function (e) {
+    $(document).on('click', '#reply_submit', function(){
 
-        if ($('#commenttext').val() == ''){
+        if ($('#replytext').val() == ''){
             alert('내용을 입력해주세요');
             return;
         }
@@ -172,9 +182,9 @@
         $.ajax({
             type: "POST",
             url: '/comment/',
-            data: { 'post_id': {{ post.id }}, 'name' : $('input[name=name]').val(),
-                    'passwd' : $('input[name=passwd]').val(), 'csrfmiddlewaretoken': '{{ csrf_token }}',
-                    'comment' : $('#commenttext').val(), 'type': 'publish'},
+            data: { 'post_id': {{ post.id }}, 'name' : $('input[name=reply_name]').val(),
+                    'passwd' : $('input[name=reply_passwd]').val(), 'csrfmiddlewaretoken': '{{ csrf_token }}', 'email' : $('input[name=reply_email]').val(),
+                    'comment' : $('#replytext').val(), 'type': 'reply', 'parent': $('input[name=parent]').val()},
             dataType: "json",
 
             success: function(response){

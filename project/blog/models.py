@@ -21,6 +21,7 @@ class SummerNote(summer_model.Attachment):
     category = models.ForeignKey(Category, models.DO_NOTHING, blank=True, null=True)
     summer_field = summer_fields.SummernoteTextField(default='')
     hits = models.IntegerField(blank=True, null=True, default=0)
+    noc = models.IntegerField(blank=True, null=True, default=0)
     published_date = models.DateTimeField(blank=True, null=True)
     edited_date = models.DateTimeField(blank=True, null=True)
     hashtag = models.CharField(blank=True, null=True, max_length=500)
@@ -33,9 +34,11 @@ class SummerNote(summer_model.Attachment):
 
 class Comment(models.Model):
     post = models.ForeignKey(SummerNote, models.DO_NOTHING, blank=True, null=True)
+    ip = models.CharField(max_length=16, null=False, default='')
     comment = models.CharField(max_length=150, null=False, default='')
     author = models.CharField(max_length=9, null=False, default='')
     password = models.CharField(max_length=300, null=False, default='')
+    depth = models.IntegerField(null=True)
     parent = models.IntegerField(null=True)
     published_date = models.DateTimeField(blank=True, null=True)
     delete = models.CharField(max_length=2, default='N')

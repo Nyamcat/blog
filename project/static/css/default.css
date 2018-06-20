@@ -94,11 +94,13 @@ ul {padding: 0;}
 .smallput { font-size:12px; line-height: 20px; padding: 0 10px; border-radius: 3px; border: 1px solid #cccdcf; }
 
 /* 게시글 */
+.noc {color: gray; font-size:14px;}
 .blog_main #write_button {float:right; margin:20px;}
 .blog_main #write_button button {  background:transparent; border:none; }
-#commenttable { width:100%; margin:100px 0;}
+#commenttable { width:100%; margin:100px 0; font-size:13px;}
 #commenttable tr { height: 50px; border-bottom: 1px solid lightgray;}
 #commenttable:last-child { border-bottom:none;}
+.ipaddr {color:lightgray; font-size:11px;}
 .comment-author {text-align:center; font-weight:bold;}
 .comment-date {text-align:center;}
 .comment-date span {display:block;}
