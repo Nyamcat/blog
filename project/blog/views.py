@@ -7,7 +7,6 @@ from django.views import View
 from django.views.generic import ListView
 from django.db.models import Q, Max
 from ipware.ip import get_ip
-
 from .forms import PostForm
 from .models import *
 
@@ -73,7 +72,7 @@ class PostView(View):
             post = SummerNote.objects.get(attachment_ptr_id=post_id)
             SummerNote.objects.filter(attachment_ptr_id=post_id).update(hits=post.hits + 1)
             category = Category.objects.get(id=post.category_id)
-            comment = Comment.objects.filter(post=post_id).order_by('parent', 'depth')
+            comment = Comment.objects.filter(post=post_id, full_delete='N').order_by('parent', 'depth')
         except:
             raise Http404
 
@@ -117,7 +116,7 @@ class SearchView(ListView):
 
         print(keyword)
 
-        result = SummerNote.objects.filter(title__contains=keyword)
+        result = SummerNote.objects.filter(title__contains=keyword).order_by('-published_date')
 
         print(result)
 
@@ -146,7 +145,7 @@ class TagView(ListView):
 
         post = SummerNote.objects.filter(Q(tag1__icontains=keyword) | Q(tag2__icontains=keyword) |
                                          Q(tag3__icontains=keyword)| Q(tag4__icontains=keyword) |
-                                         Q(tag5__icontains=keyword)).distinct()
+                                         Q(tag5__icontains=keyword)).distinct().order_by('-published_date')
         self.count = 0
 
         if post:
@@ -174,7 +173,7 @@ class CategoryView(ListView):
 
         catgory = Category.objects.get(title=keyword)
 
-        post = SummerNote.objects.filter(category_id=catgory.id)
+        post = SummerNote.objects.filter(category_id=catgory.id).order_by('-published_date')
         self.count = 0
 
         if post:
@@ -196,15 +195,14 @@ class CommentView(View):
     def post(self, request):
         type = self.request.POST.get('type')
         ip = get_ip(self.request)
-        ip_display = ip.replace(ip.split('.')[2], ' * ')
-        ip_display = ip_display.replace(ip_display.split('.')[3], ' *')
+        ip_display = ip.split('.')[0]+ '.' + ip.split('.')[1] + '. * . *'
 
         if type == 'publish':
             post = SummerNote.objects.get(id=request.POST.get('post_id'))
 
             cmt = Comment(author=self.request.POST['name'], published_date=timezone.now(),
                           comment=self.request.POST['comment'],
-                          post=post, delete='N',
+                          post=post, delete='N', full_delete = 'N',
                           password=self.request.POST['passwd'], depth=1, ip=ip, ip_display=ip_display)
 
             cmt.save()
@@ -224,7 +222,7 @@ class CommentView(View):
 
             cmt = Comment(author=self.request.POST['name'], published_date=timezone.now(),
                           comment=self.request.POST['comment'],
-                          post=post, delete='N',
+                          post=post, delete='N', full_delete = 'N',
                           password=self.request.POST['passwd'], depth=depth, ip=ip, ip_display=ip_display)
 
             cmt.save()
@@ -242,7 +240,17 @@ class CommentView(View):
             id = self.request.POST.get('id', None)
 
             target = get_object_or_404(Comment, id=id)
-            target.delete = 'Y'
+            btw = ((timezone.now() - target.published_date).seconds // 60 ) % 60
+
+            print(btw)
+            print(id)
+
+            if btw <= 10:
+                target.full_delete = 'Y'
+                Comment.objects.filter(parent=id).update(full_delete='Y')
+            else:
+                target.delete = 'Y'
+
             target.save()
 
             context = {'message': '삭제에 성공했습니다.'}

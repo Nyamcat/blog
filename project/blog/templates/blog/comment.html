@@ -7,11 +7,12 @@
         </colgroup>
         <tbody>
         {% if comment %}
+        <p>There are <b>{{ post.noc }}</b> comments.</p>
         {% for cmt in comment %}
         {% if cmt.depth > 1 %}
-        <tr class="comment {{cmt.parent}} reply" id="{{ cmt.id }}">
+        <tr class="reply_comment {{cmt.parent}}" id="{{ cmt.id }}">
             <div>
-                <td class="comment-author"><span><img src="/static/img/reply.png" style="float:left; margin-left:40px; margin-right:5px"></span><span style="float:left;">{{ cmt.author }}</span></td>
+                <td class="comment-author"><span><img src="/static/img/reply.png"></span><span class="reply_author">{{ cmt.author }}</span></td>
                 {% else %}
         <tr class="comment {{cmt.parent}}" id="{{ cmt.id }}">
             <div>
@@ -37,7 +38,7 @@
         </tr>
         {% endfor %}
         {% else %}
-        <span id="nocomment">1등으로 댓글 입력하기</span>
+        <p id="nocomment">1등으로 댓글 입력하기</p>
         {% endif %}
         </tbody>
     </table>
@@ -49,7 +50,7 @@
             $.ajax({
                 type: "POST",
                 url: '/comment/',
-                data: { 'id' : id , 'csrfmiddlewaretoken': '{{ csrf_token }}', 'type': 'delete'},
+                data: { 'id' : id , 'csrfmiddlewaretoken': '{{ csrf_token }}', 'post_id': {{ post.id }}, 'type': 'delete'},
                 dataType: "json",
 
                 success: function(response){
