@@ -174,12 +174,21 @@ class TagView(ListView):
     paginate_by = 10
 
     def get_queryset(self):
-        self.keyword = self.kwargs['keyword']
-        keyword = self.keyword
 
-        post = SummerNote.objects.filter(Q(tag1__icontains=keyword) | Q(tag2__icontains=keyword) |
-                                         Q(tag3__icontains=keyword)| Q(tag4__icontains=keyword) |
-                                         Q(tag5__icontains=keyword), index__gte=1).distinct().order_by('-published_date')
+        self.tags = self.request.GET.get('taglist')
+
+        tag_list = []
+        for x in self.tags.split(','):
+            tag_list.append(x)
+
+        post = SummerNote.objects
+
+        for x in self.tags.split(','):
+            post = post.filter(Q(tag1__icontains=x) | Q(tag2__icontains=x) |
+                                             Q(tag3__icontains=x)| Q(tag4__icontains=x) |
+                                             Q(tag5__icontains=x), index__gte=1)
+
+        post = post.distinct().order_by('-published_date')
         self.count = 0
 
         if post:
@@ -191,7 +200,7 @@ class TagView(ListView):
 
     def get_context_data(self, **kwargs):
         context = super(TagView, self).get_context_data(**kwargs)
-        context['keyword'] = self.keyword
+        context['keyword'] = self.tags
         context['count'] = self.count
 
         return context

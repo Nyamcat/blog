@@ -53,7 +53,10 @@
             <div>
                 <h3>For Tags</h3>
                 <div id="search_for_tags">
-                    <input name="search_tag" placeholder="We Can Fly">
+
+                    <div id="search_tags"></div>
+
+                    <input name="search_tag" placeholder="Press Space bar to register tags">
                     <button type="button" id="search_tag"> GO </button>
 
                     <h4>Tag Ranking</h4>
@@ -113,7 +116,7 @@
             });
 
             $('.hashtag').click(function() {
-                url = '/tags/' + $(this).text();
+                url = '/tags/?taglist=' + $(this).text();
                 location.href = url;
             });
 
@@ -122,10 +125,54 @@
                 location.href = url;
             });
 
+
+            var blank_pattern = /[\s]/g;
+            tags = []
+
             $('#search_tag').click(function() {
-                url = '/tags/' + $('input[name=search_tag]').val();
+                query = '?taglist=' + tags
+
+                url = '/tags/' + query;
                 location.href = url;
             });
+
+
+            $('input[name=search_tag]').on('input',function(e){
+                if( blank_pattern.test( $(this).val() ) == true){
+                    tag = $(this).val().split(' ')[0];
+                    $(this).val( $(this).val().replace($(this).val().split(' ')[0] + ' ', '' ));
+
+                    if (tag == '' || tags.length == 5){
+                        return;
+                    }
+
+                    for(var x in tags){
+                        if (tags[x] == tag){
+                            return;
+                        }
+                    }
+
+                    tags.push(tag);
+                    //$(this).parent().append($("<span class='post_hashtag'>" + tag + "<a id='delete_tag'>x</a></span>"));
+                    $('#search_tags').append($("<span class='post_hashtag'>" + tag + "<a id='delete_tag'>x</a></span>"));
+                }
+                else{
+                }
+            });
+
+            $(document).on('click', '#delete_tag', function(){
+                tag = $(this).parent().text().substr(0, $(this).parent().text().length -1);
+
+                for(var x in tags){
+                    if (tags[x] == tag){
+                        tags.splice(x, 1);
+                        $(this).parent().remove();
+                    }
+                }
+            });
+
+
+
 
         </script>
 </section>

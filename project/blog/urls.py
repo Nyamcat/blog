@@ -30,6 +30,6 @@ urlpatterns = [
     url(r'^guestbook/$', GuestBookView.as_view(), name='guestbook'),
     url(r'^comment/$', CommentView.as_view(), name='comment'),
     url(r'^search/(?P<keyword>\w+)/$', SearchView.as_view(), name='search'),
-    url(r'^tags/(?P<keyword>\w+)/$', TagView.as_view(), name='tag_search'),
+    url(r'^tags/$', TagView.as_view(), name='tag_search'),
     url(r'^category/(?P<keyword>\w+)/$', CategoryView.as_view(), name='category_list'),
 ] + static(settings.MEDIA_URL, document_root=settings.MEDIA_ROOT)

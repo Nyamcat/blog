@@ -69,6 +69,9 @@ footer #footer-top img {width:100px;}
 #indexsection .indexcontent #search_for_title button:hover,
 #indexsection .indexcontent #search_for_tags button:hover { background: white; color: orange; }
 #indexsection .indexcontent #search_for_tags h4 {margin-top: 25px;}
+#indexsection .indexcontent #search_for_tags #search_tags {margin-bottom:15px;}
+#indexsection .indexcontent #search_for_tags .post_hashtag { background: #1a222c; padding: 5px 10px 5px 10px; color:white; margin: 20px 20px 0 0; border-radius: 5px; }
+#indexsection .indexcontent #search_for_tags .post_hashtag a {color:white; margin-left:10px; text-decoration: none; cursor:pointer;}
 
 
 /* custom set */
@@ -173,6 +176,6 @@ body.login, body.signup {background: #f8f8f8;}
 
 
 /* 검색결과 */
-.nothing {height:600px;}
+.nothing {height:400px; margin-top:100px;}
 .nothing h2 {color: #1a222c;}
 .nothing h4 {color: #545658;}

@@ -35,7 +35,7 @@
 
         <script>
             $('.hashtag').click(function() {
-                url = '/tags/' + $(this).text();
+                url = '/tags/?taglist=' + $(this).text();
                 location.href = url;
             });
         </script>
