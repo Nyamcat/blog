@@ -57,7 +57,10 @@ class WriteView(View):
 
     def post(self, request):
         form = PostForm(self.request.POST)
-        index = SummerNote.objects.all().aggregate(max=Max('index'))['max'] + 1
+        try:
+            index = SummerNote.objects.all().aggregate(max=Max('index'))['max'] + 1
+        except:
+            index = 1
 
         if form.is_valid():
 
