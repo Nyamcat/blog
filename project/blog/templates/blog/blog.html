@@ -3,7 +3,11 @@
 
 <section id="indexsection">
     <div id="content" class="blog_main">
-        <a id = "write_button" href="{% url 'write' %}"><button> <p><img src="{% static 'img/write.png' %}"></p> </button></a>
+        <div id="write_button">
+        {% if user.is_superuser == 1 %}
+        <a href="{% url 'write' %}"><button> <p><img src="{% static 'img/write.png' %}"></p> </button></a>
+        {% endif %}
+        </div>
         <div class="indexcontent" id="guestbook">
             <h1>
                 Guest Book
@@ -30,9 +34,9 @@
                             </div>
                         </tr>
                         {% endfor %}
-                        <a href="{% url 'guestbook' %}"><p id="nocomment">&#62;&#62;&#62;&nbsp;Click here to leave your name&nbsp;&#60;&#60;&#60;</p></a>
+                        <a href="{% url 'guestbook' %}"><p id="nocomment">&#62;&#62;&#62;&nbsp;방명록 남기기&nbsp;&#60;&#60;&#60;</p></a>
                         {% else %}
-                        <a href="{% url 'guestbook' %}"><p id="nocomment">&#62;&#62;&#62;&nbsp;Click here to leave your name for 1st&nbsp;&#60;&#60;&#60;</p></a>
+                        <a href="{% url 'guestbook' %}"><p id="nocomment">&#62;&#62;&#62;&nbsp;1등으로 방명록 남기기&nbsp;&#60;&#60;&#60;</p></a>
                         {% endif %}
                         </tbody>
                     </table>
