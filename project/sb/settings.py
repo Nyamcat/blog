@@ -23,7 +23,7 @@ BASE_DIR = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
 # See https://docs.djangoproject.com/en/1.11/howto/deployment/checklist/
 
 # SECURITY WARNING: keep the secret key used in production secret!
-SECRET_KEY = 'o$@kv#mn^-mc^x5+rcmo+21+-ap_dg)*d)b88z_xoervh^*%2a'
+
 
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = True
@@ -79,27 +79,7 @@ WSGI_APPLICATION = 'sb.wsgi.application'
 # Database
 # https://docs.djangoproject.com/en/1.11/ref/settings/#databases
 
-DATABASES = {
-    'default': {
-        'ENGINE': 'django.db.backends.mysql',
-        'NAME': 'sb',
-        'USER': 'common_dev_hngr',
-        'PASSWORD': 'abcd1234',
-        'HOST': '114.70.144.73',
-        'PORT': '8080',
-    }
-}
-# DATABASES = {
-#     'default': {
-#         'ENGINE': 'django.db.backends.mysql',
-#         'NAME': 'blog',
-#         'USER': 'root',
-#         'PASSWORD': 'nyamcat6974',
-#         'HOST': '52.78.165.57',
-#         'PORT': '3306',
-#     }
-# }
-DATABASE_OPTIONS = {'charset': 'utf8'}
+
 
 
 # Password validation
