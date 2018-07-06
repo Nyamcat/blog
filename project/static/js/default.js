@@ -1,3 +1,12 @@
+function copyToClipboard(val) {
+    var t = document.createElement("textarea");
+    document.body.appendChild(t);
+    t.value = val;
+    t.select();
+    document.execCommand('copy');
+    document.body.removeChild(t);
+}
+
 jQuery(function($)
 {
     $(document).ready(function () {
@@ -5,6 +14,16 @@ jQuery(function($)
         var submenu = $(".menutitle").next("ul");
         submenu.slideUp();
 
+        $('pre').before('<div class="copy"><button class="copy_button"><p>&nbsp;Copy&nbsp;</p><span class="tooltiptext">Click to Copy</span></button></div>')
+
+        $(document).on('click', '.copy_button', function(){
+            $(this).find('.tooltiptext').text('Copied!')
+            copyToClipboard($(this).parent().next().find('code').text())
+        });
+
+        $(document).on('mouseover', '.copy_button', function(){
+                $(this).find('.tooltiptext').text('Click to Copy')
+        });
 
         $(function(){
             $('#menu_button').click(function(){

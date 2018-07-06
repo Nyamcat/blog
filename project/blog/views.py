@@ -151,7 +151,7 @@ class SearchView(ListView):
     paginate_by = 10
 
     def get_queryset(self):
-        self.keyword = self.kwargs['keyword']
+        self.keyword = self.request.GET['keyword']
         keyword = self.keyword
 
         result = SummerNote.objects.filter(title__contains=keyword, index__gte=1).order_by('-published_date')
@@ -244,7 +244,7 @@ class CommentView(View):
             post = SummerNote.objects.get(id=request.POST.get('post_id'))
 
             cmt = Comment(author=self.request.POST['name'], published_date=timezone.now(),
-                          comment=self.request.POST['comment'],
+                          comment=self.request.POST['comment'], email=self.request.POST['email'],
                           post=post, delete='N', full_delete = 'N',
                           password=self.request.POST['passwd'], depth=1, ip=ip, ip_display=ip_display)
 
@@ -264,7 +264,7 @@ class CommentView(View):
 
 
             cmt = Comment(author=self.request.POST['name'], published_date=timezone.now(),
-                          comment=self.request.POST['comment'],
+                          comment=self.request.POST['comment'], email=self.request.POST['email'],
                           post=post, delete='N', full_delete = 'N',
                           password=self.request.POST['passwd'], depth=depth, ip=ip, ip_display=ip_display)
 

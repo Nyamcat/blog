@@ -117,6 +117,19 @@ ul {padding: 0;}
 .reply_comment .reply_author {float:left;}
 #nocomment { font-size:15px; text-align: center; color:gray; width: 100%; }
 #tag-box {margin-top:30px;}
+pre, code{ z-index:-1;}
+.copy {position:relative; height:0;}
+.copy button { padding:0; margin: 5px 5px 0 0;  outline: none; position:absolute; border:none; top: .5rem; right: .5rem; transition: 0.2s; background:transparent; font-size:15px; color:gray; border-radius:5px; height:25px;}
+.copy button:hover {background:#555; color:white;}
+.copy .tooltiptext { visibility:hidden; width: 120px; background-color: gray; color: #fff; text-align: center; padding: 5px 0; border-radius: 6px; /* Position the tooltip text */ position: absolute; z-index: 1; bottom: 125%; left: 50%; margin-left: -60px; /* Fade in tooltip */ opacity: 0; transition: opacity 0.3s; }
+
+/* Tooltip arrow */
+.copy .tooltiptext::after { content: ""; position: absolute; top: 100%; left: 50%; margin-left: -5px; border-width: 5px; border-style: solid;border-color: gray transparent transparent transparent; }
+.copy:hover .tooltiptext { visibility:visible; opacity: 1;}
+
+
+
+
 
 /* .blog_post .post_box {margin: 30px; border: 1px solid black; border-radius:5px; padding: 15px; } */
 .blog_post .comment_box { border: 1px solid black; border-radius:5px; padding: 15px; }

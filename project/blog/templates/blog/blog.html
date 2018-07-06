@@ -121,7 +121,7 @@
             });
 
             $('#search_title').click(function() {
-                url = '/search/' + $('input[name=search_title]').val();
+                url = '/search/?keyword=' + $('input[name=search_title]').val();
                 location.href = url;
             });
 
