@@ -34,6 +34,12 @@ class AllView(ListView):
     def get_context_data(self, **kwargs):
         context = super(AllView, self).get_context_data(**kwargs)
 
+        categories = Category.objects.filter(use='Y')
+        classify = Classify.objects.all()
+
+        context['categories'] = categories
+        context['classify'] = classify
+
         return context
 
 
@@ -46,6 +52,12 @@ class GuestBookView(View):
             raise Http404
 
         context = {'post': post, 'comment': comment}
+
+        categories = Category.objects.filter(use='Y')
+        classify = Classify.objects.all()
+
+        context['categories'] = categories
+        context['classify'] = classify
 
         return render(request, 'blog/guestbook.html', context)
 
@@ -128,6 +140,12 @@ class PostView(View):
         else:
             context = {'post': post, 'tags': tag_list, 'category': category, 'comment': comment}
 
+        categories = Category.objects.filter(use='Y')
+        classify = Classify.objects.all()
+
+        context['categories'] = categories
+        context['classify'] = classify
+
         return render(request, 'blog/post.html', context)
 
 
@@ -136,13 +154,16 @@ class BlogView(View):
         recent_posts = SummerNote.objects.filter(index__gte=1).order_by('-published_date')[:5]
         tags = HashTag.objects.order_by('-nou')[:3]
         categories = Category.objects.filter(use='Y')
-        comment = Comment.objects.filter(delete='N', full_delete='N', depth=1, post__index=0).order_by('-published_date')
         classify = Classify.objects.all()
+        comment = Comment.objects.filter(delete='N', full_delete='N', depth=1, post__index=0).order_by('-published_date')[:5]
 
         for x in recent_posts:
             x.published_date = date_parse(x.published_date)
 
         context = {'recent_posts': recent_posts, 'tags': tags, 'categories': categories, 'classify': classify, 'comment': comment}
+
+
+
         return render(request, 'blog/blog.html', context)
 
 
@@ -165,6 +186,12 @@ class SearchView(ListView):
     def get_context_data(self, **kwargs):
         context = super(SearchView, self).get_context_data(**kwargs)
         context['keyword'] = self.keyword
+
+        categories = Category.objects.filter(use='Y')
+        classify = Classify.objects.all()
+
+        context['categories'] = categories
+        context['classify'] = classify
 
         return context
 
@@ -196,12 +223,20 @@ class TagView(ListView):
             for x in post:
                 x.published_date = date_parse(x.published_date)
 
+
+
         return post
 
     def get_context_data(self, **kwargs):
         context = super(TagView, self).get_context_data(**kwargs)
         context['keyword'] = self.tags
         context['count'] = self.count
+
+        categories = Category.objects.filter(use='Y')
+        classify = Classify.objects.all()
+
+        context['categories'] = categories
+        context['classify'] = classify
 
         return context
 
@@ -230,6 +265,12 @@ class CategoryView(ListView):
         context = super(CategoryView, self).get_context_data(**kwargs)
         context['keyword'] = self.keyword
         context['count'] = self.count
+
+        categories = Category.objects.filter(use='Y')
+        classify = Classify.objects.all()
+
+        context['categories'] = categories
+        context['classify'] = classify
 
         return context
 
