@@ -1,194 +1,195 @@
-/* bg = 1a222c */
+    /* bg = 1a222c */
+@media (min-device-width: 520px){
+    #head {background: #1a222c; width:100%; }
+    #head #logo {width: 1000px; height:300px; margin: 0 auto; text-align:center;}
+    #head #logo a {text-decoration:none;}
+    #head #logo #full-logo {width:300px;}
+    #head #logo h1 { line-height:300px; margin-top:0px; color:white; font-size:55px;}
 
-#head {background: #1a222c; width:100%; }
-#head #logo {width: 1000px; height:300px; margin: 0 auto; text-align:center;}
-#head #logo a {text-decoration:none;}
-#head #logo #full-logo {width:300px;}
-#head #logo h1 { line-height:300px; margin-top:0px; color:white; font-size:55px;}
+    #head #menu_button {float:right; margin:20px 20px; border:none; background: #1a222c;}
+    #head #menu_button i { color: white;}
 
-#head #menu_button {float:right; margin:20px 20px; border:none; background: #1a222c;}
-#head #menu_button i { color: white;}
-
-.sidebar { width:400px; background: #1a222c; }
-.sidebar #personal_data { width:300px; margin: 25px 25px 75px 25px; height:400px; text-align: center; }
-.sidebar #personal_data #profile_img { margin:20px 50px; width:200px; height:200px; border-radius:100px; }
-.sidebar #personal_data #profile_title { color:white; font-size:20px; }
-.sidebar #personal_data #sns_list { list-style: none; text-align: left; }
-.sidebar #personal_data #sns_list li{ color: white; margin-top:15px; }
-.sidebar #personal_data #sns_list li span { margin-left: 10px; font-size:15px; }
-
-
-#folder { color:white; list-style: none; padding:0;}
-#folder .submenutitle li a:hover { }
-.menutitle { display: block; width: 100%; height: 40px; line-height: 40px; padding: 0 0 0 35px; color: white; font-size: 15px; cursor: pointer;}
-.submenutitle { background:white; color: #1a222c; color:white; list-style: none; padding:0;}
-.submenutitle span { display: block; width: 100%; height: 40px; line-height: 40px; padding: 0 0 0 60px; color: white; font-size: 15px; cursor: pointer; color: #1a222c;}
-.submenutitle span:hover,
-.submenutitle p:hover { font-weight:bold; background:lightgray;}
-
-#topback {background: #1a222c;}
-#topmenu {width: 1000; margin: 0 auto 100px auto;}
-#topmenu ul {list-style:none; height:50px;}
-#topmenu ul li {float:left; display: block; font-weight: bold;}
-#topmenu ul li a {color:white; text-decoration: none; padding: 0 60px; font-size:20px;}
-
-footer {background: #1a222c; width:100%; height:250px; font-size:50px; text-align:center; color:white; margin-top:200px;}
-footer p {font-size:14px;}
-footer #footer-top {padding-top:25px;}
-footer #footer-top img {width:100px;}
-
-#indexsection {width:100%;}
-
-#indexsection #content {background:white; width: 1000; margin: 0 auto; display:block; clear:both; /*border: 1px solid #3c3432; border-style: dashed; border-radius: 10px;*/}
-#indexsection .indexcontent {width: 1000; /*text-align:center;*/ display:block; clear:both;}
-#indexsection ul {list-style:none;}
-
-#indexsection #intro {height:400px;}
-#indexsection #intro ul {text-align:center;}
-#indexsection #intro ul li {float:left; height:400px; width:400px;}
-
-#indexsection #posts {margin-top: 100px auto;}
-#indexsection #posts h3 {color: #1a222c; margin:50px 0;}
-#indexsection #recent_posts {margin-top: 100px;}
-#indexsection #recent_posts #showall {float:right; color:1a222c; margin-right:10px; margin-bottom:20px; font-size:16px;}
-
-.hashtag { background: #1a222c; padding: 5px 10px 5px 10px; color:white; margin: 20px 10px 0 0;  border: solid 2px #1a222c; border-radius: 5px; transition: 0.2s; }
-.hashtag:hover { background: white; color:black; cursor: pointer}
-
-#indexsection .indexcontent h1 {border-bottom: solid 2px #dadada; padding-bottom:10px; margin-bottom:30px;}
-#indexsection .indexcontent #search_for_tags ul { padding: inherit; }
-#indexsection .indexcontent #search_for_tags ul li {margin-top:15px;}
-#indexsection .indexcontent #search_for_title,
-#indexsection .indexcontent #search_for_tags { width: 535px; margin: auto; }
-#indexsection .indexcontent #search_for_title input,
-#indexsection .indexcontent #search_for_tags input { height: 30px; width: 450px; margin-right: 20px; border: solid 1px #b1b1b1; border-radius: 5px; padding: 0 15px; outline:none; transition: 0.2s;}
-#indexsection .indexcontent #search_for_title input:focus,
-#indexsection .indexcontent #search_for_tags input:focus { border: 1px solid #555; }
-#indexsection .indexcontent #search_for_title button,
-#indexsection .indexcontent #search_for_tags button { width: 60px; height:30px; border: solid 1px orange; border-radius: 5px; background: orange; color: white; font-weight: 550; outline:none; transition: 0.2s;}
-#indexsection .indexcontent #search_for_title button:hover,
-#indexsection .indexcontent #search_for_tags button:hover { background: white; color: orange; }
-#indexsection .indexcontent #search_for_tags h4 {margin-top: 25px;}
-#indexsection .indexcontent #search_for_tags #search_tags {margin-bottom:15px;}
-#indexsection .indexcontent #search_for_tags .post_hashtag { background: #1a222c; padding: 5px 10px 5px 10px; color:white; margin: 20px 20px 0 0; border-radius: 5px; }
-#indexsection .indexcontent #search_for_tags .post_hashtag a {color:white; margin-left:10px; text-decoration: none; cursor:pointer;}
+    .sidebar { width:400px; background: #1a222c; }
+    .sidebar #personal_data { width:300px; margin: 25px 25px 75px 25px; height:400px; text-align: center; }
+    .sidebar #personal_data #profile_img { margin:20px 50px; width:200px; height:200px; border-radius:100px; }
+    .sidebar #personal_data #profile_title { color:white; font-size:20px; }
+    .sidebar #personal_data #sns_list { list-style: none; text-align: left; }
+    .sidebar #personal_data #sns_list li{ color: white; margin-top:15px; }
+    .sidebar #personal_data #sns_list li span { margin-left: 10px; font-size:15px; }
 
 
-/* custom set */
-.w80 {width:80px;}
-.w100 {width:100px;}
-.w120 {width:120px;}
-.w250 {width:250px;}
-.md10 {margin-bottom: 10px;}
-.md20 {margin-bottom: 20px;}
-.md50 {margin-bottom: 50px;}
-.wp50 {width:50%;}
-.wp80 {width:80%;}
-.wp100 {width:100%;}
+    #folder { color:white; list-style: none; padding:0;}
+    #folder .submenutitle li a:hover { }
+    .menutitle { display: block; width: 100%; height: 40px; line-height: 40px; padding: 0 0 0 35px; color: white; font-size: 15px; cursor: pointer;}
+    .submenutitle { background:white; color: #1a222c; color:white; list-style: none; padding:0;}
+    .submenutitle span { display: block; width: 100%; height: 40px; line-height: 40px; padding: 0 0 0 60px; color: white; font-size: 15px; cursor: pointer; color: #1a222c;}
+    .submenutitle span:hover,
+    .submenutitle p:hover { font-weight:bold; background:lightgray;}
 
-/* ul no padding */
-ul {padding: 0;}
+    #topback {background: #1a222c;}
+    #topmenu {width: 1000; margin: 0 auto 100px auto;}
+    #topmenu ul {list-style:none; height:50px;}
+    #topmenu ul li {float:left; display: block; font-weight: bold;}
+    #topmenu ul li a {color:white; text-decoration: none; padding: 0 60px; font-size:20px;}
 
-/* text-align center */
-.text-center { text-align: center;}
+    footer {background: #1a222c; width:100%; height:250px; font-size:50px; text-align:center; color:white; margin-top:200px;}
+    footer p {font-size:14px;}
+    footer #footer-top {padding-top:25px;}
+    footer #footer-top img {width:100px;}
 
-/* input */
-.cusput { width: 100%; outline: none; display: inline-block; height: 32px; line-height: 32px; padding: 0 10px; color: #777; background: #fbfbfb; border: 1px solid #cccdcf; box-shadow: inset 0 1px 2px rgba(0,0,0,.1); border-radius: 3px; }
-/*.smallput { font-size:10px; outline: none; display: inline-block; line-height: 16px; padding: 0 10px; color: #777; background: #fbfbfb; border: 1px solid #cccdcf; box-shadow: inset 0 1px 2px rgba(0,0,0,.1); border-radius: 3px; }*/
-.smallput { font-size:12px; line-height: 20px; padding: 0 10px; border-radius: 3px; border: 1px solid #cccdcf; }
+    #indexsection {width:100%;}
 
-/* 게시글 */
-.noc {color: gray; font-size:14px;}
-.blog_main #write_button {float:right; margin:20px;}
-.blog_main #write_button button {  background:transparent; border:none; }
-#commenttable { width:100%; margin:0 0 100px 0; font-size:13px;}
-#commenttable tr { height: 50px; border-bottom: 1px solid lightgray;}
-#commenttable:last-child { border-bottom:none;}
-.ipaddr {color:lightgray; font-size:11px;}
-.comment-author {text-align:center; font-weight:bold;}
-.comment-date {text-align:center;}
-.comment-date span {display:block;}
-.comment-date .deletecomment { color: red; }
-.comment-date .reply { color: blue;}
-.comment-date .deletecomment:hover,
-.comment-date .reply:hover { cursor: pointer; }
-#writecommentarea {height:265px; padding:40px 20px 40px 40px; border: solid 1px #dadada; border-radius:10px;}
-.reply_comment img {float:left; margin-left:40px; margin-right:5px}
-.reply_comment .reply_author {float:left;}
-#nocomment { font-size:15px; text-align: center; color:gray; width: 100%; }
-#tag-box {margin-top:30px;}
-pre, code{ z-index:-1;}
-.copy {position:relative; height:0;}
-.copy button { padding:0; margin: 5px 5px 0 0;  outline: none; position:absolute; border:none; top: .5rem; right: .5rem; transition: 0.2s; background:transparent; font-size:15px; color:gray; border-radius:5px; height:25px;}
-.copy button:hover {background:#555; color:white;}
-.copy .tooltiptext { visibility:hidden; width: 120px; background-color: gray; color: #fff; text-align: center; padding: 5px 0; border-radius: 6px; /* Position the tooltip text */ position: absolute; z-index: 1; bottom: 125%; left: 50%; margin-left: -60px; /* Fade in tooltip */ opacity: 0; transition: opacity 0.3s; }
+    #indexsection #content {background:white; width: 1000; margin: 0 auto; display:block; clear:both; /*border: 1px solid #3c3432; border-style: dashed; border-radius: 10px;*/}
+    #indexsection .indexcontent {width: 1000; /*text-align:center;*/ display:block; clear:both;}
+    #indexsection ul {list-style:none;}
 
-/* Tooltip arrow */
-.copy .tooltiptext::after { content: ""; position: absolute; top: 100%; left: 50%; margin-left: -5px; border-width: 5px; border-style: solid;border-color: gray transparent transparent transparent; }
-.copy:hover .tooltiptext { visibility:visible; opacity: 1;}
+    #indexsection #intro {height:400px;}
+    #indexsection #intro ul {text-align:center;}
+    #indexsection #intro ul li {float:left; height:400px; width:400px;}
+
+    #indexsection #posts {margin-top: 100px auto;}
+    #indexsection #posts h3 {color: #1a222c; margin:50px 0;}
+    #indexsection #recent_posts {margin-top: 100px;}
+    #indexsection #recent_posts #showall {float:right; color:1a222c; margin-right:10px; margin-bottom:20px; font-size:16px;}
+
+    .hashtag { background: #1a222c; padding: 5px 10px 5px 10px; color:white; margin: 20px 10px 0 0;  border: solid 2px #1a222c; border-radius: 5px; transition: 0.2s; }
+    .hashtag:hover { background: white; color:black; cursor: pointer}
+
+    #indexsection .indexcontent h1 {border-bottom: solid 2px #dadada; padding-bottom:10px; margin-bottom:30px;}
+    #indexsection .indexcontent #search_for_tags ul { padding: inherit; }
+    #indexsection .indexcontent #search_for_tags ul li {margin-top:15px;}
+    #indexsection .indexcontent #search_for_title,
+    #indexsection .indexcontent #search_for_tags { width: 535px; margin: auto; }
+    #indexsection .indexcontent #search_for_title input,
+    #indexsection .indexcontent #search_for_tags input { height: 30px; width: 450px; margin-right: 20px; border: solid 1px #b1b1b1; border-radius: 5px; padding: 0 15px; outline:none; transition: 0.2s;}
+    #indexsection .indexcontent #search_for_title input:focus,
+    #indexsection .indexcontent #search_for_tags input:focus { border: 1px solid #555; }
+    #indexsection .indexcontent #search_for_title button,
+    #indexsection .indexcontent #search_for_tags button { width: 60px; height:30px; border: solid 1px orange; border-radius: 5px; background: orange; color: white; font-weight: 550; outline:none; transition: 0.2s;}
+    #indexsection .indexcontent #search_for_title button:hover,
+    #indexsection .indexcontent #search_for_tags button:hover { background: white; color: orange; }
+    #indexsection .indexcontent #search_for_tags h4 {margin-top: 25px;}
+    #indexsection .indexcontent #search_for_tags #search_tags {margin-bottom:15px;}
+    #indexsection .indexcontent #search_for_tags .post_hashtag { background: #1a222c; padding: 5px 10px 5px 10px; color:white; margin: 20px 20px 0 0; border-radius: 5px; }
+    #indexsection .indexcontent #search_for_tags .post_hashtag a {color:white; margin-left:10px; text-decoration: none; cursor:pointer;}
 
 
+    /* custom set */
+    .w80 {width:80px;}
+    .w100 {width:100px;}
+    .w120 {width:120px;}
+    .w250 {width:250px;}
+    .md10 {margin-bottom: 10px;}
+    .md20 {margin-bottom: 20px;}
+    .md50 {margin-bottom: 50px;}
+    .wp50 {width:50%;}
+    .wp80 {width:80%;}
+    .wp100 {width:100%;}
+
+    /* ul no padding */
+    ul {padding: 0;}
+
+    /* text-align center */
+    .text-center { text-align: center;}
+
+    /* input */
+    .cusput { width: 100%; outline: none; display: inline-block; height: 32px; line-height: 32px; padding: 0 10px; color: #777; background: #fbfbfb; border: 1px solid #cccdcf; box-shadow: inset 0 1px 2px rgba(0,0,0,.1); border-radius: 3px; }
+    /*.smallput { font-size:10px; outline: none; display: inline-block; line-height: 16px; padding: 0 10px; color: #777; background: #fbfbfb; border: 1px solid #cccdcf; box-shadow: inset 0 1px 2px rgba(0,0,0,.1); border-radius: 3px; }*/
+    .smallput { font-size:12px; line-height: 20px; padding: 0 10px; border-radius: 3px; border: 1px solid #cccdcf; }
+
+    /* 게시글 */
+    .noc {color: gray; font-size:14px;}
+    .blog_main #write_button {float:right; margin:20px;}
+    .blog_main #write_button button {  background:transparent; border:none; }
+    #commenttable { width:100%; margin:0 0 100px 0; font-size:13px;}
+    #commenttable tr { height: 50px; border-bottom: 1px solid lightgray;}
+    #commenttable:last-child { border-bottom:none;}
+    .ipaddr {color:lightgray; font-size:11px;}
+    .comment-author {text-align:center; font-weight:bold;}
+    .comment-date {text-align:center;}
+    .comment-date span {display:block;}
+    .comment-date .deletecomment { color: red; }
+    .comment-date .reply { color: blue;}
+    .comment-date .deletecomment:hover,
+    .comment-date .reply:hover { cursor: pointer; }
+    #writecommentarea {height:265px; padding:40px 20px 40px 40px; border: solid 1px #dadada; border-radius:10px;}
+    .reply_comment img {float:left; margin-left:40px; margin-right:5px}
+    .reply_comment .reply_author {float:left;}
+    #nocomment { font-size:15px; text-align: center; color:gray; width: 100%; }
+    #tag-box {margin-top:30px;}
+    pre, code{ z-index:-1;}
+    .copy {position:relative; height:0;}
+    .copy button { padding:0; margin: 5px 5px 0 0;  outline: none; position:absolute; border:none; top: .5rem; right: .5rem; transition: 0.2s; background:transparent; font-size:15px; color:gray; border-radius:5px; height:25px;}
+    .copy button:hover {background:#555; color:white;}
+    .copy .tooltiptext { visibility:hidden; width: 120px; background-color: gray; color: #fff; text-align: center; padding: 5px 0; border-radius: 6px; /* Position the tooltip text */ position: absolute; z-index: 1; bottom: 125%; left: 50%; margin-left: -60px; /* Fade in tooltip */ opacity: 0; transition: opacity 0.3s; }
+
+    /* Tooltip arrow */
+    .copy .tooltiptext::after { content: ""; position: absolute; top: 100%; left: 50%; margin-left: -5px; border-width: 5px; border-style: solid;border-color: gray transparent transparent transparent; }
+    .copy:hover .tooltiptext { visibility:visible; opacity: 1;}
 
 
 
-/* .blog_post .post_box {margin: 30px; border: 1px solid black; border-radius:5px; padding: 15px; } */
-.blog_post .comment_box { border: 1px solid black; border-radius:5px; padding: 15px; }
-.blog_post .post_box {margin: 30px; padding: 15px; }
-.blog_post .post_box #title_box {height:30px; border-bottom: solid 2px #dadada; padding-bottom:10px; margin:15px 0px 15px 0px;}
-.blog_post .post_box #title_box #title { text-align:left; padding:10px; font-size:24px; font-weight: 300; margin-bottom:0;}
-.blog_post .post_box #title_box #category { padding-left: 15px; border-left: 1px solid black; color: gray; text-decoration:none;}
-.blog_post .post_box .post_content {padding:10px;}
-.blog_post .post_box .post_content #post_body {margin:50px 0px 100px;}
-
-/* 글쓰기 */
-
-.sub-contents-box .board-box { clear: both; max-width: 780px; margin: 50px auto; }
-.sub-contents-box .board-box form { clear: both; padding: 30px; border: 1px solid #e1e1e1; border-radius: 4px; overflow: hidden; }
-.sub-contents-box .board-box from .input-box { clear: both; width: 100%; margin-bottom: 10px; padding-bottom: 10px; border-bottom: 1px dotted #e1e1e1; }
-.sub-contents-box .board-box form .input-box input { width: 100%; outline: none; display: inline-block; height: 32px; line-height: 32px; padding: 0 1%; color: #777; background: #fbfbfb; border: 1px solid #cccdcf; box-shadow: inset 0 1px 2px rgba(0,0,0,.1); border-radius: 3px; }
-.sub-contents-box .board-box form .subject-box { position: relative; clear: both; width: 100%; margin-bottom: 10px; padding-bottom: 10px; border-bottom: 1px dotted #e1e1e1; }
-.sub-contents-box .board-box form .text-box { clear: both; width: 100%; margin-bottom: 10px; padding-bottom: 10px; border-bottom: 1px dotted #e1e1e1; }
-.sub-contents-box .board-box form .uploadfile-box { clear: both; width: 100%; margin-bottom: 10px; padding-bottom: 10px; border-bottom: 1px dotted #e1e1e1; }
-.sub-contents-box .board-box form .secret-box { width: 100%; height: 30px; clear: both; margin-bottom: 10px; padding-bottom: 10px; border-bottom: 1px dotted #e1e1e1; }
-.sub-contents-box .board-box form .secret-box label { float: left; display: block; width: 50px; height: 20px; margin: 0; padding: 0; }
-.sub-contents-box .board-box form .secret-box input { float: left; display: inline-block; width: 20px; height: 20px; margin: 0; padding: 0; }
-.sub-contents-box .board-box form button { display: inline-block; width: 100%; color: #fff; padding: 6px 12px; margin-bottom: 0; font-size: 14px; font-weight: 400; text-align: center; white-space: nowrap; vertical-align: middle; cursor: pointer; border: 1px solid transparent; border-radius: 4px; background: #1a222c; }
-.sub-contents-box .board-box form button:hover { background: #333; }
-.sub-contents-box .board-box #hashtag_input {margin-bottom: 20px;}
-.sub-contents-box .board-box .post_hashtag { background: #1a222c; padding: 5px 10px 5px 10px; color:white; margin: 20px 20px 0 0; border-radius: 5px; }
-.sub-contents-box .board-box .post_hashtag a {color:white; margin-left:10px; text-decoration: none; cursor:pointer;}
 
 
-/* 로그인 */
-body.login, body.signup {background: #f8f8f8;}
-.login_box p {text-align: center;}
-.login_box #logo {margin:200px auto 50px;}
-.login_box #logo img {margin:0px auto; text-align:center; width:50px;}
-.login_box #logo a {text-decoration:none; line-height:32px;}
-.login_box #logo span {font-size:24px; font-weight: 300; text-decoration:none; color:black;}
-.login_box #login_div {padding: 50px; margin: 50px auto 350px; height:300px; width:400px; text-align:center; border: 1px solid #b1b1b1; border-radius:5px; background:white;}
-.login_box #login_div p {font-style:bold; color:red;}
-.login_box #login_div label {display:none;}
-.login_box #login_div #logo {margin-bottom:100px;}
-.login_box #login_div #id_username {width:250px; height:35px; font-size:15px; margin: 15px auto;}
-.login_box #login_div #id_password {width:250px; height:35px; font-size:15px; margin: 15px auto;}
-.login_box #login_div input {width:120px; height:35px; margin-bottom:15px;}
-.login_box #login_div button {width:120px; height:35px; text-decoration: none; margin-left:5px;}
-.login_box #login_div button a {color:black;}
+    /* .blog_post .post_box {margin: 30px; border: 1px solid black; border-radius:5px; padding: 15px; } */
+    .blog_post .comment_box { border: 1px solid black; border-radius:5px; padding: 15px; }
+    .blog_post .post_box {margin: 30px; padding: 15px; }
+    .blog_post .post_box #title_box {height:30px; border-bottom: solid 2px #dadada; padding-bottom:10px; margin:15px 0px 15px 0px;}
+    .blog_post .post_box #title_box #title { text-align:left; padding:10px; font-size:24px; font-weight: 300; margin-bottom:0;}
+    .blog_post .post_box #title_box #category { padding-left: 15px; border-left: 1px solid black; color: gray; text-decoration:none;}
+    .blog_post .post_box .post_content {padding:10px;}
+    .blog_post .post_box .post_content #post_body {margin:50px 0px 100px;}
+
+    /* 글쓰기 */
+
+    .sub-contents-box .board-box { clear: both; max-width: 780px; margin: 50px auto; }
+    .sub-contents-box .board-box form { clear: both; padding: 30px; border: 1px solid #e1e1e1; border-radius: 4px; overflow: hidden; }
+    .sub-contents-box .board-box from .input-box { clear: both; width: 100%; margin-bottom: 10px; padding-bottom: 10px; border-bottom: 1px dotted #e1e1e1; }
+    .sub-contents-box .board-box form .input-box input { width: 100%; outline: none; display: inline-block; height: 32px; line-height: 32px; padding: 0 1%; color: #777; background: #fbfbfb; border: 1px solid #cccdcf; box-shadow: inset 0 1px 2px rgba(0,0,0,.1); border-radius: 3px; }
+    .sub-contents-box .board-box form .subject-box { position: relative; clear: both; width: 100%; margin-bottom: 10px; padding-bottom: 10px; border-bottom: 1px dotted #e1e1e1; }
+    .sub-contents-box .board-box form .text-box { clear: both; width: 100%; margin-bottom: 10px; padding-bottom: 10px; border-bottom: 1px dotted #e1e1e1; }
+    .sub-contents-box .board-box form .uploadfile-box { clear: both; width: 100%; margin-bottom: 10px; padding-bottom: 10px; border-bottom: 1px dotted #e1e1e1; }
+    .sub-contents-box .board-box form .secret-box { width: 100%; height: 30px; clear: both; margin-bottom: 10px; padding-bottom: 10px; border-bottom: 1px dotted #e1e1e1; }
+    .sub-contents-box .board-box form .secret-box label { float: left; display: block; width: 50px; height: 20px; margin: 0; padding: 0; }
+    .sub-contents-box .board-box form .secret-box input { float: left; display: inline-block; width: 20px; height: 20px; margin: 0; padding: 0; }
+    .sub-contents-box .board-box form button { display: inline-block; width: 100%; color: #fff; padding: 6px 12px; margin-bottom: 0; font-size: 14px; font-weight: 400; text-align: center; white-space: nowrap; vertical-align: middle; cursor: pointer; border: 1px solid transparent; border-radius: 4px; background: #1a222c; }
+    .sub-contents-box .board-box form button:hover { background: #333; }
+    .sub-contents-box .board-box #hashtag_input {margin-bottom: 20px;}
+    .sub-contents-box .board-box .post_hashtag { background: #1a222c; padding: 5px 10px 5px 10px; color:white; margin: 20px 20px 0 0; border-radius: 5px; }
+    .sub-contents-box .board-box .post_hashtag a {color:white; margin-left:10px; text-decoration: none; cursor:pointer;}
 
 
-/* pagination */
-.pagination>li>a,
-.pagination>li>span {color: #1a222c; !important}
-.pagination>.active>a,
-.pagination>.active>a:focus,
-.pagination>.active>a:hover,
-.pagination>.active>span,
-.pagination>.active>span:focus,
-.pagination>.active>span:hover {background-color:#1a222c; border-color: #1a222c; !important}
+    /* 로그인 */
+    body.login, body.signup {background: #f8f8f8;}
+    .login_box p {text-align: center;}
+    .login_box #logo {margin:200px auto 50px;}
+    .login_box #logo img {margin:0px auto; text-align:center; width:50px;}
+    .login_box #logo a {text-decoration:none; line-height:32px;}
+    .login_box #logo span {font-size:24px; font-weight: 300; text-decoration:none; color:black;}
+    .login_box #login_div {padding: 50px; margin: 50px auto 350px; height:300px; width:400px; text-align:center; border: 1px solid #b1b1b1; border-radius:5px; background:white;}
+    .login_box #login_div p {font-style:bold; color:red;}
+    .login_box #login_div label {display:none;}
+    .login_box #login_div #logo {margin-bottom:100px;}
+    .login_box #login_div #id_username {width:250px; height:35px; font-size:15px; margin: 15px auto;}
+    .login_box #login_div #id_password {width:250px; height:35px; font-size:15px; margin: 15px auto;}
+    .login_box #login_div input {width:120px; height:35px; margin-bottom:15px;}
+    .login_box #login_div button {width:120px; height:35px; text-decoration: none; margin-left:5px;}
+    .login_box #login_div button a {color:black;}
 
 
-/* 검색결과 */
-.nothing {height:400px; margin-top:100px;}
-.nothing h2 {color: #1a222c;}
-.nothing h4 {color: #545658;}
+    /* pagination */
+    .pagination>li>a,
+    .pagination>li>span {color: #1a222c; !important}
+    .pagination>.active>a,
+    .pagination>.active>a:focus,
+    .pagination>.active>a:hover,
+    .pagination>.active>span,
+    .pagination>.active>span:focus,
+    .pagination>.active>span:hover {background-color:#1a222c; border-color: #1a222c; !important}
+
+
+    /* 검색결과 */
+    .nothing {height:400px; margin-top:100px;}
+    .nothing h2 {color: #1a222c;}
+    .nothing h4 {color: #545658;}
+}
