@@ -4,6 +4,7 @@
     #menu_button {float:right; margin:20px 20px; border:none; background:white;}
     #menu_button i { color:#1a222c; }
     ul {padding: 0; list-style: none;}
+    .copy_button {display: none;}
 
     /* SIDE BAR */
     .sidebar #personal_data { width:300px; margin: 25px 25px 75px 25px; height:400px; text-align: center; }
@@ -15,7 +16,6 @@
 
     /* MAIN PAGE */
     #indexsection { margin: auto; width:95% }
-    #indexsection p { font-size: 30px; text-align: center;}
     #indexsection .indexcontent h1 { margin-top:150px; margin-bottom: 50px; border-bottom: solid 2px #dadada; padding-bottom:10px; margin-bottom:30px; font-size:70px; }
     #indexsection .indexcontent h3 { font-size:40px; }
     #indexsection .indexcontent h4 { font-size:30px; }
@@ -42,6 +42,13 @@
     #indexsection #commenttable tr { border-bottom: 1px solid lightgray; height:80px; }
     #indexsection #commenttable .comment-author span {float:left; margin-left: 20px;}
     */
+
+    #indexsection #recent_posts #desktop_post_list {display:none;}
+    #indexsection #recent_posts #showall {float:right; color:1a222c; margin-right:10px; margin-bottom:20px; font-size:25px;}
+    #indexsection #recent_posts ul {margin-top: 100px;}
+    #indexsection #recent_posts ul li {margin-top: 50px; border-bottom: 1px solid gray; padding-bottom: 25px;}
+    #indexsection #recent_posts ul li .title {font-size:35px;}
+    #indexsection #recent_posts ul li .info {font-size:25px; color:lightgray;}
 
     /* HASHTAG */
     .hashtag { background: #1a222c; padding: 10px 15px 10px 15px; color:white; margin: 20px 10px 0 0;  border: solid 2px #1a222c; border-radius: 10px; font-size:25px;}

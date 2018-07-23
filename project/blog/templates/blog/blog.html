@@ -84,7 +84,7 @@
                 Recent Posts
             </h1>
             <a id="showall" href="{% url 'all_post' %}"><span>All Posts &nbsp;&#62;</span></a>
-            <table class="table">
+            <table id="desktop_post_list" class="table">
                 <colgroup>
                     <col class="text-center" style="width: 15%;">
                     <col style="">
@@ -110,6 +110,16 @@
                 {% endfor %}
                 </tbody>
             </table>
+
+            <ul id="mobile_post_list">
+                {% for post in recent_posts %}
+                <li class="post_index" id="{{ post.id }}">
+                    <span class="title">{{ post.title }}</span>&nbsp;<span class="title">({{ post.noc}})</span>
+                    <br><br>
+                    <span class="info">카테고리 : {{post.category.label}} | 조회수 : {{post.hits}} | 작성일 : {{ post.published_date }}</span>
+                </li>
+                {% endfor %}
+            </ul>
 
         </div>
     </div>
