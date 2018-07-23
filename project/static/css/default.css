@@ -17,7 +17,6 @@
     .sidebar #personal_data #sns_list li{ color: white; margin-top:15px; }
     .sidebar #personal_data #sns_list li span { margin-left: 10px; font-size:15px; }
 
-
     #folder { color:white; list-style: none; padding:0;}
     #folder .submenutitle li a:hover { }
     .menutitle { display: block; width: 100%; height: 40px; line-height: 40px; padding: 0 0 0 35px; color: white; font-size: 15px; cursor: pointer;}
@@ -74,6 +73,7 @@
     #indexsection .indexcontent #search_for_tags #search_tags {margin-bottom:15px;}
     #indexsection .indexcontent #search_for_tags .post_hashtag { background: #1a222c; padding: 5px 10px 5px 10px; color:white; margin: 20px 20px 0 0; border-radius: 5px; }
     #indexsection .indexcontent #search_for_tags .post_hashtag a {color:white; margin-left:10px; text-decoration: none; cursor:pointer;}
+    #mobile_post_list {display:none;}
 
 
     /* custom set */

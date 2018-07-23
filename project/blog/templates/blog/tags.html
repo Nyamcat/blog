@@ -4,10 +4,10 @@
 <section id="indexsection">
     <div id="content" class="blog_main">
         <div class="indexcontent" id="search">
-            <div class="indexcontent" id="posts">
+            <div class="indexcontent search_result" id="posts">
                 {% if summernote_list %}
                 <h3><strong>{{keyword}}</strong> Tagged Post </h3>
-                <table class="table">
+                <table class="table" id="desktop_post_list">
                     <colgroup>
                         <col style="width: 15%; text-align: center;">
                         <col style="">
@@ -33,6 +33,17 @@
                     {% endfor %}
                     </tbody>
                 </table>
+
+                <ul id="mobile_post_list">
+                    {% for p in summernote_list %}
+                    <li class="post_index" id="{{ p.id }}">
+                        <span class="title">{{ p.title }}</span>&nbsp;<span class="title">({{ p.noc}})</span>
+                        <br><br>
+                        <span class="info">카테고리 : {{p.category.label}} | 조회수 : {{p.hits}} | 작성일 : {{ p.published_date }}</span>
+                    </li>
+                    {% endfor %}
+                </ul>
+
                 {% else %}
                 <div class="nothing">
                     <h2>Come out, come out, wherever you are!</h2>
@@ -62,7 +73,6 @@
                 {% endif %}
             </ul>
         </div>
-
     </div>
     <script>
             $('.post_index').click(function() {

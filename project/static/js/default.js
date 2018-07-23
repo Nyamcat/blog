@@ -26,9 +26,14 @@ jQuery(function($)
         });
 
         $(function(){
-            $('#menu_button').click(function(){
+            $('#menu_button').click(function(e){
+                e.stopPropagation();
                 $('.ui.sidebar').sidebar('setting', 'transition', 'overlay').sidebar('toggle');
             });
+        });
+
+        $("#head").click(function(){
+            location.href = '/'
         });
 
         $(".menutitle").click(function(){

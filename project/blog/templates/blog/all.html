@@ -4,10 +4,10 @@
 <section id="indexsection">
     <div id="content" class="blog_main">
         <div class="indexcontent" id="search">
-            <div class="indexcontent" id="posts">
+            <div class="indexcontent search_result" id="posts">
                 <h3>전체글보기</h3>
                 {% if object_list %}
-                <table class="table">
+                <table id="desktop_post_list" class="table">
                     <colgroup>
                         <col style="width: 15%; text-align: center;">
                         <col style="">
@@ -33,6 +33,17 @@
                     {% endfor %}
                     </tbody>
                 </table>
+
+                <ul id="mobile_post_list">
+                    {% for p in object_list %}
+                    <li class="post_index" id="{{ p.id }}">
+                        <span class="title">{{ p.title }}</span>&nbsp;<span class="title">({{ p.noc}})</span>
+                        <br><br>
+                        <span class="info">카테고리 : {{p.category.label}} | 조회수 : {{p.hits}} | 작성일 : {{ p.published_date }}</span>
+                    </li>
+                    {% endfor %}
+                </ul>
+
                 {% else %}
                 <div class="nothing">
                     <h2>Come out, come out, wherever you are!</h2>
@@ -41,6 +52,28 @@
                 {% endif %}
             </div>
         </div>
+        <div class="text-center">
+            <ul class="pagination">
+                {% if page_obj.has_previous %}
+                <li><a href="?page={{ page_obj.previous_page_number }}">&laquo;</a></li>
+                {% else %}
+                <li class="disabled"><span>&laquo;</span></li>
+                {% endif %}
+                {% for i in paginator.page_range %}
+                {% if page_obj.number == i %}
+                <li class="active"><span>{{ i }} <span class="sr-only">(current)</span></span></li>
+                {% else %}
+                <li><a href="?page={{ i }}">{{ i }}</a></li>
+                {% endif %}
+                {% endfor %}
+                {% if page_obj.has_next %}
+                <li><a href="?page={{ page_obj.next_page_number }}">&raquo;</a></li>
+                {% else %}
+                <li class="disabled"><span>&raquo;</span></li>
+                {% endif %}
+            </ul>
+        </div>
+    </div>
     </div>
 
     <script>
