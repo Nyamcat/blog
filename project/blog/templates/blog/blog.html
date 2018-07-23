@@ -25,7 +25,7 @@
                         {% for cmt in comment %}
                         <tr class="comment {{cmt.parent}}" id="{{ cmt.id }}">
                             <div>
-                                <td class="comment-author"><span style="float:left; margin-left:40px;">{{ cmt.author }}</span></td>
+                                <td class="comment-author"><span>{{ cmt.author }}</span></td>
 
                                 <td class="content"><span>{{ cmt.comment }}</span>&nbsp;&nbsp;&nbsp;<span class="ipaddr">{{ cmt.ip_display }}</span></td>
                                 <td class="comment-date">

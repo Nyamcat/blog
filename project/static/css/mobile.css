@@ -1,8 +1,9 @@
 @media (max-device-width: 520px){
     /* HEADER */
-    #head { height:100px; border-bottom: 1px solid lightgray; background: url(../img/mobile-logo.png) no-repeat; background-position: center; }
+    #head { height:150px; border-bottom: 1px solid lightgray; background: url(../img/mobile-logo.png) no-repeat; background-position: center; }
     #menu_button {float:right; margin:20px 20px; border:none; background:white;}
     #menu_button i { color:#1a222c; }
+    ul {padding: 0; list-style: none;}
 
     /* SIDE BAR */
     .sidebar #personal_data { width:300px; margin: 25px 25px 75px 25px; height:400px; text-align: center; }
@@ -13,8 +14,37 @@
     .sidebar #personal_data #sns_list li span { margin-left: 10px; font-size:15px; }
 
     /* MAIN PAGE */
-    #indexsection {margin: 50px auto auto auto; width:90%}
-    #indexsection .indexcontent h1 {border-bottom: solid 2px #dadada; padding-bottom:10px; margin-bottom:30px;}
+    #indexsection { margin: auto; width:95% }
+    #indexsection p { font-size: 30px; text-align: center;}
+    #indexsection .indexcontent h1 { margin-top:150px; margin-bottom: 50px; border-bottom: solid 2px #dadada; padding-bottom:10px; margin-bottom:30px; font-size:70px; }
+    #indexsection .indexcontent h3 { font-size:40px; }
+    #indexsection .indexcontent h4 { font-size:30px; }
+
+    #indexsection #search #search_for_title,
+    #indexsection #search #search_for_tags { width: 100%; margin: 50px auto; }
+
+    #indexsection #search #search_for_title input,
+    #indexsection #search #search_for_tags input { height: 50px; width: 80%; margin-right: 20px; border: solid 1px #b1b1b1; border-radius: 5px; padding: 0 15px; outline:none; font-size:25px;}
+    #indexsection #search #search_for_title button,
+    #indexsection #search #search_for_tags button { width: 15%; height:50px; border: solid 1px orange; border-radius: 5px; background: orange; color: white; font-weight: 550; font-size:25px;}
+
+    #indexsection #search #search_for_tags #search_tags {margin-bottom:30px;}
+    #indexsection #search #search_for_tags .post_hashtag { background: #1a222c; padding: 10px 15px 10px 15px; color:white; margin: 20px 20px 0 0; border-radius: 10px; font-size:25px;}
+    #indexsection #search #search_for_tags .post_hashtag a {color:white; margin-left:10px; text-decoration: none; cursor:pointer;}
+    #indexsection #search ul li { margin-top:35px; }
+    #indexsection #search ul li span { font-size:25px; }
+
+    #indexsection #guestbook {display:none;}
+    /*
+    #indexsection #nocomment {color:gray;}
+
+    #indexsection #commenttable { width:100%; margin:50px 0 100px 0; font-size:25px;}
+    #indexsection #commenttable tr { border-bottom: 1px solid lightgray; height:80px; }
+    #indexsection #commenttable .comment-author span {float:left; margin-left: 20px;}
+    */
+
+    /* HASHTAG */
+    .hashtag { background: #1a222c; padding: 10px 15px 10px 15px; color:white; margin: 20px 10px 0 0;  border: solid 2px #1a222c; border-radius: 10px; font-size:25px;}
 
     /* FOOTER */
     footer {background: #1a222c; width:100%; height:250px; font-size:50px; text-align:center; color:white; margin-top:200px;}
