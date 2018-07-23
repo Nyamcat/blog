@@ -1,7 +1,7 @@
     /* bg = 1a222c */
 @media (min-device-width: 520px){
     #head {background: #1a222c; width:100%; }
-    #head #logo {width: 1000px; height:300px; margin: 0 auto; text-align:center;}
+    #head #logo {width: 300px; height:300px; margin: 0 auto; text-align:center; background: url(../img/Full-Logo.png) no-repeat; background-position: center; background-size: 300px;}
     #head #logo a {text-decoration:none;}
     #head #logo #full-logo {width:300px;}
     #head #logo h1 { line-height:300px; margin-top:0px; color:white; font-size:55px;}
