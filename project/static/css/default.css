@@ -108,7 +108,7 @@
     #commenttable:last-child { border-bottom:none;}
     .ipaddr {color:lightgray; font-size:11px;}
     .comment-author {text-align:center; font-weight:bold;}
-    .comment-author span {text-align:center; font-weight:bold; float:left; margin-left:50px;}
+    .comment-author span {text-align:center; font-weight:bold; float:left;}
     .comment-date {text-align:center;}
     .comment-date span {display:block;}
     .comment-date .deletecomment { color: red; }

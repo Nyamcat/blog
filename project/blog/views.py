@@ -1,4 +1,5 @@
 import json
+import re
 
 from django.http import Http404, HttpResponse
 from django.shortcuts import render, redirect, get_object_or_404
@@ -146,6 +147,16 @@ class PostView(View):
         context['categories'] = categories
         context['classify'] = classify
 
+
+        cleaner = re.compile('<.*?>')
+        desc = re.sub(cleaner, '', post.summer_field)
+        desc = desc.replace('&lt;', '<')
+        desc = desc.replace('&gt;', '>')
+        desc = desc.replace('\r', ' ')
+        desc = desc.replace('\n', ' ')
+
+        context['description'] = desc
+
         return render(request, 'blog/post.html', context)
 
 
@@ -192,6 +203,7 @@ class SearchView(ListView):
 
         context['categories'] = categories
         context['classify'] = classify
+        context['description'] = self.keyword + '검색 결과는 ' + str(self.count) + '개 입니다.'
 
         return context
 
@@ -238,6 +250,8 @@ class TagView(ListView):
         context['categories'] = categories
         context['classify'] = classify
 
+        context['description'] = self.tags + '태그는 ' + str(self.count) + '개의 게시글에 태그되었습니다.'
+
         return context
 
 
@@ -271,6 +285,7 @@ class CategoryView(ListView):
 
         context['categories'] = categories
         context['classify'] = classify
+        context['description'] = self.keyword + '카테고리에는 게시글이 ' + str(self.count) + '개 있습니다.'
 
         return context
 

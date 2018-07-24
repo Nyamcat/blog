@@ -77,10 +77,12 @@
     </div>
 
     <script>
-            $('.post_index').click(function() {
-                location.href = "/post/" + $(this).attr('id');
-            });
-        </script>
+        $('.post_index').click(function() {
+            location.href = "/post/" + $(this).attr('id');
+        });
+        $('head title').text( '전체글보기 :: 코딩웨일')
+        $('meta[name=description]').attr('content', '전체글보기')
+    </script>
 </section>
 
 {% include 'main/footer.html' %}

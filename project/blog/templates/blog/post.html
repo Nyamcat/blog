@@ -38,6 +38,9 @@
                 url = '/tags/?taglist=' + $(this).text();
                 location.href = url;
             });
+
+            $('head title').text( '{{ post.title }} :: 코딩웨일')
+            $('meta[name=description]').attr('content', '{{ description }}')
         </script>
 
     </div>
