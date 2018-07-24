@@ -46,11 +46,11 @@
     {% if comment %}
     <ul id="commentul">
         {% for cmt in comment %}
-        <li>
+        <li id="{{cmt.id}}">
             <span class="inner">
                 <span class="id">{{ cmt.author }}</span>
                 <span class="reply">답글</span>
-                <span class="delete">삭제</span>
+                <span class="deletecomment">삭제</span>
                 <span class="comment">{{ cmt.comment }}</span>
                 <span class="info">{{ cmt.published_date }}&nbsp;|&nbsp;{{ cmt.ip_display }}</span>
             </span>
@@ -81,9 +81,12 @@
         }
     };
 
-    $('.deletecomment, .delete').click(function (e) {
+
+    $('.deletecomment').click(function (e) {
         var prt = $(this).parent().parent();
         var id = prt.attr('id');
+
+        console.log(id);
 
         prpt = prompt('비밀번호를 입력해주세요.', '')
         $.ajax({
@@ -212,6 +215,52 @@
     })
 
 
+    $(document).on('click', '#reply_submit', function(){
+
+        if ($('#replytext').val() == ''){
+            alert('내용을 입력해주세요');
+            return;
+        }
+
+        $.ajax({
+            type: "POST",
+            url: '/comment/',
+            data: { 'post_id': {{ post.id }}, 'name' : $('input[name=reply_name]').val(),
+                    'passwd' : $('input[name=reply_passwd]').val(), 'csrfmiddlewaretoken': '{{ csrf_token }}', 'email' : $('input[name=reply_email]').val(),
+                    'comment' : $('#replytext').val(), 'type': 'reply', 'parent': $('input[name=parent]').val()},
+            dataType: "json",
+
+            success: function(response){
+                    location.reload();
+                },
+                error: function(request, status, error){
+                    alert('실패했습니다.');
+            },
+        });
+    })
+    </script>
+
+    <!--모바일-->
+    <script>
+
+    $('input[name=mobile_name]').on('keyup', function() {
+        if($(this).val().length > 9) {
+            $(this).val($(this).val().substring(0, 9));
+        }
+    });
+
+    $('input[name=mobile_email]').on('keyup', function() {
+        if($(this).val().length > 100) {
+            $(this).val($(this).val().substring(0, 100));
+        }
+    });
+
+    $('textarea[name=mobile_comment]').on('keyup', function() {
+        if($(this).val().length > 150) {
+            $(this).val($(this).val().substring(0, 150));
+        }
+    });
+
     $('#mobile_submit').click(function (e) {
 
         if ($('input[name=mobile_name]').val() == ''){
@@ -245,30 +294,5 @@
         });
     })
 
-
-
-    $(document).on('click', '#reply_submit', function(){
-
-        if ($('#replytext').val() == ''){
-            alert('내용을 입력해주세요');
-            return;
-        }
-
-        $.ajax({
-            type: "POST",
-            url: '/comment/',
-            data: { 'post_id': {{ post.id }}, 'name' : $('input[name=reply_name]').val(),
-                    'passwd' : $('input[name=reply_passwd]').val(), 'csrfmiddlewaretoken': '{{ csrf_token }}', 'email' : $('input[name=reply_email]').val(),
-                    'comment' : $('#replytext').val(), 'type': 'reply', 'parent': $('input[name=parent]').val()},
-            dataType: "json",
-
-            success: function(response){
-                    location.reload();
-                },
-                error: function(request, status, error){
-                    alert('실패했습니다.');
-            },
-        });
-    })
     </script>
 </div>

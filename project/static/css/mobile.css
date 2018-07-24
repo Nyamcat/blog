@@ -71,7 +71,7 @@
     #commentarea #commentul li .inner {padding: 6px 10px 8px 10px; border-bottom: 1px solid lightgray; display:block; position:relative; height:auto; }
     #commentarea #commentul li .id { font-weight:bold; display:inline; padding:0;}
     #commentarea #commentul li .reply { position:absolute; right:12%; color:blue;}
-    #commentarea #commentul li .delete { position:absolute; right:2%; color:red;}
+    #commentarea #commentul li .deletecomment { position:absolute; right:2%; color:red;}
     #commentarea #commentul li .comment { display:block; padding:10px 0px; line-height: 20px; }
     #commentarea #commentul li .info { color:lightgray; font-size:14px; }
     #writecommentarea .desktop_write_comment {display:none;}
