@@ -86,6 +86,7 @@
             <a id="showall" href="{% url 'all_post' %}"><span>All Posts &nbsp;&#62;</span></a>
             <table id="desktop_post_list" class="table">
                 <colgroup>
+                    <col class="text-center" style="width: 5%;">
                     <col class="text-center" style="width: 15%;">
                     <col style="">
                     <col style="width: 15%;">
@@ -94,6 +95,7 @@
                 <thead>
                 <tr>
                     <th class="text-center">번호</th>
+                    <th class="text-center">카테고리</th>
                     <th class="text-center">글 제목</th>
                     <th class="text-center">작성일</th>
                     <th class="text-center">조회수</th>
@@ -103,6 +105,7 @@
                 {% for post in recent_posts %}
                 <tr id="{{ post.id }}" class="post_index">
                     <td class="text-center">{{ post.index }}</td>
+                    <td class="text-center">{{ post.category.labebl }}</td>
                     <td>{{ post.title }}&nbsp;&nbsp;<span class="noc">({{ post.noc}})</span></td>
                     <td class="text-center">{{ post.published_date }}</td>
                     <td class="text-center">{{ post.hits }}</td>
