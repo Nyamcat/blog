@@ -38,10 +38,28 @@
         </tr>
         {% endfor %}
         {% else %}
-        <p id="nocomment">1등으로 댓글 입력하기</p>
+        <p class="nocomment">1등으로 댓글 입력하기</p>
         {% endif %}
         </tbody>
     </table>
+
+    {% if comment %}
+    <ul id="commentul">
+        {% for cmt in comment %}
+        <li>
+            <span class="inner">
+                <span class="id">{{ cmt.author }}</span>
+                <span class="reply">답글</span>
+                <span class="delete">삭제</span>
+                <span class="comment">{{ cmt.comment }}</span>
+                <span class="info">{{ cmt.published_date }}&nbsp;|&nbsp;{{ cmt.ip_display }}</span>
+            </span>
+        </li>
+        {% endfor %}
+    </ul>
+    {% else %}
+    <p class="nocomment">1등으로 댓글 입력하기</p>
+    {% endif %}
 
     <script>
 
@@ -63,7 +81,7 @@
         }
     };
 
-    $('.deletecomment').click(function (e) {
+    $('.deletecomment, .delete').click(function (e) {
         var prt = $(this).parent().parent();
         var id = prt.attr('id');
 
@@ -109,7 +127,7 @@
 </div>
 
 <div id="writecommentarea">
-    <div class="w250">
+    <div class="w250 desktop_write_comment">
         <ul>
             <li class="w120" style="float:left; margin-right:10px;">
                 <input type="text" class="cusput w120 md10" name="name" placeholder="이름">
@@ -122,10 +140,21 @@
             </li>
         </ul>
     </div>
-    <div>
+    <div class="desktop_write_comment">
         <textarea class="form-control wp80" name="comment" id = "commenttext" style="resize: none; float:left; margin-right:20px; height:100px;" cols="40" rows="5" placeholder="댓글 남기기"></textarea>
         <input type="submit" class="save btn btn-default form-control" style="float:left; width:15%;  height:100px;" id="submit" value="댓글등록">
     </div>
+
+    <div class="mobile_write_comment">
+        <input type="text" class="form-control" name="mobile_name" placeholder="이름">
+        <input type="password" class="form-control" name="mobile_passwd" placeholder="암호">
+        <input type="text" class="form-control" name="mobile_email" placeholder="이메일">
+    </div>
+    <div class="mobile_write_comment">
+        <textarea class="form-control wp80" name="mobile_comment" id = "mobile_commenttext" cols="40" rows="5" placeholder="댓글 남기기"></textarea>
+        <button type="submit" class="save btn btn-default form-control" id="mobile_submit">댓글 등록</button>
+    </div>
+
     <script>
 
     $('#commenttable > tbody > tr:last').css('border-bottom', 'none');
@@ -142,7 +171,7 @@
         }
     });
 
-    $('#commenttext').on('keyup', function() {
+    $('textarea[name=comment]').on('keyup', function() {
         if($(this).val().length > 150) {
             $(this).val($(this).val().substring(0, 150));
         }
@@ -151,7 +180,16 @@
 
     $('#submit').click(function (e) {
 
-        if ($('#commenttext').val() == ''){
+        if ($('input[name=name]').val() == ''){
+            alert('이름을 입력해주세요');
+            return;
+        }
+        if ($('input[name=passwd]').val() == ''){
+            alert('비밀번호를 입력해주세요');
+            return;
+        }
+
+        if ($('textarea[name=comment]').val() == ''){
             alert('내용을 입력해주세요');
             return;
         }
@@ -161,7 +199,7 @@
             url: '/comment/',
             data: { 'post_id': {{ post.id }}, 'name' : $('input[name=name]').val(), 'email' : $('input[name=email]').val(),
                     'passwd' : $('input[name=passwd]').val(), 'csrfmiddlewaretoken': '{{ csrf_token }}',
-                    'comment' : $('#commenttext').val(), 'type': 'publish'},
+                    'comment' : $('textarea[name=comment]').val(), 'type': 'publish'},
             dataType: "json",
 
             success: function(response){
@@ -172,6 +210,42 @@
             },
         });
     })
+
+
+    $('#mobile_submit').click(function (e) {
+
+        if ($('input[name=mobile_name]').val() == ''){
+            alert('이름을 입력해주세요');
+            return;
+        }
+        if ($('input[name=mobile_passwd]').val() == ''){
+            alert('비밀번호를 입력해주세요');
+            return;
+        }
+
+        if ($('textarea[name=mobile_comment]').val() == ''){
+            alert('내용을 입력해주세요');
+            return;
+        }
+
+        $.ajax({
+            type: "POST",
+            url: '/comment/',
+            data: { 'post_id': {{ post.id }}, 'name' : $('input[name=mobile_name]').val(), 'email' : $('input[name=mobile_email]').val(),
+                    'passwd' : $('input[name=mobile_passwd]').val(), 'csrfmiddlewaretoken': '{{ csrf_token }}',
+                    'comment' : $('textarea[name=mobile_comment]').val(), 'type': 'publish'},
+            dataType: "json",
+
+            success: function(response){
+                    location.reload();
+                },
+                error: function(request, status, error){
+                    alert('실패했습니다.');
+            },
+        });
+    })
+
+
 
     $(document).on('click', '#reply_submit', function(){
 

@@ -1,6 +1,6 @@
 @media (max-device-width: 520px){
     /* HEADER */
-    #head { height:70px; border-bottom: 1px solid lightgray; background: url(../img/mobile-logo.png) no-repeat; background-color:white; background-position: center; width: 100%;  position: fixed; top: 0px; left: 0px; }
+    #head { height:70px; border-bottom: 1px solid lightgray; background: url(../img/mobile-logo.png) no-repeat; background-color:white; background-position: center; width: 100%;  position: fixed; top: 0px; left: 0px; z-index: 9999;}
     #menu_button {float:right; margin:20px 20px; border:none; background:white;}
     #menu_button i { color:#1a222c; }
     ul {padding: 0; list-style: none;}
@@ -53,16 +53,30 @@
     .hashtag { background: #1a222c; padding: 5px 10px 5px 10px; color:white; margin: 20px 10px 0 0;  border: solid 2px #1a222c; border-radius: 10px;}
 
     /* POST */
-    .blog_post .post_box #title_box {height:30px; border-bottom: solid 2px #dadada; padding-bottom:35px; margin:50px 0px 30px 0px;}
-    .blog_post .post_box #title_box #title { text-align:left; padding:10px; font-size:30px; font-weght: 300; margin-bottom:0;}
-    .blog_post .post_box #title_box #category { padding-left: 15px; border-left: 1px solid black; color: gray; text-decoration:none; font-size:15px;}
+    .blog_post .post_box #title_box {height:30px; border-bottom: solid 2px #dadada; margin:50px 0px 30px 0px;}
+    .blog_post .post_box #title_box #title { text-align:left; padding:10px; font-size:15px; font-weght: 300; margin-bottom:0;}
+    .blog_post .post_box #title_box #category { padding-left: 15px; border-left: 1px solid black; color: gray; text-decoration:none; }
     .blog_post .post_box .post_content {padding:10px;}
     .blog_post .post_box .post_content #post_head img { }
     .blog_post .post_box .post_content #post_head p { color:gray; margin: 0;}
     .blog_post .post_box .post_content #post_head #tag-box {margin-top:50px;}
-    .blog_post .post_box .post_content .hashtag { background: #1a222c; padding: 5px 10px 5px 10px; color:white; margin: 20px 10px 0 0;  border: solid 2px #1a222c; border-radius: 8px; font-size:20px;}
-    .blog_post .post_box .post_content #post_body {margin-top:50px;}
-    .blog_post .post_box .post_content #post_body pre {font-size:25px;}
+    .blog_post .post_box .post_content .hashtag { background: #1a222c; padding: 5px 10px 5px 10px; color:white; margin: 20px 10px 0 0;  border: solid 2px #1a222c; border-radius: 8px; }
+    .blog_post .post_box .post_content #post_body {margin: 50px auto; border-bottom: 2px solid lightgray; padding-bottom:30px; }
+
+
+    #commentarea .nocomment { text-align: center;}
+    #commentarea #commenttable {display:none;}
+    #commentarea #commentul {}
+    #commentarea #commentul li {}
+    #commentarea #commentul li .inner {padding: 6px 10px 8px 10px; border-bottom: 1px solid lightgray; display:block; position:relative; height:auto; }
+    #commentarea #commentul li .id { font-weight:bold; display:inline; padding:0;}
+    #commentarea #commentul li .reply { position:absolute; right:12%; color:blue;}
+    #commentarea #commentul li .delete { position:absolute; right:2%; color:red;}
+    #commentarea #commentul li .comment { display:block; padding:10px 0px; line-height: 20px; }
+    #commentarea #commentul li .info { color:lightgray; font-size:14px; }
+    #writecommentarea .desktop_write_comment {display:none;}
+    #writecommentarea .mobile_write_comment input {margin:5px 0px;}
+    #writecommentarea .mobile_write_comment button {margin:5px 0px; color:white; background: #1a222c;}
 
     /* TAG SEARCH RESULT */
     #indexsection .search_result {padding-top:50px;}

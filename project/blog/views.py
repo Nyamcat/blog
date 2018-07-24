@@ -203,7 +203,7 @@ class SearchView(ListView):
 
         context['categories'] = categories
         context['classify'] = classify
-        context['description'] = self.keyword + '검색 결과는 ' + str(self.count) + '개 입니다.'
+        context['description'] = self.keyword + '검색 결과'
 
         return context
 

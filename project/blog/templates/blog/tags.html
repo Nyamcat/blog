@@ -9,6 +9,7 @@
                 <h3><strong>{{keyword}}</strong> Tagged Post </h3>
                 <table class="table" id="desktop_post_list">
                     <colgroup>
+                        <col style="width: 5%; text-align: center;">
                         <col style="width: 15%; text-align: center;">
                         <col style="">
                         <col style="width: 15%;">
@@ -17,6 +18,7 @@
                     <thead>
                     <tr>
                         <th class="text-center">번호</th>
+                        <th class="text-center">카테고리</th>
                         <th class="text-center">글 제목</th>
                         <th class="text-center">작성일</th>
                         <th class="text-center">조회수</th>
@@ -26,6 +28,7 @@
                     {% for p in summernote_list %}
                     <tr id="{{ p.id }}" class="post_index">
                         <td class="text-center">{{ p.index }}</td>
+                        <td class="text-center">{{ p.category.label }}</td>
                         <td>{{ p.title }}&nbsp;&nbsp;<span class="noc">({{ p.noc}})</span></td>
                         <td class="text-center">{{ p.published_date }}</td>
                         <td class="text-center">{{ p.hits }}</td>
@@ -55,7 +58,7 @@
         <div class="text-center">
             <ul class="pagination">
                 {% if page_obj.has_previous %}
-                <li><a href="?page={{ page_obj.previous_page_number }}">&laquo;</a></li>
+                <li><a href="?page={{ page_obj.previous_page_number }}&taglist={{ keyword }}">&laquo;</a></li>
                 {% else %}
                 <li class="disabled"><span>&laquo;</span></li>
                 {% endif %}
@@ -63,11 +66,11 @@
                 {% if page_obj.number == i %}
                 <li class="active"><span>{{ i }} <span class="sr-only">(current)</span></span></li>
                 {% else %}
-                <li><a href="?page={{ i }}">{{ i }}</a></li>
+                <li><a href="?page={{ i }}&taglist={{ keyword }}">{{ i }}</a></li>
                 {% endif %}
                 {% endfor %}
                 {% if page_obj.has_next %}
-                <li><a href="?page={{ page_obj.next_page_number }}">&raquo;</a></li>
+                <li><a href="?page={{ page_obj.next_page_number }}&taglist={{ keyword }}">&raquo;</a></li>
                 {% else %}
                 <li class="disabled"><span>&raquo;</span></li>
                 {% endif %}
