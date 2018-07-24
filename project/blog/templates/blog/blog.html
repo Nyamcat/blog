@@ -115,7 +115,7 @@
                 {% for post in recent_posts %}
                 <li class="post_index" id="{{ post.id }}">
                     <span class="title">{{ post.title }}</span>&nbsp;<span class="title">({{ post.noc}})</span>
-                    <br><br>
+                    <br>
                     <span class="info">카테고리 : {{post.category.label}} | 조회수 : {{post.hits}} | 작성일 : {{ post.published_date }}</span>
                 </li>
                 {% endfor %}

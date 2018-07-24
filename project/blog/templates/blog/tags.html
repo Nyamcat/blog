@@ -38,7 +38,7 @@
                     {% for p in summernote_list %}
                     <li class="post_index" id="{{ p.id }}">
                         <span class="title">{{ p.title }}</span>&nbsp;<span class="title">({{ p.noc}})</span>
-                        <br><br>
+                        <br>
                         <span class="info">카테고리 : {{p.category.label}} | 조회수 : {{p.hits}} | 작성일 : {{ p.published_date }}</span>
                     </li>
                     {% endfor %}

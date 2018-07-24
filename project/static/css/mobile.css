@@ -1,6 +1,6 @@
 @media (max-device-width: 520px){
     /* HEADER */
-    #head { height:150px; border-bottom: 1px solid lightgray; background: url(../img/mobile-logo.png) no-repeat; background-color:white; background-position: center; width: 100%;  position: fixed; top: 0px; left: 0px; }
+    #head { height:70px; border-bottom: 1px solid lightgray; background: url(../img/mobile-logo.png) no-repeat; background-color:white; background-position: center; width: 100%;  position: fixed; top: 0px; left: 0px; }
     #menu_button {float:right; margin:20px 20px; border:none; background:white;}
     #menu_button i { color:#1a222c; }
     ul {padding: 0; list-style: none;}
@@ -13,27 +13,25 @@
     .sidebar #personal_data #sns_list { list-style: none; text-align: left; }
     .sidebar #personal_data #sns_list li{ color: white; margin-top:25px; }
     .sidebar #personal_data #sns_list li span { margin-left: 10px; font-size:30px; }
-    #sidebar_icon { font-size: 4em; }
 
     /* MAIN PAGE */
     #indexsection { margin: auto; width:95%; padding-top:50px;}
-    #indexsection .indexcontent h1 { margin-top:150px; margin-bottom: 50px; border-bottom: solid 2px #dadada; padding-bottom:10px; margin-bottom:30px; font-size:70px; }
-    #indexsection .indexcontent h3 { font-size:40px; }
-    #indexsection .indexcontent h4 { font-size:30px; }
+    #indexsection .indexcontent h1 { margin-top:50px; margin-bottom: 50px; border-bottom: solid 2px #dadada; padding-bottom:10px; margin-bottom:30px; }
+    #indexsection .indexcontent h3 {  }
+    #indexsection .indexcontent h4 {  }
 
     #indexsection #search #search_for_title,
-    #indexsection #search #search_for_tags { width: 100%; margin: 50px auto; }
+    #indexsection #search #search_for_tags { width: 100%; margin: 20px auto; }
 
     #indexsection #search #search_for_title input,
-    #indexsection #search #search_for_tags input { height: 50px; width: 80%; margin-right: 20px; border: solid 1px #b1b1b1; border-radius: 5px; padding: 0 15px; outline:none; font-size:25px;}
+    #indexsection #search #search_for_tags input { height:25px; width: 80%; border: solid 1px #b1b1b1; border-radius: 5px; padding: 0 15px; outline:none; }
     #indexsection #search #search_for_title button,
-    #indexsection #search #search_for_tags button { width: 15%; height:50px; border: solid 1px orange; border-radius: 5px; background: orange; color: white; font-weight: 550; font-size:25px;}
+    #indexsection #search #search_for_tags button { height:25px;  width: 15%; border: solid 1px orange; border-radius: 5px; background: orange; color: white; font-weight: 550; }
 
     #indexsection #search #search_for_tags #search_tags {margin-bottom:30px;}
     #indexsection #search #search_for_tags .post_hashtag { background: #1a222c; padding: 10px 15px 10px 15px; color:white; margin: 20px 20px 0 0; border-radius: 10px; font-size:25px;}
     #indexsection #search #search_for_tags .post_hashtag a {color:white; margin-left:10px; text-decoration: none; cursor:pointer;}
     #indexsection #search ul li { margin-top:35px; }
-    #indexsection #search ul li span { font-size:25px; }
 
     #indexsection #guestbook {display:none;}
     /*
@@ -45,35 +43,33 @@
     */
 
     #indexsection #recent_posts #desktop_post_list {display:none;}
-    #indexsection #recent_posts #showall {float:right; color:1a222c; margin-right:10px; margin-bottom:20px; font-size:25px;}
-    #indexsection #recent_posts ul {margin-top: 100px;}
-    #indexsection #recent_posts ul li {margin-top: 50px; border-bottom: 1px solid gray; padding-bottom: 25px;}
-    #indexsection #recent_posts ul li .title {font-size:35px;}
-    #indexsection #recent_posts ul li .info {font-size:25px; color:lightgray;}
+    #indexsection #recent_posts #showall {float:right; color:1a222c; margin-right:10px; margin-bottom:20px; font-size:18px;}
+    #indexsection #recent_posts ul {margin-top: 80px;}
+    #indexsection #recent_posts ul li {margin-top: 20px; border-bottom: 1px solid gray; padding-bottom: 20px;}
+    #indexsection #recent_posts ul li .title {font-size:15px;}
+    #indexsection #recent_posts ul li .info {font-size:12px; color:lightgray;}
 
     /* HASHTAG */
-    .hashtag { background: #1a222c; padding: 10px 15px 10px 15px; color:white; margin: 20px 10px 0 0;  border: solid 2px #1a222c; border-radius: 10px; font-size:25px;}
+    .hashtag { background: #1a222c; padding: 5px 10px 5px 10px; color:white; margin: 20px 10px 0 0;  border: solid 2px #1a222c; border-radius: 10px;}
 
     /* POST */
-    .blog_post .post_box { padding-top:100px; }
-    .blog_post .post_box #title_box {height:30px; border-bottom: solid 2px #dadada; padding-bottom:35px; margin:100px 0px 30px 0px;}
+    .blog_post .post_box #title_box {height:30px; border-bottom: solid 2px #dadada; padding-bottom:35px; margin:50px 0px 30px 0px;}
     .blog_post .post_box #title_box #title { text-align:left; padding:10px; font-size:30px; font-weght: 300; margin-bottom:0;}
-    .blog_post .post_box #title_box #category { padding-left: 15px; border-left: 1px solid black; color: gray; text-decoration:none; font-size:20px;}
-    .blog_post .post_box .post_content #post_head img {width:25px;}
-    .blog_post .post_box .post_content #post_head p {font-size:25px; color:gray; margin: 0;}
+    .blog_post .post_box #title_box #category { padding-left: 15px; border-left: 1px solid black; color: gray; text-decoration:none; font-size:15px;}
+    .blog_post .post_box .post_content #post_head img { }
+    .blog_post .post_box .post_content #post_head p { color:gray; margin: 0;}
     .blog_post .post_box .post_content #post_head #tag-box {margin-top:50px;}
     .blog_post .post_box .post_content .hashtag { background: #1a222c; padding: 5px 10px 5px 10px; color:white; margin: 20px 10px 0 0;  border: solid 2px #1a222c; border-radius: 8px; font-size:20px;}
     .blog_post .post_box .post_content #post_body {margin-top:50px;}
-    .blog_post .post_box .post_content #post_body pre {font-size:25px; }
-    .blog_post .post_box .post_content #post_body p {font-size:150%;}
+    .blog_post .post_box .post_content #post_body pre {font-size:25px;}
 
     /* TAG SEARCH RESULT */
-    #indexsection .search_result {padding-top:150px;}
+    #indexsection .search_result {padding-top:50px;}
     #indexsection .search_result #desktop_post_list {display:none;}
-    #indexsection .search_result ul {margin: 100px auto ; }
-    #indexsection .search_result ul li {margin-top: 50px; border-bottom: 1px solid gray; padding-bottom: 25px;}
-    #indexsection .search_result ul li .title {font-size:35px;}
-    #indexsection .search_result ul li .info {font-size:25px; color:lightgray;}
+    #indexsection .search_result ul {margin: 50px auto ; }
+    #indexsection .search_result ul li {margin-top: 20px; border-bottom: 1px solid gray; padding-bottom: 20px;}
+    #indexsection .search_result ul li .title {font-size:15px;}
+    #indexsection .search_result ul li .info {font-size:12px; color:lightgray;}
 
     /* PAGINATION */
     .pagination>li>a,
