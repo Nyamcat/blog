@@ -103,6 +103,8 @@
     .noc {color: gray; font-size:14px;}
     .blog_main #write_button {float:right; margin:20px;}
     .blog_main #write_button button {  background:transparent; border:none; }
+    #commentul,
+    .mobile_write_comment {display:none;}
     #commenttable { width:100%; margin:0 0 100px 0; font-size:13px;}
     #commenttable tr { height: 50px; border-bottom: 1px solid lightgray;}
     #commenttable:last-child { border-bottom:none;}

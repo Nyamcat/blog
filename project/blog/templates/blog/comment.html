@@ -47,12 +47,27 @@
     <ul id="commentul">
         {% for cmt in comment %}
         <li id="{{cmt.id}}">
+            {% if cmt.depth > 1 %}
+            <span class="reply_inner">
+                <span><img src="/static/img/reply.png"></span>
+            {% else %}
             <span class="inner">
+            {% endif %}
+            {% if cmt.delete == 'Y' %}
+
                 <span class="id">{{ cmt.author }}</span>
-                <span class="reply">답글</span>
+                <span class="comment">삭제된 댓글입니다.</span>
+                <span class="info">{{ cmt.published_date }}&nbsp;|&nbsp;{{ cmt.ip_display }}</span>
+
+            {% else %}
+                <span class="id">{{ cmt.author }}</span>
+                {% if cmt.depth == 1 %}
+                <span class="mobile_reply">답글</span>
+                {% endif %}
                 <span class="deletecomment">삭제</span>
                 <span class="comment">{{ cmt.comment }}</span>
                 <span class="info">{{ cmt.published_date }}&nbsp;|&nbsp;{{ cmt.ip_display }}</span>
+            {% endif %}
             </span>
         </li>
         {% endfor %}
@@ -85,8 +100,6 @@
     $('.deletecomment').click(function (e) {
         var prt = $(this).parent().parent();
         var id = prt.attr('id');
-
-        console.log(id);
 
         prpt = prompt('비밀번호를 입력해주세요.', '')
         $.ajax({
@@ -126,6 +139,22 @@
         <td style="border-left:10px solid transparent;" ><input type="submit" class="save btn btn-default form-control" style="float:left; height:54px; width:95%;" id="reply_submit" value="댓글등록"></td></form>\
         </tr>')
     });
+
+    $('.mobile_reply').click(function (){
+        $('#reply_li').remove();
+
+        li = $(this).parent().parent();
+
+        li.after('<li id="reply_li"><form method="POST" action="/comment/">\
+        <input type="hidden" name="parent" value="'+ li.attr('id') +'">\
+        <input class="form-control" type="text" name="mobile_reply_name" style="float:left;" placeholder="이름">\
+        <input class="form-control" type="password" name="mobile_reply_passwd" placeholder="암호">\
+        <input class="form-control" type="text" name="mobile_reply_email" placeholder="이메일"></td>\
+        <textarea class="form-control" name="mobile_reply_comment" cols="40" rows="5" placeholder="답글 남기기"></textarea>\
+        <button type="button" class="save btn btn-default form-control" id="mobile_reply_submit">답글 등록</button>\
+        </li>')
+    });
+
 </script>
 </div>
 
@@ -217,6 +246,16 @@
 
     $(document).on('click', '#reply_submit', function(){
 
+        if ($('input[name=reply_name]').val() == ''){
+            alert('이름을 입력해주세요');
+            return;
+        }
+
+        if ($('input[name=reply_passwd]').val() == ''){
+            alert('비밀번호를 입력해주세요');
+            return;
+        }
+
         if ($('#replytext').val() == ''){
             alert('내용을 입력해주세요');
             return;
@@ -283,6 +322,41 @@
             data: { 'post_id': {{ post.id }}, 'name' : $('input[name=mobile_name]').val(), 'email' : $('input[name=mobile_email]').val(),
                     'passwd' : $('input[name=mobile_passwd]').val(), 'csrfmiddlewaretoken': '{{ csrf_token }}',
                     'comment' : $('textarea[name=mobile_comment]').val(), 'type': 'publish'},
+            dataType: "json",
+
+            success: function(response){
+                    location.reload();
+                },
+                error: function(request, status, error){
+                    alert('실패했습니다.');
+            },
+        });
+    })
+
+
+    $(document).on('click', '#mobile_reply_submit', function(){
+
+
+        if ($('input[name=mobile_reply_name]').val() == ''){
+            alert('이름을 입력해주세요');
+            return;
+        }
+        if ($('input[name=mobile_reply_passwd]').val() == ''){
+            alert('비밀번호를 입력해주세요');
+            return;
+        }
+
+        if ($('textarea[name=mobile_reply_comment]').val() == ''){
+            alert('내용을 입력해주세요');
+            return;
+        }
+
+        $.ajax({
+            type: "POST",
+            url: '/comment/',
+            data: { 'post_id': {{ post.id }}, 'name' : $('input[name=mobile_reply_name]').val(),
+                    'passwd' : $('input[name=mobile_reply_passwd]').val(), 'csrfmiddlewaretoken': '{{ csrf_token }}', 'email' : $('input[name=mobile_reply_email]').val(),
+                    'comment' : $('textarea[name=mobile_reply_comment]').val(), 'type': 'reply', 'parent': $('input[name=parent]').val()},
             dataType: "json",
 
             success: function(response){
