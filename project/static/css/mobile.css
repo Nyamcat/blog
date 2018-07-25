@@ -33,14 +33,8 @@
     #indexsection #search #search_for_tags .post_hashtag a {color:white; margin-left:10px; text-decoration: none; }
     #indexsection #search ul li { margin-top:35px; }
 
-    #indexsection #guestbook {display:none;}
-    /*
-    #indexsection #nocomment {color:gray;}
-
-    #indexsection #commenttable { width:100%; margin:50px 0 100px 0; font-size:25px;}
-    #indexsection #commenttable tr { border-bottom: 1px solid lightgray; height:80px; }
-    #indexsection #commenttable .comment-author span {float:left; margin-left: 20px;}
-    */
+    #indexsection #guestbook tr {display:none;}
+    #indexsection #guestbook #nocomment {text-align:center; color:gray;}
 
     #indexsection #recent_posts #desktop_post_list {display:none;}
     #indexsection #recent_posts #showall {float:right; color:1a222c; margin-right:10px; margin-bottom:20px; font-size:18px;}
