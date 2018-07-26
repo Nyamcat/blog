@@ -1,4 +1,5 @@
 from django.db import models
+from django.urls import reverse
 from django_summernote import models as summer_model
 from django_summernote import fields as summer_fields
 
@@ -37,6 +38,9 @@ class SummerNote(summer_model.Attachment):
     tag3 = models.CharField(blank=True, null=True, max_length=50)
     tag4 = models.CharField(blank=True, null=True, max_length=50)
     tag5 = models.CharField(blank=True, null=True, max_length=50)
+
+    def get_absolute_url(self):
+        return reverse('post', args=[str(self.id)])
 
 
 class Comment(models.Model):
