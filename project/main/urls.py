@@ -9,8 +9,8 @@ from .views import IndexView, AboutView
 from .sitemaps import SummerSitemap, StaticViewSitemap
 
 sitemaps= {
-    'posts' : SummerSitemap,
-    'static': StaticViewSitemap
+    'static': StaticViewSitemap,
+    'posts' : SummerSitemap
 }
 
 
