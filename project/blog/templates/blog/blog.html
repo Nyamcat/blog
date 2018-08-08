@@ -106,7 +106,7 @@
                 <tr id="{{ post.id }}" class="post_index">
                     <td class="text-center">{{ post.index }}</td>
                     <td class="text-center">{{ post.category.label }}</td>
-                    <td>{{ post.title }}&nbsp;&nbsp;<span class="noc">({{ post.noc}})</span></td>
+                    <td><a href="/post/{{post.id}}">{{ post.title }}</a>&nbsp;&nbsp;<span class="noc">({{ post.noc}})</span></td>
                     <td class="text-center">{{ post.published_date }}</td>
                     <td class="text-center">{{ post.hits }}</td>
                 </tr>
@@ -128,9 +128,9 @@
     </div>
     <script>
 
-            $('.post_index').click(function() {
+            /* $('.post_index').click(function() {
                 location.href = "/post/" + $(this).attr('id');
-            });
+            }); */
 
             $('.hashtag').click(function() {
                 url = '/tags/?taglist=' + $(this).text();

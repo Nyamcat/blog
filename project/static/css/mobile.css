@@ -60,6 +60,7 @@
 
     #commentarea .nocomment { text-align: center;}
     #commentarea #commenttable {display:none;}
+    #commentarea #tablenocomment {display:none;}
     #commentarea #commentul {}
     #commentarea #commentul li {}
     #commentarea #commentul li .inner,

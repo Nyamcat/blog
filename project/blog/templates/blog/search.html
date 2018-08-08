@@ -29,7 +29,7 @@
                     <tr id="{{ p.id }}" class="post_index">
                         <td class="text-center">{{ p.index }}</td>
                         <td class="text-center">{{ p.category.label }}</td>
-                        <td>{{ p.title }}&nbsp;&nbsp;<span class="noc">({{ p.noc}})</span></td>
+                        <td><a href="/post/{{p.id}}">{{ p.title }}</a>&nbsp;&nbsp;<span class="noc">({{ p.noc}})</span></td>
                         <td class="text-center">{{ p.published_date }}</td>
                         <td class="text-center">{{ p.hits }}</td>
                     </tr>
@@ -80,9 +80,6 @@
 </div>
 
     <script>
-        $('.post_index').click(function() {
-            location.href = "/post/" + $(this).attr('id');
-        });
         $('head title').text( '{{keyword}} 검색 결과 :: 코딩웨일')
         $('meta[name=description]').attr('content', '{{ description }}')
     </script>
