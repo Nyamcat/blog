@@ -127,10 +127,9 @@
         </div>
     </div>
     <script>
-
-            /* $('.post_index').click(function() {
-                location.href = "/post/" + $(this).attr('id');
-            }); */
+            $('#mobile_post_list .post_index').click(function(){
+                location.href = '/post/' + $(this).attr('id');
+            });
 
             $('.hashtag').click(function() {
                 url = '/tags/?taglist=' + $(this).text();

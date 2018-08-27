@@ -82,6 +82,11 @@
     <script>
         $('head title').text( '{{keyword}} 검색 결과 :: 코딩웨일')
         $('meta[name=description]').attr('content', '{{ description }}')
+
+        $('#mobile_post_list .post_index').click(function(){
+            location.href = '/post/' + $(this).attr('id');
+        });
+
     </script>
 </section>
 

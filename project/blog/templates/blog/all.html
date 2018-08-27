@@ -81,6 +81,10 @@
     <script>
         $('head title').text( '전체글보기 :: 코딩웨일')
         $('meta[name=description]').attr('content', '전체글보기')
+
+        $('#mobile_post_list .post_index').click(function(){
+            location.href = '/post/' + $(this).attr('id');
+        });
     </script>
 </section>
 
