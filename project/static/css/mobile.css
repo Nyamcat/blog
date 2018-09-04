@@ -56,6 +56,7 @@
     .blog_post .post_box .post_content #post_head #tag-box {margin-top:50px;}
     .blog_post .post_box .post_content .hashtag { background: #1a222c; padding: 5px 10px 5px 10px; color:white; margin: 20px 10px 0 0;  border: solid 2px #1a222c; border-radius: 8px; }
     .blog_post .post_box .post_content #post_body {margin: 50px auto; border-bottom: 2px solid lightgray; padding-bottom:30px; }
+    .blog_post .post_box .post_content #post_body img {max-width:100%;}
 
 
     #commentarea .nocomment { text-align: center;}

@@ -147,6 +147,7 @@
     .blog_post .post_box #title_box #category { padding-left: 15px; border-left: 1px solid black; color: gray; text-decoration:none;}
     .blog_post .post_box .post_content {padding:10px;}
     .blog_post .post_box .post_content #post_body {margin:50px 0px 100px;}
+    .blog_post .post_box .post_content #post_body img {max-width:100%;}
 
     /* 글쓰기 */
 

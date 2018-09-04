@@ -21,7 +21,7 @@ def date_parse(date):
 
 class AllView(ListView):
     template_name = 'blog/all.html'
-    paginate_by = 10
+    paginate_by = 20
 
     def get_queryset(self):
         result = SummerNote.objects.filter(index__gte=1).order_by('-published_date')
@@ -162,7 +162,7 @@ class PostView(View):
 
 class BlogView(View):
     def get(self, request):
-        recent_posts = SummerNote.objects.filter(index__gte=1).order_by('-published_date')[:5]
+        recent_posts = SummerNote.objects.filter(index__gte=1).order_by('-published_date')[:20]
         tags = HashTag.objects.order_by('-nou')[:3]
         categories = Category.objects.filter(use='Y')
         classify = Classify.objects.all()
@@ -180,7 +180,7 @@ class BlogView(View):
 
 class SearchView(ListView):
     template_name = 'blog/search.html'
-    paginate_by = 10
+    paginate_by = 20
 
     def get_queryset(self):
         self.keyword = self.request.GET['keyword']
@@ -210,7 +210,7 @@ class SearchView(ListView):
 
 class TagView(ListView):
     template_name = 'blog/tags.html'
-    paginate_by = 10
+    paginate_by = 20
 
     def get_queryset(self):
 
@@ -257,7 +257,7 @@ class TagView(ListView):
 
 class CategoryView(ListView):
     template_name = 'blog/category.html'
-    paginate_by = 10
+    paginate_by = 20
 
     def get_queryset(self):
         self.keyword = self.kwargs['keyword']
