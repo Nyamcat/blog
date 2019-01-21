@@ -12,11 +12,19 @@
         {% if cmt.depth > 1 %}
         <tr class="reply_comment {{cmt.parent}}" id="{{ cmt.id }}">
             <div>
-                <td class="comment-author"><span><img src="/static/img/reply.png"></span><span class="reply_author">{{ cmt.author }}</span></td>
+                <td class="comment-author"><span><img class="reply_img" src="/static/img/reply.png"></span><span class="reply_author">{{ cmt.author }}
+                {% if cmt.user.is_superuser %}
+                    <span><img class="admin_img" src="/static/img/admin.png"></span>
+                {% endif %}
+                </span></td>
                 {% else %}
         <tr class="comment {{cmt.parent}}" id="{{ cmt.id }}">
             <div>
-                <td class="comment-author"><span style="float:left; margin-left:40px;">{{ cmt.author }}</span></td>
+                <td class="comment-author"><span style="float:left; margin-left:40px;">{{ cmt.author }}
+                {% if cmt.user.is_superuser %}
+                    <span><img class="admin_img" src="/static/img/admin.png"></span>
+                {% endif %}
+                </span></td>
                 {% endif %}
 
                 {% if cmt.delete == 'Y' %}

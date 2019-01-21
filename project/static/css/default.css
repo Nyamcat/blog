@@ -113,7 +113,8 @@
 
     .ipaddr {color:lightgray; font-size:11px;}
     .comment-author {text-align:center; font-weight:bold;}
-    .comment-author span {text-align:center; font-weight:bold; float:left;}
+    .comment-author span {text-align:center; font-weight:bold;}
+    .comment-author .admin_img {vertical-align:top; padding: 2px 0;}
     .comment-date {text-align:center;}
     .comment-date span {display:block;}
     .comment-date .deletecomment { color: red; }
@@ -121,7 +122,7 @@
     .comment-date .deletecomment:hover,
     .comment-date .reply:hover { cursor: pointer; }
     #writecommentarea {height:265px; padding:40px 20px 40px 40px; border: solid 1px #dadada; border-radius:10px;}
-    .reply_comment img {float:left; margin-left:40px; margin-right:5px}
+    .reply_comment .reply_img {float:left; margin-left:40px; margin-right:5px}
     .reply_comment .reply_author {float:left;}
     #nocomment { font-size:15px; text-align: center; color:gray; width: 100%; }
     #tag-box {margin-top:30px;}

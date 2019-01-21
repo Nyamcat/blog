@@ -307,6 +307,10 @@ class CommentView(View):
             cmt.save()
 
             cmt.parent = cmt.id
+
+            if self.request.user.is_active:
+                cmt.user = self.request.user
+
             cmt.save()
 
             SummerNote.objects.filter(id=request.POST.get('post_id')).update(noc=post.noc + 1)
@@ -317,7 +321,6 @@ class CommentView(View):
         elif type == 'reply':
             post = SummerNote.objects.get(id=request.POST.get('post_id'))
             depth = Comment.objects.filter(parent=self.request.POST.get('parent', 0)).aggregate(max=Max('depth'))['max'] + 1
-
 
             cmt = Comment(author=self.request.POST['name'], published_date=timezone.now(),
                           comment=self.request.POST['comment'], email=self.request.POST['email'],

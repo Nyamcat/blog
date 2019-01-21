@@ -1,3 +1,4 @@
+from django.contrib.auth.models import User
 from django.db import models
 from django.urls import reverse
 from django_summernote import models as summer_model
@@ -50,6 +51,7 @@ class Comment(models.Model):
     comment = models.CharField(max_length=150, null=False, default='')
     email = models.CharField(max_length=150, null=False, default='')
     author = models.CharField(max_length=9, null=False, default='')
+    user = models.ForeignKey(User, default=None, null=True)
     password = models.CharField(max_length=300, null=False, default='')
     depth = models.IntegerField(null=True)
     parent = models.IntegerField(null=True)
