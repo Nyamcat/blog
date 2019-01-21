@@ -64,11 +64,21 @@
             {% if cmt.delete == 'Y' %}
 
                 <span class="id">{{ cmt.author }}</span>
+
+                {% if cmt.user.is_superuser %}
+                    <span><img class="admin_img" src="/static/img/admin.png"></span>
+                {% endif %}
+
                 <span class="comment">삭제된 댓글입니다.</span>
                 <span class="info">{{ cmt.published_date }}&nbsp;|&nbsp;{{ cmt.ip_display }}</span>
 
             {% else %}
                 <span class="id">{{ cmt.author }}</span>
+
+                {% if cmt.user.is_superuser %}
+                    <span><img class="admin_img" src="/static/img/admin.png"></span>
+                {% endif %}
+
                 {% if cmt.depth == 1 %}
                 <span class="mobile_reply">답글</span>
                 {% endif %}
