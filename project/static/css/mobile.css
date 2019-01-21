@@ -73,6 +73,7 @@
     #commentarea #commentul li .info { color:lightgray; font-size:14px; }
     #commentarea #commentul li .reply_inner .comment,
     #commentarea #commentul li .reply_inner .info { padding-left: 15px; }
+    #commentarea .admin_img {vertical-align:top; padding:2px 0px;}
 
     #writecommentarea .desktop_write_comment {display:none;}
     #writecommentarea .mobile_write_comment input,
