@@ -19,6 +19,7 @@ def date_parse(date):
     return date
 
 
+# 전체글보기
 class AllView(ListView):
     template_name = 'blog/all.html'
     paginate_by = 20
@@ -44,6 +45,7 @@ class AllView(ListView):
         return context
 
 
+# 방명록
 class GuestBookView(View):
     def get(self, request):
         try:
@@ -63,6 +65,7 @@ class GuestBookView(View):
         return render(request, 'blog/guestbook.html', context)
 
 
+# 글쓰기
 class WriteView(View):
     def get(self, request):
         form = PostForm()
@@ -116,19 +119,27 @@ class WriteView(View):
         return redirect('blog')
 
 
+# 게시글
 class PostView(View):
     def get(self, request, post_id):
+        ip = get_ip(self.request)
+        post = get_object_or_404(SummerNote, attachment_ptr_id=post_id)
+        category = get_object_or_404(Category, id=post.category_id)
+        comment = Comment.objects.filter(post=post_id, full_delete='N').order_by('parent', 'depth')
+
         try:
-            post = SummerNote.objects.get(attachment_ptr_id=post_id)
-            SummerNote.objects.filter(attachment_ptr_id=post_id).update(hits=post.hits + 1)
-            category = Category.objects.get(id=post.category_id)
-            comment = Comment.objects.filter(post=post_id, full_delete='N').order_by('parent', 'depth')
+            hits = HitCount.objects.get(ip=ip, post=post)
         except:
-            raise Http404
+            hits = HitCount(ip=ip, post=post)
+            hits.save()
+        else:
+            if not hits.date == timezone.now().date():
+                SummerNote.objects.filter(attachment_ptr_id=post_id).update(hits=post.hits + 1)
+                hits.date = timezone.now()
 
         tag_list = []
 
-        if (post.hashtag == ''):
+        if post.hashtag == '':
             post.hashtag = None
 
         try:
@@ -147,7 +158,7 @@ class PostView(View):
         context['categories'] = categories
         context['classify'] = classify
 
-
+        # desc 태그
         cleaner = re.compile('<.*?>')
         desc = re.sub(cleaner, '', post.summer_field)
         desc = desc.replace('&lt;', '<')
@@ -160,6 +171,7 @@ class PostView(View):
         return render(request, 'blog/post.html', context)
 
 
+# 블로그 메인화면
 class BlogView(View):
     def get(self, request):
         recent_posts = SummerNote.objects.filter(index__gte=1).order_by('-published_date')[:20]
@@ -178,6 +190,7 @@ class BlogView(View):
         return render(request, 'blog/blog.html', context)
 
 
+# 검색
 class SearchView(ListView):
     template_name = 'blog/search.html'
     paginate_by = 20
@@ -208,6 +221,7 @@ class SearchView(ListView):
         return context
 
 
+# 태그 검색
 class TagView(ListView):
     template_name = 'blog/tags.html'
     paginate_by = 20
@@ -255,6 +269,7 @@ class TagView(ListView):
         return context
 
 
+# 카테고리 검색
 class CategoryView(ListView):
     template_name = 'blog/category.html'
     paginate_by = 20
@@ -290,6 +305,7 @@ class CategoryView(ListView):
         return context
 
 
+# 댓글
 class CommentView(View):
     def post(self, request):
         type = self.request.POST.get('type')
@@ -370,4 +386,3 @@ class CommentView(View):
                 context = {'message': 'fail'}
 
             return HttpResponse(json.dumps(context), content_type="application/json")
-

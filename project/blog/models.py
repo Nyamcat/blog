@@ -1,6 +1,7 @@
 from django.contrib.auth.models import User
 from django.db import models
 from django.urls import reverse
+from django.utils import timezone
 from django_summernote import models as summer_model
 from django_summernote import fields as summer_fields
 
@@ -12,6 +13,7 @@ class HashTag(models.Model):
     nou = models.IntegerField(blank=True, null=True, default=1)
 
 
+# 메뉴 구분
 class Classify(models.Model):
     title = models.CharField(blank=True, null=True, max_length=50)
 
@@ -58,3 +60,9 @@ class Comment(models.Model):
     published_date = models.DateTimeField(blank=True, null=True)
     delete = models.CharField(max_length=2, default='N')
     full_delete = models.CharField(max_length=2, default='N')
+
+
+class HitCount(models.Model):
+    ip = models.CharField(max_length=15, default=None, null=True)
+    post = models.ForeignKey(SummerNote, default=None, null=True)
+    date = models.DateField(default=timezone.now(), null=True, blank=True)
