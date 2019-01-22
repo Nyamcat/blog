@@ -1,3 +1,4 @@
+{% load blog_extras %}
 <div id="commentarea">
     <table id="commenttable">
         <colgroup>
@@ -156,6 +157,10 @@
         <td><textarea class="form-control wp100" name="reply_comment" id = "replytext" style="resize: none; float:left; margin-right:20px; " placeholder="댓글 남기기"></textarea></td>\
         <td style="border-left:10px solid transparent;" ><input type="submit" class="save btn btn-default form-control" style="float:left; height:54px; width:95%;" id="reply_submit" value="댓글등록"></td></form>\
         </tr>')
+
+        {% if user.is_authenticated %}
+            $('input[name=reply_name]').val('{{user|get_full_name}}')
+        {% endif %}
     });
 
     $('.mobile_reply').click(function (){
@@ -171,6 +176,10 @@
         <textarea class="form-control" name="mobile_reply_comment" cols="40" rows="5" placeholder="답글 남기기"></textarea>\
         <button type="button" class="save btn btn-default form-control" id="mobile_reply_submit">답글 등록</button>\
         </li>')
+
+        {% if user.is_authenticated %}
+            $('input[name=mobile_reply_name]').val('{{user|get_full_name}}')
+        {% endif %}
     });
 
 </script>
@@ -388,3 +397,10 @@
 
     </script>
 </div>
+
+
+<script>
+    {% if user.is_authenticated %}
+        $('input[name=name], input[name=mobile_name]').val('{{user|get_full_name}}')
+    {% endif %}
+</script>
