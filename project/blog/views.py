@@ -140,6 +140,8 @@ class PostView(View):
 
         else:
             if not hits.date == timezone.now().date():
+                print(hits.date)
+                print(timezone.now().date())
                 print('first click')
                 SummerNote.objects.filter(attachment_ptr_id=post_id).update(hits=post.hits + 1)
                 hits.date = timezone.now()
