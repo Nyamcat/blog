@@ -127,13 +127,20 @@ class PostView(View):
         category = get_object_or_404(Category, id=post.category_id)
         comment = Comment.objects.filter(post=post_id, full_delete='N').order_by('parent', 'depth')
 
+        print('ip : ' + str(ip))
+
         try:
             hits = HitCount.objects.get(ip=ip, post=post)
-        except:
+
+        except Exception as e:
+            print(e)
             hits = HitCount(ip=ip, post=post)
+            SummerNote.objects.filter(attachment_ptr_id=post_id).update(hits=post.hits + 1)
             hits.save()
+
         else:
             if not hits.date == timezone.now().date():
+                print('first click')
                 SummerNote.objects.filter(attachment_ptr_id=post_id).update(hits=post.hits + 1)
                 hits.date = timezone.now()
             else:
