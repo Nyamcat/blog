@@ -136,6 +136,8 @@ class PostView(View):
             if not hits.date == timezone.now().date():
                 SummerNote.objects.filter(attachment_ptr_id=post_id).update(hits=post.hits + 1)
                 hits.date = timezone.now()
+            else:
+                print(str(ip) + ' has already hit this post.\n\n')
 
         tag_list = []
 
