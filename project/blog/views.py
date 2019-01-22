@@ -131,16 +131,19 @@ class PostView(View):
             hits = HitCount.objects.get(ip=ip, post=post)
 
         except Exception as e:
+            # 처음 게시글을 조회한 경우엔 조회 기록이 없음
             print(e)
             hits = HitCount(ip=ip, post=post)
             SummerNote.objects.filter(attachment_ptr_id=post_id).update(hits=post.hits + 1)
             hits.save()
 
         else:
+            # 조회 기록은 있으나, 날짜가 다른 경우
             if not hits.date == timezone.now().date():
                 SummerNote.objects.filter(attachment_ptr_id=post_id).update(hits=post.hits + 1)
                 hits.date = timezone.now()
                 hits.save()
+            # 날짜가 같은 경우
             else:
                 print(str(ip) + ' has already hit this post.\n\n')
 
@@ -353,6 +356,10 @@ class CommentView(View):
             cmt.save()
 
             cmt.parent = self.request.POST.get('parent', cmt.id)
+
+            if self.request.user.is_active:
+                cmt.user = self.request.user
+
             cmt.save()
 
             SummerNote.objects.filter(id=request.POST.get('post_id')).update(noc=post.noc + 1)

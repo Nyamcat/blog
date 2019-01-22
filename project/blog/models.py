@@ -62,7 +62,8 @@ class Comment(models.Model):
     full_delete = models.CharField(max_length=2, default='N')
 
 
+# 게시글 조회 기록 저장
 class HitCount(models.Model):
-    ip = models.CharField(max_length=15, default=None, null=True)
-    post = models.ForeignKey(SummerNote, default=None, null=True)
-    date = models.DateField(default=timezone.now(), null=True, blank=True)
+    ip = models.CharField(max_length=15, default=None, null=True)  # ip 주소
+    post = models.ForeignKey(SummerNote, default=None, null=True)  # 게시글
+    date = models.DateField(default=timezone.now(), null=True, blank=True)  # 조회수가 올라갔던 날짜
