@@ -57,6 +57,8 @@
     .hashtag { background: #1a222c; padding: 5px 10px 5px 10px; color:white; margin: 20px 10px 0 0;  border: solid 2px #1a222c; border-radius: 5px; transition: 0.2s; }
     .hashtag:hover { background: white; color:black; cursor: pointer}
 
+    .go_to_guestbook { text-align:center; width:30%; background: #1a222c; border-radius:5px; color:white; height:25px; line-height:25px; margin:auto; }
+
     #indexsection .indexcontent h1 {border-bottom: solid 2px #dadada; padding-bottom:10px; margin-bottom:30px;}
     #indexsection .indexcontent #search_for_tags ul { padding: inherit; }
     #indexsection .indexcontent #search_for_tags ul li {margin-top:15px;}

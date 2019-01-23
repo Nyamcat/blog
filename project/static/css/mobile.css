@@ -34,7 +34,7 @@
     #indexsection #search ul li { margin-top:35px; }
 
     #indexsection #guestbook tr {display:none;}
-    #indexsection #guestbook #nocomment {text-align:center; color:gray;}
+    #indexsection #guestbook .go_to_guestbook { text-align:center; width:70%; background: #1a222c; border-radius:5px; color:white; height:25px; line-height:25px; margin:auto; }
 
     #indexsection #recent_posts #desktop_post_list {display:none;}
     #indexsection #recent_posts #showall {float:right; color:1a222c; margin-right:10px; margin-bottom:20px; font-size:18px;}

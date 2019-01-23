@@ -34,9 +34,9 @@
                             </div>
                         </tr>
                         {% endfor %}
-                        <a href="{% url 'guestbook' %}"><p id="nocomment">&#62;&#62;&#62;&nbsp;방명록 남기기&nbsp;&#60;&#60;&#60;</p></a>
+                        <a href="{% url 'guestbook' %}"><p class="go_to_guestbook">&#62;&#62;&#62;&nbsp;방명록 남기기&nbsp;&#60;&#60;&#60;</p></a>
                         {% else %}
-                        <a href="{% url 'guestbook' %}"><p id="nocomment">&#62;&#62;&#62;&nbsp;1등으로 방명록 남기기&nbsp;&#60;&#60;&#60;</p></a>
+                        <a href="{% url 'guestbook' %}"><p class="go_to_guestbook">&#62;&#62;&#62;&nbsp;1등으로 방명록 남기기&nbsp;&#60;&#60;&#60;</p></a>
                         {% endif %}
                         </tbody>
                     </table>
