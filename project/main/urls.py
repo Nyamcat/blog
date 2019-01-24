@@ -15,7 +15,7 @@ sitemaps= {
 
 
 urlpatterns = [
-    url(r'^test/^$', IndexView.as_view(), name='index'),
+    url(r'^test/$', IndexView.as_view(), name='index'),
     url(r'^about', AboutView.as_view(), name='about'),
     url(r'^accounts/login/$', login, name='login'),
     url(r'^sitemap.xml$', sitemap, {'sitemaps': sitemaps}),
