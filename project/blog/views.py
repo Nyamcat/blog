@@ -27,7 +27,7 @@ class AllView(ListView):
     def get_queryset(self):
         result = SummerNote.objects.filter(index__gte=1).order_by('-published_date')
 
-        if (result):
+        if result:
             for x in result:
                 x.published_date = date_parse(x.published_date)
 
@@ -123,30 +123,30 @@ class WriteView(View):
 class PostView(View):
     def get(self, request, post_id):
         ip = get_ip(self.request)
+        ip_display = ip.split('.')[0] + '.' + ip.split('.')[1] + '. * . *'
         post = get_object_or_404(SummerNote, attachment_ptr_id=post_id)
         category = get_object_or_404(Category, id=post.category_id)
         comment = Comment.objects.filter(post=post_id, full_delete='N').order_by('parent', 'depth')
 
         try:
-            hits = HitCount.objects.get(ip=ip, post=post)
+            hits = HitCount.objects.get(ip=ip, post=post, date=timezone.now().date())
 
         except Exception as e:
             # 처음 게시글을 조회한 경우엔 조회 기록이 없음
             print(e)
-            hits = HitCount(ip=ip, post=post)
+            hits = HitCount(ip=ip, post=post, date=timezone.now(), ip_display=ip_display)
             SummerNote.objects.filter(attachment_ptr_id=post_id).update(hits=post.hits + 1)
-            hits.save()
 
         else:
             # 조회 기록은 있으나, 날짜가 다른 경우
             if not hits.date == timezone.now().date():
                 SummerNote.objects.filter(attachment_ptr_id=post_id).update(hits=post.hits + 1)
-                hits.date = timezone.now()
-                hits.save()
+                hits = HitCount(ip=ip, post=post, date=timezone.now(), ip_display=ip_display)
             # 날짜가 같은 경우
             else:
+                hits.number_of_get_request = hits.number_of_get_request + 1
                 print(str(ip) + ' has already hit this post.\n\n')
-
+        hits.save()
         tag_list = []
 
         if post.hashtag == '':
@@ -211,7 +211,7 @@ class SearchView(ListView):
 
         result = SummerNote.objects.filter(title__contains=keyword, index__gte=1).order_by('-published_date')
 
-        if (result):
+        if result:
             for x in result:
                 x.published_date = date_parse(x.published_date)
 
@@ -258,8 +258,6 @@ class TagView(ListView):
             self.count = len(post)
             for x in post:
                 x.published_date = date_parse(x.published_date)
-
-
 
         return post
 

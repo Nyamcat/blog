@@ -65,5 +65,7 @@ class Comment(models.Model):
 # 게시글 조회 기록 저장
 class HitCount(models.Model):
     ip = models.CharField(max_length=15, default=None, null=True)  # ip 주소
+    ip_display = models.CharField(max_length=16, null=False, default='')
     post = models.ForeignKey(SummerNote, default=None, null=True)  # 게시글
-    date = models.DateField(default=timezone.now(), null=True, blank=True)  # 조회수가 올라갔던 날짜
+    date = models.DateField(default=None, null=True, blank=True)  # 조회수가 올라갔던 날짜
+    number_of_get_request = models.IntegerField(default=0)  # 같은 날 GET 요청을 보낸 횟수
