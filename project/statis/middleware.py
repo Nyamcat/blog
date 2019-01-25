@@ -35,12 +35,9 @@ class VisitorCountMiddleware(object):
                 # 날짜가 같은 경우
                 else:
                     visitor.number_of_get_request = visitor.number_of_get_request + 1
-                    print(str(ip) + ' has already hit this post.\n\n')
             visitor.save()
         else:
-            print('Nope')
-
-        print(response)
+            pass
 
         # Code to be executed for each request/response after
         # the view is called.

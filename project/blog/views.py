@@ -153,7 +153,6 @@ class PostView(View):
             # 날짜가 같은 경우
             else:
                 hits.number_of_get_request = hits.number_of_get_request + 1
-                print(str(ip) + ' has already hit this post.\n\n')
         hits.save()
         tag_list = []
 
