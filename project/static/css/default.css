@@ -17,7 +17,7 @@
     .sidenav #profile_title { color:white; font-size:20px; }
     .sidenav #sns_list { list-style: none; text-align: left; margin-left:60px; }
     .sidenav #sns_list li{ color: white; margin-top:15px; }
-    .sidenav #sns_list li a { color:white; margin-left: 10px; font-size:15px; }
+    .sidenav #sns_list li a { color:white; margin-left: 10px; font-size:15px; text-decoration:none;}
 
     .sidenav .visitor_day { color:gray; }
     .sidenav .visitor_count { color:white; font-weight:bold; }

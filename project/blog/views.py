@@ -32,8 +32,6 @@ def side_context(context):
     context['total_visit'] = total_visit
     context['today_visit'] = today_visit
 
-    print(context)
-
     return context
 
 
