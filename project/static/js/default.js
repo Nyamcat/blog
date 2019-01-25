@@ -7,6 +7,24 @@ function copyToClipboard(val) {
     document.body.removeChild(t);
 }
 
+function openNav() {
+    $(".overlay").show();
+    $("#mySidenav").toggleClass('expanded');
+    // document.getElementById("mySidenav").style.width = "350px";
+}
+
+function openMobileNav() {
+    $(".overlay").show();
+    $("#mySidenav").toggleClass('expanded');
+
+    // document.getElementById("mySidenav").style.width = "100%";
+}
+
+function closeNav() {
+    $(".overlay").hide();
+    $("#mySidenav").toggleClass('expanded');
+}
+
 jQuery(function($)
 {
     $(document).ready(function () {
@@ -26,9 +44,9 @@ jQuery(function($)
         });
 
         $(function(){
-            $('#menu_button').click(function(e){
+            $('#menu_button, #mobile_menu_button').click(function(e){
                 e.stopPropagation();
-                $('.ui.sidebar').sidebar('setting', 'transition', 'overlay').sidebar('toggle');
+                // $('.ui.sidebar').sidebar('setting', 'transition', 'overlay').sidebar('toggle');
             });
         });
 

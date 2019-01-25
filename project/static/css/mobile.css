@@ -1,18 +1,31 @@
 @media (max-device-width: 520px){
     /* HEADER */
-    #head { height:70px; border-bottom: 1px solid lightgray; background: url(../img/mobile-logo.png) no-repeat; background-color:white; background-position: center; width: 100%;  position: fixed; top: 0px; left: 0px; z-index: 9999;}
-    #menu_button {float:right; margin:20px 20px; border:none; background:white;}
-    #menu_button i { color:#1a222c; }
+    #head { height:70px; border-bottom: 1px solid lightgray; background: url(../img/mobile-logo.png) no-repeat; background-color:white; background-position: center; width: 100%;  position: fixed; top: 0px; left: 0px; z-index: 1;}
+    #head #mobile_menu_button {float:right; margin:20px 20px; border:none; background:white;}
+    #head #mobile_menu_button i { color:#1a222c; }
+    #head #menu_button { display:none; }
     ul {padding: 0; list-style: none;}
     .copy_button {display: none;}
 
     /* SIDE BAR */
+    .sidenav { width: 100%;  }
     .sidebar #personal_data { width:150px; margin: 25px 25px 75px 25px; height:400px; text-align: center; }
-    .sidebar #personal_data #profile_img { margin:20px 25px; width:250px; height:250px; border-radius:100%; }
-    .sidebar #personal_data #profile_title { color:white; font-size:40px; }
-    .sidebar #personal_data #sns_list { list-style: none; text-align: left; }
-    .sidebar #personal_data #sns_list li{ color: white; margin-top:25px; }
-    .sidebar #personal_data #sns_list li span { margin-left: 10px; font-size:30px; }
+    .sidenav #profile_img { margin:20px 25px; width:250px; height:250px; border-radius:100%; }
+    .sidenav #profile_title { color:white; font-size:30px; }
+    .sidenav #sns_list { list-style: none; text-align: left; margin-left:40px;}
+    .sidenav #sns_list li{ color: white; margin-top:25px; }
+    .sidenav #sns_list li a { margin-left: 10px; font-size:20px; color:white;}
+
+    .sidenav .closebtn { text-decoration: none; font-size: 25px; color: #818181; display: block; position: absolute; top: 15px; right: 15px; font-size: 36px; margin-left: 50px; }
+
+    .sidenav #visitor_bar { font-size:18px;  }
+    .sidenav .visitor_day { color:gray; }
+    .sidenav .visitor_count { color:white; font-weight:bold; }
+
+    .sidenav #folder { margin-top:50px; }
+    .sidenav #folder .menutitle {color:white; display:block; padding-left:40px; font-size:20px; line-height:50px;}
+    .sidenav #folder .submenutitle { background:white; }
+    .sidenav #folder .submenutitle  .category_span { color:#1a222c; font-size:20px; line-height:50px; padding-left:80px;}
 
     /* MAIN PAGE */
     #indexsection { margin: auto; width:95%; padding-top:50px;}

@@ -16,57 +16,65 @@
     <script type="text/javascript" charset="utf-8" src="{% static 'semantic/semantic.min.js' %}"></script>
     <link rel="stylesheet" href="{% static 'css/default.css' %}">
     <link rel="stylesheet" href="{% static 'css/mobile.css' %}">
+    <link rel="stylesheet" href="{% static 'css/sidebar.css' %}">
     <link rel="stylesheet" href="{% static 'semantic/semantic.min.css' %}">
     <link rel="icon" href="{% static 'img/favicon.ico' %}">
 </head>
 <body>
-<div class="ui sidebar right inverted vertical menu" style="width:350px; background: #1a222c;">
-    <div id="personal_data">
-        <img id="profile_img" src="{% static 'img/profile.png' %}">
-        <p id="profile_title">Orca the Whale</p>
-        <ul id="sns_list">
-            <li>
-                <i class="fab fa-facebook-square fa-2x"></i>
-                <span>Facebook</span>
-            </li>
-            <li>
-                <i class="fab fa-github fa-2x"></i>
-                <span>Github</span>
-            </li>
-            <li>
-                <i class="fas fa-envelope-square fa-2x"></i>
-                <span>E-mail</span>
-            </li>
-        </ul>
+<section id="head">
+    <button id="menu_button" onclick="openNav()"><i id="sidebar_icon" class="fas fa-bars fa-2x"></i></button>
+    <button id="mobile_menu_button" onclick="openMobileNav()"><i id="mobile_sidebar_icon" class="fas fa-bars fa-2x"></i></button>
+
+    <div id="logo">
+        <!--<img id="full-logo" src="{% static 'img/Full-Logo.png' %}">-->
     </div>
-    <ul id="folder">
-        <li>
-            {% for class in classify %}
-            <span class="menutitle">+&nbsp&nbsp{{ class.title }}</span>
-            <ul class="submenutitle">
-                {% for category in categories %}
-                {% if category.classify == class %}
+</section>
+<div>
+    <div id="mySidenav" class="sidenav">
+        <a class="closebtn" onclick="closeNav()">&times;</a>
+        <div>
+            <p id="visitor_bar">
+                <span class="visitor_day">TODAY </span>&nbsp;
+                <span class="visitor_count">{{today_visit}} </span>&nbsp;&nbsp;
+                <span class="visitor_day">TOTAL </span>&nbsp;
+                <span class="visitor_count">{{total_visit}} </span>&nbsp;&nbsp;
+            </p>
+            <img id="profile_img" src="{% static 'img/profile.png' %}">
+            <p id="profile_title">Orca the Whale</p>
+            <ul id="sns_list">
+                <li><a target="_blank" href="https://github.com/Nyamcat">
+                    <i class="fab fa-github fa-2x"></i>&nbsp;&nbsp;
+                    <span>Github</span></a>
+                </li>
                 <li>
-                    <a href="/category/{{category.title}}">
-                        <p>
-                            <span>
+                    <a href="mailto:444.gkk@gmail.com">
+                    <i class="fas fa-envelope-square fa-2x"></i>&nbsp;&nbsp;
+                    <span>444.gkk@gmail.com</span></a>
+                </li>
+            </ul>
+        </div>
+        <ul id="folder">
+            <li>
+                {% for class in classify %}
+                <span class="menutitle">+&nbsp&nbsp{{ class.title }}</span>
+                <ul class="submenutitle">
+                    {% for category in categories %}
+                    {% if category.classify == class %}
+                    <li>
+                        <a href="/category/{{category.title}}">
+                            <p>
+                            <span class="category_span">
                             {{category.label}}&nbsp;({{category.nou}})
                             </span>
-                        </p>
-                    </a>
-                </li>
-                {% endif %}
+                            </p>
+                        </a>
+                    </li>
+                    {% endif %}
+                    {% endfor %}
+                </ul>
                 {% endfor %}
-            </ul>
-            {% endfor %}
-    </ul>
+        </ul>
+        <div id="bottom_space"></div>
+    </div>
+    <div class="overlay" onclick="closeNav()"></div>
 </div>
-<div class="pusher">
-        <section id="head">
-            <button id="menu_button"><i id="sidebar_icon" class="fas fa-bars fa-2x"></i></button>
-
-            <div id="logo">
-                <!--<img id="full-logo" src="{% static 'img/Full-Logo.png' %}">-->
-            </div>
-
-        </section>

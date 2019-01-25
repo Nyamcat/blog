@@ -8,6 +8,8 @@ from django.views import View
 from django.views.generic import ListView
 from django.db.models import Q, Max
 from ipware.ip import get_ip
+
+from statis.models import Visitor
 from .forms import PostForm
 from .models import *
 
@@ -17,6 +19,22 @@ from .models import *
 def date_parse(date):
     date = date.strftime('%Y-%m-%d')
     return date
+
+
+def side_context(context):
+    categories = Category.objects.filter(use='Y')
+    classify = Classify.objects.all()
+    total_visit = len(Visitor.objects.all())
+    today_visit = len(Visitor.objects.filter(date=timezone.now().date()))
+
+    context['categories'] = categories
+    context['classify'] = classify
+    context['total_visit'] = total_visit
+    context['today_visit'] = today_visit
+
+    print(context)
+
+    return context
 
 
 # 전체글보기
@@ -36,11 +54,7 @@ class AllView(ListView):
     def get_context_data(self, **kwargs):
         context = super(AllView, self).get_context_data(**kwargs)
 
-        categories = Category.objects.filter(use='Y')
-        classify = Classify.objects.all()
-
-        context['categories'] = categories
-        context['classify'] = classify
+        context = side_context(context)
 
         return context
 
@@ -56,11 +70,7 @@ class GuestBookView(View):
 
         context = {'post': post, 'comment': comment}
 
-        categories = Category.objects.filter(use='Y')
-        classify = Classify.objects.all()
-
-        context['categories'] = categories
-        context['classify'] = classify
+        context = side_context(context)
 
         return render(request, 'blog/guestbook.html', context)
 
@@ -162,11 +172,7 @@ class PostView(View):
         else:
             context = {'post': post, 'tags': tag_list, 'category': category, 'comment': comment}
 
-        categories = Category.objects.filter(use='Y')
-        classify = Classify.objects.all()
-
-        context['categories'] = categories
-        context['classify'] = classify
+        context = side_context(context)
 
         # desc 태그
         cleaner = re.compile('<.*?>')
@@ -186,16 +192,14 @@ class BlogView(View):
     def get(self, request):
         recent_posts = SummerNote.objects.filter(index__gte=1).order_by('-published_date')[:20]
         tags = HashTag.objects.order_by('-nou')[:3]
-        categories = Category.objects.filter(use='Y')
-        classify = Classify.objects.all()
+
         comment = Comment.objects.filter(delete='N', full_delete='N', depth=1, post__index=0).order_by('-published_date')[:5]
 
         for x in recent_posts:
             x.published_date = date_parse(x.published_date)
 
-        context = {'recent_posts': recent_posts, 'tags': tags, 'categories': categories, 'classify': classify, 'comment': comment}
-
-
+        context = {'recent_posts': recent_posts, 'tags': tags, 'comment': comment}
+        context = side_context(context)
 
         return render(request, 'blog/blog.html', context)
 
@@ -221,12 +225,9 @@ class SearchView(ListView):
         context = super(SearchView, self).get_context_data(**kwargs)
         context['keyword'] = self.keyword
 
-        categories = Category.objects.filter(use='Y')
-        classify = Classify.objects.all()
-
-        context['categories'] = categories
-        context['classify'] = classify
         context['description'] = self.keyword + '검색 결과'
+
+        context = side_context(context)
 
         return context
 
@@ -266,13 +267,9 @@ class TagView(ListView):
         context['keyword'] = self.tags
         context['count'] = self.count
 
-        categories = Category.objects.filter(use='Y')
-        classify = Classify.objects.all()
-
-        context['categories'] = categories
-        context['classify'] = classify
-
         context['description'] = self.tags + '태그는 ' + str(self.count) + '개의 게시글에 태그되었습니다.'
+
+        context = side_context(context)
 
         return context
 
@@ -303,12 +300,9 @@ class CategoryView(ListView):
         context['keyword'] = self.keyword
         context['count'] = self.count
 
-        categories = Category.objects.filter(use='Y')
-        classify = Classify.objects.all()
-
-        context['categories'] = categories
-        context['classify'] = classify
         context['description'] = self.keyword + '카테고리에는 게시글이 ' + str(self.count) + '개 있습니다.'
+
+        context = side_context(context)
 
         return context
 
