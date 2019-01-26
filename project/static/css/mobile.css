@@ -44,7 +44,7 @@
     #indexsection #search #search_for_tags #search_tags {margin-bottom:20px;}
     #indexsection #search #search_for_tags .post_hashtag { background: #1a222c; padding: 5px 10px 5px 10px; color:white; margin: 20px 20px 0 0; border-radius: 10px; }
     #indexsection #search #search_for_tags .post_hashtag a {color:white; margin-left:10px; text-decoration: none; }
-    #indexsection #search ul li { margin-top:35px; }
+    #indexsection #search ul li { margin-top:25px; }
 
     #indexsection #guestbook tr {display:none;}
     #indexsection #guestbook .go_to_guestbook { text-align:center; width:70%; background: #1a222c; border-radius:5px; color:white; height:25px; line-height:25px; margin:auto; }
@@ -60,7 +60,7 @@
     .hashtag { background: #1a222c; padding: 5px 10px 5px 10px; color:white; margin: 20px 10px 0 0;  border: solid 2px #1a222c; border-radius: 10px;}
 
     /* POST */
-    .blog_post .post_box #title_box {height:30px; border-bottom: solid 2px #dadada; margin:50px 0px 30px 0px;}
+    .blog_post .post_box #title_box {border-bottom: solid 2px #dadada; margin:50px 0px 30px 0px;}
     .blog_post .post_box #title_box #title { text-align:left; padding:10px; font-size:15px; font-weght: 300; margin-bottom:0;}
     .blog_post .post_box #title_box #category { padding-left: 15px; border-left: 1px solid black; color: gray; text-decoration:none; }
     .blog_post .post_box .post_content {padding:10px;}
@@ -95,6 +95,11 @@
     #reply_li button {margin:5px 0px; color:white; background: #1a222c;}
     #reply_li {padding: 10px 5px; background: #f9f9f9;}
 
+    /* SEARCH RESULT COMMON */
+    #indexsection .nothing {margin-top:30px;}
+    #indexsection .nothing h2 {font-size:18px; font-weight:bold;}
+
+
     /* TAG SEARCH RESULT */
     #indexsection .search_result {padding-top:50px;}
     #indexsection .search_result #desktop_post_list {display:none;}
@@ -102,6 +107,7 @@
     #indexsection .search_result ul li {margin-top: 20px; border-bottom: 1px solid gray; padding-bottom: 20px;}
     #indexsection .search_result ul li .title {font-size:15px;}
     #indexsection .search_result ul li .info {font-size:12px; color:lightgray;}
+
 
     /* PAGINATION */
     .pagination>li>a,
