@@ -129,6 +129,7 @@
     #commentul,
     .mobile_write_comment,
      #ulnocomment {display:none;}
+     #tablenocomment {text-align:center; color:gray;}
     #commenttable { width:100%; margin:0 0 100px 0; font-size:13px;}
     #commenttable tr { height: 50px; border-bottom: 1px solid lightgray;}
     #commenttable:last-child { border-bottom:none;}
@@ -165,7 +166,7 @@
     /* .blog_post .post_box {margin: 30px; border: 1px solid black; border-radius:5px; padding: 15px; } */
     .blog_post .comment_box { border: 1px solid black; border-radius:5px; padding: 15px; }
     .blog_post .post_box {margin: 30px; padding: 15px; }
-    .blog_post .post_box #title_box {height:30px; border-bottom: solid 2px #dadada; padding-bottom:10px; margin:15px 0px 15px 0px;}
+    .blog_post .post_box #title_box {border-bottom: solid 2px #dadada; margin:15px 0px 15px 0px;}
     .blog_post .post_box #title_box #title { text-align:left; padding:10px; font-size:24px; font-weight: 300; margin-bottom:0;}
     .blog_post .post_box #title_box #category { padding-left: 15px; border-left: 1px solid black; color: gray; text-decoration:none;}
     .blog_post .post_box .post_content {padding:10px;}
