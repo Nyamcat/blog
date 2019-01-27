@@ -21,17 +21,17 @@ class VisitorCountMiddleware(object):
             print(ip)
 
             try:
-                visitor = Visitor.objects.get(ip=ip, date=timezone.now())
+                visitor = Visitor.objects.get(ip=ip, date=timezone.localtime())
 
             except Exception as e:
                 # 처음 블로그를 방문한 경우엔 조회 기록이 없음
                 print(e)
-                visitor = Visitor(ip=ip, date=timezone.now(), ip_display=ip_display)
+                visitor = Visitor(ip=ip, date=timezone.localtime(), ip_display=ip_display)
 
             else:
                 # 방문 기록은 있으나, 날짜가 다른 경우
-                if not visitor.date == timezone.now().date():
-                    visitor = Visitor(ip=ip, date=timezone.now(), ip_display=ip_display)
+                if not visitor.date == timezone.localtime().date():
+                    visitor = Visitor(ip=ip, date=timezone.localtime(), ip_display=ip_display)
                 # 날짜가 같은 경우
                 else:
                     visitor.number_of_get_request = visitor.number_of_get_request + 1

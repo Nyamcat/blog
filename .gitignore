@@ -7,3 +7,4 @@ project/main/__pycache__
 prject/sb/__pycache__
 *.pyc
 venv/
+env/

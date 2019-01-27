@@ -25,7 +25,7 @@ def side_context(context):
     categories = Category.objects.filter(use='Y')
     classify = Classify.objects.all()
     total_visit = len(Visitor.objects.all())
-    today_visit = len(Visitor.objects.filter(date=timezone.now().date()))
+    today_visit = len(Visitor.objects.filter(date=timezone.localtime().date()))
 
     context['categories'] = categories
     context['classify'] = classify
@@ -137,19 +137,19 @@ class PostView(View):
         comment = Comment.objects.filter(post=post_id, full_delete='N').order_by('parent', 'depth')
 
         try:
-            hits = HitCount.objects.get(ip=ip, post=post, date=timezone.now().date())
+            hits = HitCount.objects.get(ip=ip, post=post, date=timezone.localtime().date())
 
         except Exception as e:
             # 처음 게시글을 조회한 경우엔 조회 기록이 없음
             print(e)
-            hits = HitCount(ip=ip, post=post, date=timezone.now(), ip_display=ip_display)
+            hits = HitCount(ip=ip, post=post, date=timezone.localtime(), ip_display=ip_display)
             SummerNote.objects.filter(attachment_ptr_id=post_id).update(hits=post.hits + 1)
 
         else:
             # 조회 기록은 있으나, 날짜가 다른 경우
-            if not hits.date == timezone.now().date():
+            if not hits.date == timezone.localtime().date():
                 SummerNote.objects.filter(attachment_ptr_id=post_id).update(hits=post.hits + 1)
-                hits = HitCount(ip=ip, post=post, date=timezone.now(), ip_display=ip_display)
+                hits = HitCount(ip=ip, post=post, date=timezone.localtime(), ip_display=ip_display)
             # 날짜가 같은 경우
             else:
                 hits.number_of_get_request = hits.number_of_get_request + 1
