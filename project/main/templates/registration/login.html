@@ -1,8 +1,5 @@
 {% load staticfiles %}
-    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.2/css/bootstrap.min.css">
-    <link rel="stylesheet" href="https://cdn.rawgit.com/konpa/devicon/df6431e323547add1b4cf45992913f15286456d3/devicon.min.css">
-    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.1.1/jquery.min.js"></script>
-    <link rel="stylesheet" href="{% static 'css/default.css' %}">
+{% include 'main/header.html' %}
 
 
 
@@ -33,7 +30,8 @@
                         {{ form.password }}
                     </div>
                     <!--<input type="submit" value="로그인" />-->
-                    <button class="btn btn-default" type="submit" value="로그인"><span>로그인</span></button>
+                    <button class="btn btn-default" id="login" type="submit" value="로그인"><span>로그인</span></button>
+                    <button class="btn btn-default" id="signup" type="button"><span>가입</span></button>
 
             </form>
         </div>
@@ -43,6 +41,9 @@
     </div>
 
 <script>
+
+
+    $('#mobile_menu_button, #menu_button').hide();
     $('body').addClass('login');
 
     $('#id_username').addClass('form-control');
@@ -52,7 +53,7 @@
     $('#id_password').attr("placeholder", "비밀번호");
 
     $('#signup').click(function(){
-        location.href = '/'
+        location.href = "{% url 'signup' %}"
     });
 
 </script>
