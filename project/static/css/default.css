@@ -20,8 +20,19 @@
     .sidenav #sns_list li{ color: white; margin-top:15px; }
     .sidenav #sns_list li a { color:white; margin-left: 10px; font-size:15px; }
 
-    .sidenav .visitor_day { color:gray; }
-    .sidenav .visitor_count { color:white; font-weight:bold; }
+    .sidenav .visitor_day,
+    .sidenav .subscribe_title { color:gray; }
+    .sidenav .visitor_count,
+    .sidenav .subscribe_value { color:white; font-weight:bold; }
+
+    .sidenav #auth_div { display:block; margin: 20px 0px; }
+    .sidenav #auth_div button { margin: 10px auto; color:white; background:#1a222c; transition:0.3s; border:1px solid white; border-radius:5px; width:30%; height:35px;}
+    .sidenav #auth_div button:hover { color:#1a222c; background:white; font-weight:bold;}
+    .sidenav #auth_div #cancel_subscribe:hover { color:white; background:red; border:red; font-weight:normal;}
+    .sidenav #auth_div #login,
+    .sidenav #auth_div #subscribe_not_login,
+    .sidenav #auth_div #subscribe,
+    .sidenav #auth_div #cancel_subscribe { display:block; width:60%; }
 
     .sidenav .closebtn { text-decoration: none; font-size: 25px; color: #818181; display: block; transition: 0.3s; }
     .sidenav .closebtn:hover { color: #f1f1f1; }
@@ -193,7 +204,7 @@
 
 
     /* 로그인 */
-    body.login, body.signup {background: #f8f8f8;}
+    body.login {background: #f8f8f8;}
     .login_box p {text-align: center;}
     .login_box #logo {margin:200px auto 50px;}
     .login_box #logo img {margin:0px auto; text-align:center; width:50px;}
@@ -203,12 +214,56 @@
     .login_box #login_div p {font-style:bold; color:red;}
     .login_box #login_div label {display:none;}
     .login_box #login_div #logo {margin-bottom:100px;}
-    .login_box #login_div #id_username {width:250px; height:35px; font-size:15px; margin: 15px auto;}
+    .login_box #login_div #id_username,
     .login_box #login_div #id_password {width:250px; height:35px; font-size:15px; margin: 15px auto;}
     .login_box #login_div input {width:120px; height:35px; margin-bottom:15px;}
     .login_box #login_div button {width:120px; height:35px; text-decoration: none; margin-left:5px;}
     .login_box #login_div button a {color:black;}
 
+    /* 회원가입 */
+    body.signup {background: #f8f8f8;}
+    .signup_box p {text-align: center;}
+    .signup_box #logo {margin:200px auto 50px;}
+    .signup_box #logo img {margin:0px auto; text-align:center; width:50px;}
+    .signup_box #logo a {text-decoration:none; line-height:32px;}
+    .signup_box #logo span {font-size:24px; font-weight: 300; text-decoration:none; color:black;}
+    .signup_box #signup_div {padding: 50px; margin: 50px auto 350px; width:400px; text-align:center; border: 1px solid #b1b1b1; border-radius:5px; background:white;}
+    .signup_box #signup_div p {font-style:bold; color:red;}
+    .signup_box #signup_div #logo {margin-bottom:100px;}
+    .signup_box #signup_div #id_username,
+    .signup_box #signup_div #id_password1,
+    .signup_box #signup_div #id_email,
+    .signup_box #signup_div #id_first_name,
+    .signup_box #signup_div #id_password2 {width:250px; height:35px; font-size:15px; margin: 15px auto;}
+    .signup_box #signup_div #id_subscribe {width:20px; height:20px; margin-bottom:15px; position:relative; top:5px;}
+
+    .signup_box #signup_div button {width:250px; height:35px; text-decoration: none; margin: 10px 0 0 0; transition:0.3s;}
+    .signup_box #signup_div button:hover { background:#1a222c; color:white; transition:0.3s; }
+
+
+    /* 정보수정 */
+    body.profile {background: #f8f8f8;}
+    .profile_box p {text-align: center;}
+    .profile_box #logo {margin:200px auto 50px;}
+    .profile_box #logo a {text-decoration:none; line-height:32px;}
+    .profile_box #logo img {margin:0px auto; text-align:center; width:50px;}
+    .profile_box #logo span {font-size:24px; font-weight: 300; text-decoration:none; color:black;}
+    .profile_box #profile_div {padding: 50px; margin: 50px auto 350px; width:400px; text-align:center; border: 1px solid #b1b1b1; border-radius:5px; background:white;}
+    .profile_box #profile_div p {font-style:bold; color:red;}
+    .profile_box #profile_div #logo {margin-bottom:100px;}
+    .profile_box #profile_div input {width:250px; height:35px; font-size:15px; margin: 15px auto;}
+
+    .signup_box #signup_div #id_username,
+    .signup_box #signup_div #id_password1,
+    .signup_box #signup_div #id_email,
+    .signup_box #signup_div #id_first_name,
+    .signup_box #signup_div #id_password2 {width:250px; height:35px; font-size:15px; margin: 15px auto;}
+    .signup_box #signup_div #id_subscribe {width:20px; height:20px; margin-bottom:15px; position:relative; top:5px;}
+
+    .profile_box #profile_div #id_subscribe {width:20px; height:20px; margin-bottom:15px; position:relative; top:5px;}
+
+    .profile_box #profile_div button {width:250px; height:35px; text-decoration: none; margin: 10px 0 0 0; transition:0.3s;}
+    .profile_box #profile_div button:hover { background:#1a222c; color:white; transition:0.3s; }
 
     /* pagination */
     .pagination>li>a,
