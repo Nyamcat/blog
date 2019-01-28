@@ -160,6 +160,7 @@
 
         {% if user.is_authenticated %}
             $('input[name=reply_name]').val('{{user|get_full_name}}')
+            $('input[name=reply_email]').val('{{user.email}}')
         {% endif %}
     });
 
@@ -179,6 +180,7 @@
 
         {% if user.is_authenticated %}
             $('input[name=mobile_reply_name]').val('{{user|get_full_name}}')
+            $('input[name=mobile_reply_email]').val('{{user.email}}')
         {% endif %}
     });
 
@@ -402,5 +404,6 @@
 <script>
     {% if user.is_authenticated %}
         $('input[name=name], input[name=mobile_name]').val('{{user|get_full_name}}')
+        $('input[name=email], input[name=mobile_name_email]').val('{{user.email}}')
     {% endif %}
 </script>
