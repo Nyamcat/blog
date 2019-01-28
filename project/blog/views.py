@@ -78,10 +78,17 @@ class GuestBookView(View):
 # 글쓰기
 class WriteView(View):
     def get(self, request):
-        form = PostForm()
-        return render(request, 'blog/write.html', {'form':form})
+        if self.request.user.is_superuser:
+            form = PostForm()
+            return render(request, 'blog/write.html', {'form':form})
+        else:
+            raise Http404
 
     def post(self, request):
+
+        if not self.request.user.is_superuser:
+            raise Http404
+
         form = PostForm(self.request.POST)
         try:
             index = SummerNote.objects.all().aggregate(max=Max('index'))['max'] + 1
