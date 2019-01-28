@@ -26,11 +26,13 @@ def side_context(context):
     classify = Classify.objects.all()
     total_visit = len(Visitor.objects.all())
     today_visit = len(Visitor.objects.filter(date=timezone.localtime().date()))
+    subscribe = len(User.objects.filter(profile__subscribe=True))
 
     context['categories'] = categories
     context['classify'] = classify
     context['total_visit'] = total_visit
     context['today_visit'] = today_visit
+    context['subscribe'] = subscribe
 
     return context
 
@@ -389,3 +391,23 @@ class CommentView(View):
                 context = {'message': 'fail'}
 
             return HttpResponse(json.dumps(context), content_type="application/json")
+
+
+# 구독
+class SubscribeView(View):
+    def post(self, request):
+        if self.request.user.is_authenticated:
+
+            type = self.request.POST.get('type')
+            if type == 'sub':
+                self.request.user.profile.subscribe = True
+
+            if type == 'can':
+                self.request.user.profile.subscribe = False
+
+            self.request.user.profile.save()
+            subscribe = len(User.objects.filter(profile__subscribe=True))
+
+            return HttpResponse(json.dumps({'subscribe': subscribe}), content_type='application/json')
+        else:
+            return Http404

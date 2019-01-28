@@ -31,12 +31,30 @@
     <div id="mySidenav" class="sidenav">
         <a class="closebtn" onclick="closeNav()">&times;</a>
         <div>
-            <p id="visitor_bar">
+            <p class="visitor_bar">
                 <span class="visitor_day">TODAY </span>&nbsp;
                 <span class="visitor_count">{{today_visit}} </span>&nbsp;&nbsp;
                 <span class="visitor_day">TOTAL </span>&nbsp;
                 <span class="visitor_count">{{total_visit}} </span>&nbsp;&nbsp;
             </p>
+            <p class="visitor_bar">
+                <span class="subscribe_title">SUBSCRIBE</span>&nbsp;
+                <span class="subscribe_value">{{subscribe}}</span>
+            </p>
+            <div id="auth_div">
+                {% if user.is_authenticated %}
+                <button id="logout">로그아웃</button>
+                <button id="edit_info">정보수정</button>
+                    {% if user.profile.subscribe %}
+                        <button id="cancel_subscribe">구독 중!</button>
+                    {% else %}
+                        <button id="subscribe">구독하기</button>
+                    {% endif %}
+                {% else %}
+                <button id="login">로그인</button>
+                <button id="subscribe_not_login">구독하기</button>
+                {% endif %}
+            </div>
             <img id="profile_img" src="{% static 'img/profile.png' %}">
             <p id="profile_title">Orca the Whale</p>
             <ul id="sns_list">
@@ -76,3 +94,81 @@
     </div>
     <div class="overlay" onclick="closeNav()"></div>
 </div>
+
+<script>
+
+$(document).on('mouseenter', '#cancel_subscribe', function() {
+    $(this).text('어째서..');
+});
+
+$(document).on('mouseleave', '#cancel_subscribe', function() {
+    $(this).text('구독 중!');
+});
+
+$(document).on('mouseenter', '#subscribe, #subscribe_not_login', function() {
+        $(this).text('👍👍👍');
+});
+
+$(document).on('mouseleave', '#subscribe, #subscribe_not_login', function() {
+        $(this).text('구독하기');
+    }
+);
+
+
+$('#edit_info').click(function(){
+    location.href = "{% url 'profile' %}"
+});
+
+$('#subscribe_not_login').click(function(){
+    location.href = "{% url 'login' %}"
+});
+
+$('#logout').click(function(){
+    location.href = "{% url 'logout' %}"
+});
+
+$('#login').click(function(){
+    location.href = "{% url 'login' %}"
+});
+
+$(document).on('click', '#subscribe', function() {
+    if(confirm('{{user.email}}로 게시글 알림을 받게 됩니다.')){
+        $.ajax({
+            type: "POST",
+            url: '{% url "subscribe" %}',
+            data: { 'csrfmiddlewaretoken': '{{ csrf_token }}', 'type': 'sub'},
+            dataType: "json",
+
+            success: function(response){
+                $('#subscribe').text('구독 중!');
+                $('#subscribe').prop('id', 'cancel_subscribe');
+                $('.subscribe_value').text(response.subscribe);
+            },
+            error: function(request, status, error){
+                alert("실패했습니다.")
+            },
+        });
+    }
+});
+
+$(document).on('click', '#cancel_subscribe', function() {
+    if(confirm('구독 취소 하시겠습니까.....?')){
+        $.ajax({
+            type: "POST",
+            url: '{% url "subscribe" %}',
+            data: { 'csrfmiddlewaretoken': '{{ csrf_token }}', 'type': 'can'},
+            dataType: "json",
+
+            success: function(response){
+                $('#cancel_subscribe').text('구독하기');
+                $('#cancel_subscribe').prop('id', 'subscribe');
+                $('.subscribe_value').text(response.subscribe);
+            },
+            error: function(request, status, error){
+                alert("실패했습니다.")
+            },
+        });
+    }
+});
+
+</script>

@@ -24,12 +24,21 @@ from .views import *
 
 urlpatterns = [
     url(r'^$', BlogView.as_view(), name='blog'),
+    url(r'^subscribe/$', SubscribeView.as_view(), name='subscribe'),
+
+    # 전체글보기
     url(r'^all/$', AllView.as_view(), name='all_post'),
-    url(r'^post/(?P<post_id>\d+)/$', PostView.as_view(), name='post'),
-    url(r'^write/$', login_required(WriteView.as_view()), name='write'),
-    url(r'^guestbook/$', GuestBookView.as_view(), name='guestbook'),
-    url(r'^comment/$', CommentView.as_view(), name='comment'),
     url(r'^search/$', SearchView.as_view(), name='search'),
     url(r'^tags/$', TagView.as_view(), name='tag_search'),
     url(r'^category/(?P<keyword>\w+)/$', CategoryView.as_view(), name='category_list'),
+
+    # 게시글 상세
+    url(r'^post/(?P<post_id>\d+)/$', PostView.as_view(), name='post'),
+    url(r'^comment/$', CommentView.as_view(), name='comment'),
+
+    # 게시글 작성
+    url(r'^write/$', login_required(WriteView.as_view()), name='write'),
+
+    # 방명록
+    url(r'^guestbook/$', GuestBookView.as_view(), name='guestbook'),
 ] + static(settings.MEDIA_URL, document_root=settings.MEDIA_ROOT)
