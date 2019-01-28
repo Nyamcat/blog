@@ -1,0 +1,107 @@
+{% load staticfiles %}
+{% include 'main/header.html' %}
+{% if user.is_active %}
+<script>history.back(-1);</script>
+{% else %}
+<div id="sub_contents">
+    <div class="profile_box">
+        <div id="logo">
+            <a href="/"><span></span></a>
+        </div>
+        <div id="profile_div">
+            <form method="post" action="">
+                    {% csrf_token %}
+                    <div>
+                        {% for error in form.first_name.errors %}
+                        <p style="color: red">{{ error | safe }}</p>
+                        {% endfor %}
+                    </div>
+                    <div>
+                        {{ form.first_name }}
+                    </div>
+
+                    <div>
+                        {% for error in form.username.errors %}
+                        <p style="color: red">{{ error | safe }}</p>
+                        {% endfor %}
+                    </div>
+                    <div>
+                        {{ form.username }}
+                    </div>
+
+                    <div>
+                        {% for error in form.password1.errors %}
+                        <p style="color: red">{{ error | safe }}</p>
+                        {% endfor %}
+                    </div>
+                    <div>
+                        {% for error in form.password2.errors %}
+                        <p style="color: red">{{ error | safe }}</p>
+                        {% endfor %}
+                    </div>
+                    <div>
+                        {{ form.password1 }}
+                    </div>
+
+                    <div>
+                        {{ form.password2 }}
+                    </div>
+
+                    <div>
+                        {% for error in form.email.errors %}
+                        <p style="color: red">{{ error | safe }}</p>
+                        {% endfor %}
+                    </div>
+                    <div>
+                        {{ form.email }}
+                    </div>
+
+                    <div>
+                        {% for error in form.subscribe.errors %}
+                        <p style="color: red">{{ error | safe }}</p>
+                        {% endfor %}
+                    </div>
+                    <div>
+                        {{ form.subscribe }} <label for="id_subscribe">구독하기</label>
+                    </div>
+                    <!--<input type="submit" value="로그인" />-->
+                    <button class="btn btn-default" id="signup_button" type="submit"><span>가입</span></button>
+
+            </form>
+        </div>
+
+
+        </div>
+    </div>
+
+<script>
+
+    $('#mobile_menu_button, #menu_button').hide();
+
+    $('body').addClass('profile');
+
+
+    $('#id_first_name').addClass('form-control');
+    $('#id_first_name').attr("placeholder", "이름");
+
+    $('#id_username').addClass('form-control');
+    $('#id_username').attr("placeholder", "아이디");
+
+    $('#id_password1').addClass('form-control');
+    $('#id_password1').attr("placeholder", "비밀번호");
+
+    $('#id_password2').addClass('form-control');
+    $('#id_password2').attr("placeholder", "비밀번호 확인");
+
+    $('#id_email').addClass('form-control');
+    $('#id_email').attr("placeholder", "이메일 foo@bar.com");
+
+    $('#signup').click(function(){
+        location.href = "{% url 'signup' %}"
+    });
+
+</script>
+{% include 'main/footer.html' %}
+
+{% endif %}
+

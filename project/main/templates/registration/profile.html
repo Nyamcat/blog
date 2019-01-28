@@ -1,0 +1,84 @@
+{% load staticfiles %}
+{% include 'main/header.html' %}
+
+<div id="sub_contents">
+    <div class="profile_box">
+        <div id="logo">
+            <a href="/"><span></span></a>
+        </div>
+        <div id="profile_div">
+            <form method="post" action="">
+                    {% csrf_token %}
+                    <div>
+                        {% for error in form.first_name.errors %}
+                        <p style="color: red">{{ error | safe }}</p>
+                        {% endfor %}
+                    </div>
+                    <div>
+                        {{ form.first_name }}
+                    </div>
+
+                    <div>
+                        {% for error in form.username.errors %}
+                        <p style="color: red">{{ error | safe }}</p>
+                        {% endfor %}
+                    </div>
+                    <div>
+                        <input id="id_username" name="username" value="{{user}}" class="form-control" disabled>
+                    </div>
+
+                    <div>
+                        {% for error in form.email.errors %}
+                        <p style="color: red">{{ error | safe }}</p>
+                        {% endfor %}
+                    </div>
+                    <div>
+                        {{ form.email }}
+                    </div>
+
+                    <div>
+                        {% for error in form.subscribe.errors %}
+                        <p style="color: red">{{ error | safe }}</p>
+                        {% endfor %}
+                    </div>
+                    <div>
+                        {{ form.subscribe }} <label for="id_subscribe">구독하기</label>
+                    </div>
+                    <!--<input type="submit" value="로그인" />-->
+                    <div>
+                        <button class="btn btn-default" id="password_change" type="button"><span>비밀번호 변경하기</span></button>
+                    </div>
+                    <button class="btn btn-default" id="profile_button" type="submit"><span>저장</span></button>
+
+            </form>
+        </div>
+
+
+        </div>
+    </div>
+
+<script>
+
+    $('#mobile_menu_button, #menu_button').hide();
+
+    $('body').addClass('profile');
+
+
+    $('#id_first_name').addClass('form-control');
+    $('#id_first_name').val('{{user.first_name}}');
+    $('#id_first_name').attr("placeholder", "이름");
+
+    $('#id_email').addClass('form-control');
+    $('#id_email').val('{{user.email}}');
+    $('#id_email').attr("placeholder", "이메일 foo@bar.com");
+
+    {% if user.profile.subscribe == False %}
+        $('#id_subscribe').attr("checked", false);
+    {% endif %}
+
+    $('#password_change').click(function(){
+        location.href = "{% url 'password_change' %}"
+    });
+</script>
+{% include 'main/footer.html' %}
+
