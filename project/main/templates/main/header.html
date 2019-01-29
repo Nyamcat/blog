@@ -106,6 +106,12 @@
 </div>
 
 <script>
+{% if user.is_authenticated %}
+    {% if user.profile.alert %}
+        alert('{{user.profile.alert_msg}}');
+    {% endif %}
+{% endif %}
+
 
 $(document).on('mouseenter', '#cancel_subscribe', function() {
     $(this).text('어째서..');

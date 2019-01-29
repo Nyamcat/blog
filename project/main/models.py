@@ -9,6 +9,8 @@ from django.dispatch import receiver
 class Profile(models.Model):
     user = models.OneToOneField(User, on_delete=models.CASCADE)
     subscribe = models.BooleanField(default=True)
+    alert = models.BooleanField(default=False)
+    alert_msg = models.CharField(max_length=300, default=True, null=True, blank=True)
 
     class Meta:
         db_table = 'auth_user_profile'
