@@ -318,7 +318,10 @@ class CommentView(View):
     def post(self, request):
         type = self.request.POST.get('type')
         ip = get_ip(self.request)
-        ip_display = ip.split('.')[0]+ '.' + ip.split('.')[1] + '. * . *'
+        if self.request.user.is_authenticated:
+            ip_display = ''
+        else:
+            ip_display = ip.split('.')[0] + '.' + ip.split('.')[1] + '. * . *'
 
         if type == 'publish':
             post = SummerNote.objects.get(id=request.POST.get('post_id'))
