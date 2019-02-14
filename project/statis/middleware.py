@@ -1,12 +1,13 @@
 from ipware.ip import get_ip
 from django.utils import timezone
 
-from .models import Visitor
+from .models import Visitor, VisitorTotal
 
 
 class VisitorCountMiddleware(object):
     def __init__(self, get_response):
         self.get_response = get_response
+        self.visitor_total = VisitorTotal.objects.get(id=1)
         # One-time configuration and initialization.
 
     def __call__(self, request):
@@ -27,15 +28,19 @@ class VisitorCountMiddleware(object):
                 # 처음 블로그를 방문한 경우엔 조회 기록이 없음
                 print(e)
                 visitor = Visitor(ip=ip, date=timezone.localtime(), ip_display=ip_display)
+                self.visitor_total.cnt += 1
+
 
             else:
                 # 방문 기록은 있으나, 날짜가 다른 경우
                 if not visitor.date == timezone.localtime().date():
                     visitor = Visitor(ip=ip, date=timezone.localtime(), ip_display=ip_display)
+                    self.visitor_total += 1
                 # 날짜가 같은 경우
                 else:
                     visitor.number_of_get_request = visitor.number_of_get_request + 1
             visitor.save()
+            self.visitor_total.save()
         else:
             pass
 

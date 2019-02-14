@@ -21,3 +21,7 @@ def update_user_profile(sender, instance, created, **kwargs):
     if created:
         Profile.objects.create(user=instance)
     instance.profile.save()
+
+
+class SubscribeTotal(models.Model):
+    cnt = models.IntegerField(default=0, null=True, blank=True)

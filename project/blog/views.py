@@ -10,6 +10,9 @@ from django.db.models import Q, Max
 from ipware.ip import get_ip
 
 from statis.models import Visitor
+
+from main.models import SubscribeTotal
+from statis.models import VisitorTotal
 from .forms import PostForm
 from .models import *
 
@@ -24,9 +27,9 @@ def date_parse(date):
 def side_context(context):
     categories = Category.objects.filter(use='Y')
     classify = Classify.objects.all()
-    total_visit = len(Visitor.objects.all())
+    total_visit = VisitorTotal.objects.get(id=1).cnt
     today_visit = len(Visitor.objects.filter(date=timezone.localtime().date()))
-    subscribe = len(User.objects.filter(profile__subscribe=True))
+    subscribe = SubscribeTotal.objects.get(id=1).cnt
 
     context['categories'] = categories
     context['classify'] = classify
@@ -406,16 +409,20 @@ class CommentView(View):
 # 구독
 class SubscribeView(View):
     def post(self, request):
+        subscribe_total = SubscribeTotal.objects.get(id=1)
         if self.request.user.is_authenticated:
 
             type = self.request.POST.get('type')
             if type == 'sub':
                 self.request.user.profile.subscribe = True
+                subscribe_total.cnt += 1
 
             if type == 'can':
                 self.request.user.profile.subscribe = False
+                subscribe_total -= 1
 
             self.request.user.profile.save()
+            subscribe_total.save()
             subscribe = len(User.objects.filter(profile__subscribe=True))
 
             return HttpResponse(json.dumps({'subscribe': subscribe}), content_type='application/json')
