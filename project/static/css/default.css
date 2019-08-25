@@ -1,5 +1,7 @@
     /* bg = 1a222c */
+
 @media (min-device-width: 520px){
+    @import url(//fonts.googleapis.com/earlyaccess/notosanskr.css);
     /* HEADER */
     #head {background: #1a222c; width:100%; cursor:pointer;}
     #head #logo {width: 300px; height:300px; margin: 0 auto; text-align:center; background: url(../img/Full-Logo.png) no-repeat; background-position: center; background-size: 300px;}
@@ -10,6 +12,8 @@
     #head #menu_button {float:right; margin:20px 20px; border:none; background: #1a222c;}
     #head #menu_button i { color: white;}
     #head #mobile_menu_button { display:none; }
+
+    body { font-family: "Noto Sans KR", sans-serif; }
 
     /* SIDE BAR */
     .sidenav {width:350px;}

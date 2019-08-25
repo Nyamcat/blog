@@ -1,9 +1,11 @@
 @media (max-device-width: 520px){
+    @import url(//fonts.googleapis.com/earlyaccess/notosanskr.css);
     /* HEADER */
     #head { height:70px; border-bottom: 1px solid lightgray; background: url(../img/mobile-logo.png) no-repeat; background-color:white; background-position: center; width: 100%;  position: fixed; top: 0px; left: 0px; z-index: 1;}
     #head #mobile_menu_button {float:right; margin:20px 20px; border:none; background:white;}
     #head #mobile_menu_button i { color:#1a222c; }
     #head #menu_button { display:none; }
+    body { font-family: "Noto Sans KR", sans-serif; }
     ul {padding: 0; list-style: none;}
     .copy_button {display: none;}
 
